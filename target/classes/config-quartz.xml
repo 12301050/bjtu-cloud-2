@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-autowire="byName" default-lazy-init="false">
+    <!-- default-autowire="byName" default-lazy-init="false"此两个值可以不配置 -->
+    <!-- cron表达式
+        秒 0-59 , - * /
+        分 0-59 , - * /
+        小时 0-23 , - * /
+        日期 1-31 , - * ? / L W C
+        月份 1-12 或者 JAN-DEC , - * /
+        星期 1-7 或者 SUN-SAT , - * ? / L C #
+        年（可选） 留空, 1970-2099 , - * /
+    -->
+    <description>Quartz Job Setting</description>
+    <!-- A.配置调度的任务对应bean的id和自定义class-->
+    <bean id="myQuartz" class="com.bjtu.cloud.common.util.Quartz"/>
+
+    <!-- B.配置调度任务对应的bean的id和执行的方法,作业不并发调度-->
+    <bean id="tipGetADInfo" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="myQuartz"/>
+        <property name="targetMethod" value="getADInfo"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <bean id="tipInsertPunchRecord" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="myQuartz"/>
+        <property name="targetMethod" value="insertPunchRecord"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+
+    <!-- C.配置调度任务执行的触发的时间-->
+    <bean id="myTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="tipGetADInfo"/>
+        <property name="cronExpression">
+            <!-- 每天下午六点半执行任务调度 -->
+            <value>0 * * * * ?</value>
+            <!--<value>0 32 11 * * ?</value>-->
+        </property>
+    </bean>
+
+    <bean id="selfTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="tipInsertPunchRecord"/>
+        <property name="cronExpression">
+            <value>5 * * * * ?</value>
+            <!-- 每30分钟执行任务调度 -->
+           <!-- <value>* */30 9-20 * * ?</value>-->
+        </property>
+    </bean>
+
+    <!-- D.Quartz的调度工厂，调度工厂只能有一个，多个调度任务在list中添加 -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <!-- 所有的调度列表-->
+                <ref bean="myTrigger"/>
+                <ref bean="selfTrigger"/>
+                <!-- <ref bean="myTrigger1" />对应的bean配置：id="myDetail1" 和 id="myTrigger2" 可以对应的并行多配置-对应执行JavaBean和执行时间(各自触发time)-->
+            </list>
+        </property>
+    </bean>
+</beans>  

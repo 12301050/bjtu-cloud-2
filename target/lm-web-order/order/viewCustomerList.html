@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="description" content="">
+  <meta name="author" content="Sergey Pozhilov (GetTemplate.com)">
+  <title>查询打卡记录</title>
+  <link rel="shortcut icon" href="assets/images/gt_favicon.png">
+  <link rel="stylesheet" media="screen" href="assets/css/googleapi.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <!-- Custom styles for our template -->
+  <link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+  <style type="text/css">
+    html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    a.card-list-item {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      background: seashell;
+      border-radius: 5px;
+      margin-bottom: 12px;
+      padding: 6px 16px;
+    }
+
+    span.time {
+      color: #87C3C3;
+      text-align: start;
+      display: block;
+    }
+
+    div.nav {
+      border: 1px;
+      overflow: hidden;
+      text-align: initial;
+      width: 62%;
+    }
+
+    .search-div {
+      position: relative;
+      margin: 10px 15px;
+      text-align: left;
+    }
+
+    .search-input {
+      width: 10%;
+      color: #151515;
+      padding: 3px 6px;
+      margin-right: 5px;
+      display: inline-block;
+    }
+
+    .search-btn {
+      right: 0;
+      top: 2px;
+      padding: 5px 12px;
+    }
+
+    #footer {
+      position: relative;
+      width: 100%;
+      clear: both;
+      margin-top: -100px;
+    }
+    .zebra {
+      border: 1px solid #555;
+      text-align:center;
+    }
+    .zebra td {
+      border-left: 1px solid #555;
+      border-top: 1px solid #555;
+      padding: 10px;
+      text-align: left;
+      width:10%;
+    }
+    .zebra tbody tr:nth-child(even) {
+      background: rgba(0,0,0,.075);
+      color:black;
+    }
+    .zebra tr {
+      background:#ccffcc;
+
+      width:15%;
+      text-align:center;
+    }
+    .zebra  th {
+      border-left: 1px solid #555;
+      border-top: 1px solid #555;
+    }
+  </style>
+</head>
+<body>
+<!-- Fixed navbar -->
+<!-- /.navbar -->
+<!-- container -->
+<div class="container" style="min-height: 100%;height: auto !important;height: 100%; ">
+  <div class="row" style="padding-bottom: 100px;">
+    <!-- Article main content -->
+    <article class="col-xs-12 maincontent" style="text-align: center;">
+      <!--<header class="page-header" style="margin-top: 0px;margin-bottom: 0px;">
+          <h3 class="page-title" style="font-weight:bold; text-align: center;">尚未确认收款</h3>
+      </header>-->
+
+      <div class="search-div" style="margin-top:10%;text-align:center;">
+        <input id="srNum" type="text" placeholder="请求单号" class="form-control search-input">
+        <input id="name" type="text" placeholder="姓名" class="form-control search-input">
+        <input id="prtNum" type="text" placeholder="卡号" class="form-control search-input">
+        <input id="cardId" type="text" placeholder="身份证号" style="width: 15%;" class="form-control search-input">
+        <input id="access" type="text" placeholder="权限" class="form-control search-input">
+
+      </div>
+      <div class="search-div" style="margin-top:3%;text-align:center;">
+        <input id="fromDate" type="text" placeholder="起始时间" style="width: 15%;" class="form-control search-input">
+        <input id="toDate" type="text" placeholder="结束时间" style="width: 15%;" class="form-control search-input">
+        <input id="inTime" type="text" placeholder="进入时间" style="width: 15%;" class="form-control search-input">
+        <input id="outTime" type="text" placeholder="离开时间" style="width: 15%;" class="form-control search-input">
+
+      </div>
+
+      <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" style="text-align: center;position: relative;width: 80%;margin-left: 8%;">
+        <div class="panel panel-default">
+          <div class="panel-body" id="searchbtn">
+            <button class="btn btn-action search-btn" type="button" onclick="loadOrder(true)" style="margin-right:30%;"/>查找</button>
+            <button class="btn btn-action search-btn" type="button" onclick="exporttoexcel('wangaxing')"/>导出到excel表格</button>
+          </div>
+          <p id="accountforrecords" style="font-weight: bold;font-size: x-large;"></p>
+          <div class="panel-body" id="showlist">
+
+
+          </div>
+        </div>
+      </div>
+    </article>
+    <!-- /Article -->
+  </div>
+</div><!-- /container -->
+
+<footer id="footer" class="top-space">
+  <div class="footer1">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 widget">
+          <h3 class="widget-title">Contact</h3>
+          <div class="widget-body">
+            <p>+234 23 9873237<br>
+              <a href="mailto:#">some.email@somewhere.com</a><br>
+              <br>
+              234 Hidden Pond Road, Ashland City, TN 37015
+            </p>
+          </div>
+        </div>
+      </div> <!-- /row of widgets -->
+    </div>
+  </div>
+</footer>
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/headroom.min.js"></script>
+<script src="assets/js/jQuery.headroom.min.js"></script>
+
+<script type="text/javascript">
+
+  function loadOrder(isParams) {
+    var paramData = {};
+    if (isParams) {
+      $("#showlist").html('查找中...');
+      var srNum = $('#srNum').val().trim();
+      var name = $('#name').val().trim();
+      var prtNum = $('#prtNum').val().trim();
+      var cardId = $('#cardId').val().trim();
+      var fromDate = $('#fromDate').val().trim();
+      var toDate = $('#toDate').val().trim();
+      var access = $('#access').val().trim();
+      var inTime = $('#inTime').val().trim();
+      var outTime = $('#outTime').val().trim();
+
+      if (srNum) {
+        paramData.srNum =srNum;
+        //alert(paramData.srNum);
+      }
+      if (name) {
+        paramData.name =name;
+      }
+      if (prtNum) {
+        paramData.prtNum =prtNum;
+      }if (cardId) {
+        paramData.cardId = cardId;
+      }if (fromDate) {
+        paramData.fromDate = fromDate;
+      }if (toDate) {
+        paramData.toDate = toDate;
+      }if (access) {
+        paramData.access = access;
+      }if (inTime) {
+        paramData.inTime = inTime;
+      }if (outTime) {
+        paramData.outTime = outTime;
+      }
+
+      /*var tableStr="";
+       for(var i=0 ;i<2 ; i++){
+       tableStr = tableStr+"<tr><td>"+ "王阿星"+"</td>"+"<td>"+"女"+ "</td>"+"<td>"+"美女"+"</td></tr>"
+       }
+       tableStr = pretableStr +tableStr+ "</table>";*/
+    }
+
+    //$("#showlist").html(tableStr);
+    $.ajax({
+      async: true,
+      url: "http://localhost:11180/query",
+      type: "GET",
+      data: paramData,
+      timeout: 300000,
+      dataType: "json",
+      success: function (data) {
+          var pretableStr = "<table class='zebra' id='wangaxing'><tr><th>请求单号</th><th>姓名</th><th>卡号</th><th>身份证号</th><th>起始时间</th><th>结束时间</th><th>权限</th><th>进入时间</th><th>离开时间</th></tr>";
+
+          var tableStr="";
+          var len = data.length;//此处有可能需要修改，可能为data.length
+          if(len>0){//如果查询结果大于零
+            $("#accountforrecords").html("共计"+len+"条数据！");
+          }
+          for(var i=0 ;i<len ; i++){
+
+            tableStr = tableStr+"<tr><td>"+ data[i].srNum+"</td>"+"<td>"+data[i].name+ "</td>" +"<td>"+data[i].prtNum+
+                "<td>"+"'"+data[i].cardId+ "</td>" +"<td>"+data[i].fromDate+"<td>"+data[i].toDate+ "</td>" +"<td>"+data[i].access+
+                "</td>"+"<td>"+data[i].outTime+ "</td>" +"<td>"+data[i].inTime+"</td></tr>"
+          }
+          tableStr = pretableStr +tableStr+ "</table>";
+
+          $("#showlist").html(tableStr);
+          // $("#showlist").html(template('order_template', {cuxs: data.data}));
+      }
+    });
+  }
+  function exporttoexcel(tableid) {//导出查询结果到excel表格中
+    var idTmr;
+//    alert("先查询，");
+
+    var curTbl = document.getElementById(tableid);
+//    alert(curTbl);
+
+    if(curTbl==null){//用户还没有执行查询动作
+//      alert("请您先查询，再导出！");
+    }else{
+//      alert(tableid);
+     /* try {
+        new ActiveXObject("Excel1.Application");
+        alert("测试创建成功！");
+        return true;
+      } catch (e) {
+          alert(e);
+      }*/
+      var oXL = new ActiveXObject("Excel.Application");
+//     alert("创建成功");
+      //创建AX对象excel   
+      var oWB = oXL.Workbooks.Add();
+      //获取workbook对象   
+      var xlsheet = oWB.Worksheets(1);
+      //激活当前sheet   
+      var sel = document.body.createTextRange();
+      sel.moveToElementText(curTbl);
+      //把表格中的内容移到TextRange中   
+      sel.select();
+      //全选TextRange中内容   
+      sel.execCommand("Copy");
+      //复制TextRange中内容    
+      xlsheet.Paste();
+      //粘贴到活动的EXCEL中         
+      oXL.Visible = true;
+      //设置excel可见属性  
+
+      try {
+        var fname = oXL.Application.GetSaveAsFilename("将查询结果导出到Excel", "Excel Spreadsheets (*.xlsx), *.xlsx");
+//        alert("here!!");
+      } catch (e) {
+        print("Nested catch caught " + e);
+      } finally {
+        oWB.SaveAs(fname);
+
+        oWB.Close(savechanges = false);
+        //xls.visible = false;  
+        oXL.Quit();
+        oXL = null;
+        //结束excel进程，退出完成  
+        //window.setInterval("Cleanup();",1);  
+        idTmr = window.setInterval("Cleanup();", 1);
+
+      }
+    }
+  }
+  function Cleanup() {
+    window.clearInterval(idTmr);
+    CollectGarbage();
+  }
+
+  function bootAlert(msg) {
+    alert(msg);
+  }
+
+  //function toCux(receiptNumber) {
+  //  window.location.replace("/order/viewdetails.html?id=" + receiptNumber);
+  //}
+
+  $(function () {
+    loadOrder();
+  });
+</script>
+</body>
+</html>
