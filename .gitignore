@@ -2,4 +2,4 @@
 /.idea/workspace.xml
 .DS_Store
 target/generated-sources/
-target/lm-web-order/WEB-INF/lib/
+target/bjtu-cloud/WEB-INF/lib/
