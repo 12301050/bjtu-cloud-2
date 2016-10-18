@@ -1,4 +1,4 @@
-package com.bjtu.cloud.common.enums;
+package com.bjtu.cloud.common;
 
 import java.io.Serializable;
 
