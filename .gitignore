@@ -1,5 +1,18 @@
-/.idea/
-/.idea/workspace.xml
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+
+# Intellij project files
+*.iml
+.idea/
+*.iws
+
+# maven
+target/
+logs/
 .DS_Store
-target/generated-sources/
-target/bjtu-cloud/WEB-INF/lib/
+
+# Mac
+.DS_Store
