@@ -101,7 +101,7 @@
                  $("#TS_id").html("团队状态");
                  $("#Skins_id").html("皮肤");
                  $("#langli").html("更换语言");
-                 $("#CPCEP_id").html("复制，打印，CSV，PDF");
+                 $("#CPCEP_id").html("复制，CSV，PDF");
                  
                  App.setPage("index");  //Set current page
                  //App.init(); //Initialise plugins and elements 
@@ -425,12 +425,12 @@
 					<li class="dropdown user" id="header-user">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<img alt="" src="img/avatars/avatar3.jpg" />
-							<span class="username">Admin</span>
+							<span class="username">John Doe</span>
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
-							<li><a  id="langli" ><i class="fa fa-cog"></i> change to chine</a></li>
+							<li><a  id="langli" ><i class="fa fa-cog"></i> Account Settings</a></li>
 							<li><a href=""><i class="fa fa-eye"></i> Privacy Settings</a></li>
 							<li><a href="login.html"><i class="fa fa-power-off"></i> Log Out</a></li>
 						</ul>
@@ -752,24 +752,25 @@
 						
 						<!-- SIDEBAR MENU -->
 						<ul>
-							<li class="">
-								<a href="index.html">
-								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">Task Management</span>
-								<span class="selected"></span>
-								</a>					
-							</li>
                             <li class="active">
-								<a href="log_mgt.html">
-								<i class="fa fa-book" style="margin-right:11px;"></i> <span class="menu-text"> LOG Management</span>
-								<span class="selected"></span>
-								</a>					
-							</li>
-                            <li class="">
-								<a href="user_mgt.html" >
+								<a href="user_mgt_admin.html" >
 								<i class="fa fa-users" style="margin-right:11px;"></i> <span class="menu-text"> USER Management</span>
 								<span class="selected"></span>
 								</a>					
 							</li>
+							<li class="">
+								<a href="task_mgt_admin.html">
+								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">Task Management</span>
+								<span class="selected"></span>
+								</a>					
+							</li>
+                            <li class="">
+								<a href="log_mgt_admin.html">
+								<i class="fa fa-book" style="margin-right:11px;"></i> <span class="menu-text"> LOG Management</span>
+								<span class="selected"></span>
+								</a>					
+							</li>
+                            
                             
 							<li class="has-sub">
 								<a href="javascript:;" class="">
@@ -942,7 +943,7 @@
 									</ul>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left" id="Dashboard_h3">LOG MANAGEMENT</h3>
+										<h3 class="content-title pull-left" id="Dashboard_h3">USER MANAGEMENT</h3>
 										<!-- DATE RANGE PICKER -->
 										<span class="date-range pull-right">
 											<div class="btn-group">
@@ -974,7 +975,7 @@
 								<!-- BOX -->
 								<div class="box border purple">
 									<div class="box-title">
-										<h4 id="CPCEP_id"><i class="fa fa-table"></i>Copy,CSV, PDF</h4>
+										<h4 id="CPCEP_id"><i class="fa fa-table"></i>用户列表</h4>
 										<div class="tools hidden-xs">
 											<a href="#box-config" data-toggle="modal" class="config">
 												<i class="fa fa-cog"></i>
@@ -995,38 +996,74 @@
 											<thead>
 												<tr>
 													<th>编号</th>
-													<th>日期</th>
-													<th class="hidden-xs">详情</th>
-													
+													<th>用户ID</th>
+													<th>用户名</th>
+													<th class="hidden-xs">拥有节点数</th>
+													<th>更改节点数</th>
+													<th class="hidden-xs">删除用户</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr class="gradeX">
-													<td>3</td>
+													<td>1</td><td>1</td>
 													<td>
-														2016/10/28
+														王阿星
 														</td>
-													<td class="hidden-xs"><a href="#table-modal-showlog" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
-													
+													<td class="hidden-xs">2</td>
+                                                    <td class="center"><a href="#table-modal-addOneNodeForUser" data-toggle="modal"><i class="fa fa-plus-square"></i></a></a>&nbsp&nbsp&nbsp<a href="#table-modal-deleteOneOrMoreNodeForUser" data-toggle="modal"></ahref><i  class="fa fa-minus-square"></i></a></td>
+													<td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
 												</tr>
 												<tr class="gradeC">
-													<td>2</td>
-													<td>2016/10/18</td>
-													<td class="hidden-xs"><a href="#table-modal-showlog" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+													<td>2</td><td>2</td>
+													<td>王大星
+														 </td>
+													<td class="hidden-xs">4</td>
+													<td class="center"><i class="fa fa-plus-square"></i>&nbsp&nbsp&nbsp<i class="fa fa-minus-square"></i></td>
+													<td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
 												</tr>
 												<tr class="gradeA">
-													<td>1</td>
-													<td>2016/9/8</td>
-													<td class="hidden-xs"><a href="#table-modal-showlog" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+													<td>3</td><td>3</td>
+													<td>王二星</td>
+													<td class="hidden-xs">5</td>
+													<td class="center"><i class="fa fa-plus-square"></i>&nbsp&nbsp&nbsp<i class="fa fa-minus-square"></i></td>
+													<td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
 												</tr>
-												
+												<tr class="gradeA">
+													<td>4</td><td>4</td>
+													<td>王三星</td>
+													<td class="hidden-xs">2</td>
+													<td class="center"><i class="fa fa-plus-square"></i>&nbsp&nbsp&nbsp<i class="fa fa-minus-square"></i></td>
+                                                    <td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
+												</tr>
+												<tr class="gradeA">
+													<td>5</td><td>5</td>
+													<td>王四星</td>
+													<td class="hidden-xs">7</td>
+													<td class="center"><i class="fa fa-plus-square"></i>&nbsp&nbsp&nbsp<i class="fa fa-minus-square"></i></td>
+                                                    <td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
+												</tr>
+												<tr class="gradeA">
+													<td>6</td><td>6</td>
+													<td>王五星</td>
+													<td class="hidden-xs">2</td>
+													<td class="center"><i class="fa fa-plus-square"></i>&nbsp&nbsp&nbsp<i class="fa fa-minus-square"></i></td>
+                                                    <td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
+												</tr>
+												<tr class="gradeA">
+													<td>7</td><td>7</td>
+													<td>全是星</td>
+													<td class="hidden-xs">1</td>
+													<td class="center"><i class="fa fa-plus-square" onclick="addOneNodeForUser()"></i>&nbsp&nbsp&nbsp<i class="fa fa-minus-square" onclick="deleteOneOrMoreNodeForUser()"></i></td>
+                                                    <td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
+												</tr>
 											</tbody>
 											<tfoot>
 												<tr>
 													<th>编号</th>
-													<th>日期</th>
-													<th class="hidden-xs">详情</th>
-													
+													<th>用户ID</th><th>用户名</th>
+													<th class="hidden-xs">拥有节点数</th>
+													<th>更改节点数</th>
+													<th class="hidden-xs">删除用户</th>
 												</tr>
 											</tfoot>
 										</table>
@@ -1035,64 +1072,126 @@
 								<!-- /BOX -->
 							</div>
 						</div>
-						<!-- /EXPORT TABLES -->
-							<div class="col-md-6">
-								<div class="row">
-								  
-								  
-								</div>
-								<div class="row">
-									
-							   </div>
-							</div>
-							<!-- /COLUMN 1 -->
-							<div class="modal fade" id="table-modal-showlog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <!-- SAMPLE BOX CONFIGURATION MODAL FORM-->
+						<div class="modal fade" id="table-modal-addOneNodeForUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 							  <div class="modal-content modal-table">
 								<div class="modal-header">
 								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								  <h4 class="modal-title">XXX日志</h4>
+								  <h4 class="modal-title">请选择您所需要的节点类型</h4>
+								</div>
+								<div class="modal-body"style="text-align: center;margin-top: 2%;">
+								  
+										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+											<div class="btn-group dropdown">
+											<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+											节点类型
+											<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu context">
+											<li>
+											<a href="#">Java</a>
+											</li>
+											<li>
+											<a href="#">Python</a>
+											</li>
+											<li>
+											<a href="#">PHP</a>
+											</li>
+											<li class="divider"></li>
+											</ul>
+										  </div>
+											
+										</table>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-success" data-dismiss="modal">创建并分配</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+                        <div class="modal fade" id="table-modal-deleteOneOrMoreNodeForUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content modal-table">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								  <h4 class="modal-title">删除节点</h4>
 								</div>
 								<div class="modal-body">
 								  
 										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
-													<th></th>
-													<th></th>
+													<th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" ><i class="fa fa-square-o"></i></th>
+													<th>编号</th>
+													<th>节点ID</th>
+													<th class="hidden-xs">节点名称</th>
+													<th>状态</th>
 												</tr>
 											</thead>
 											<tbody>
 												
 												<tr class="gradeA">
-                                                     <td> 00:01:12</td>
-													<td>user12_node3_startTask_taskName1</td>
+                                                     <td style="text-align:center;"> <i class="fa fa-square-o"/></td>
+													<td>1</td>
+													<td class="hidden-xs">67</td>
+													<td >这是第一个节点的名字</td>
+													<td >关闭</td>
+                                                    
 												</tr>
-												
-												<tr class="gradeA">
-                                                     <td> 2</td>
-													<td>Opera 8.5</td>
+                                                <tr class="gradeA">
+                                                     <td style="text-align:center;"> <i class="fa fa-square-o"/></td>
+													<td>2</td>
+													<td class="hidden-xs">82</td>
+													<td >这是第二个节点的名字</td>
+													<td >开启</td>
+                                                    
 												</tr>
-												<tr class="gradeA">
-                                                     <td> 3</td>
-													<td>Opera 9.0</td>
+                                                <tr class="gradeA">
+                                                     <td style="text-align:center;"> <i class="fa fa-square-o"/></td>
+													<td>3</td>
+													<td class="hidden-xs">82</td>
+													<td >这是第三个节点的名字</td>
+													<td >空闲</td>
+                                                    
 												</tr>
-												
 											</tbody>
-											<tfoot>
-												<tr>
-													<th></th>
-													<th></th>
-												</tr>
-											</tfoot>
 										</table>
 								</div>
 								<div class="modal-footer">
-								  <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
+								  <button type="button" class="btn btn-danger" data-dismiss="modal">删除</button>
 								</div>
 							  </div>
 							</div>
 						  </div>
+                        <div class="modal fade" id="table-modal-deleteUser" tabindex="-1"           role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content modal-table">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								  <h4 class="modal-title">删除节点</h4>
+								</div>
+								<div class="modal-body" style="text-align: center;">
+								  
+										<h4>当前该用户有正在执行的任务,确认删除该用户？</h4>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
+                                  <button type="button" class="btn btn-inverse" data-dismiss="modal">取消</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						<!-- /EXPORT TABLES -->
+							<div class="col-md-6">
+								<div class="row">
+								</div>
+								<div class="row">
+									
+							   </div>
+							</div>
+							<!-- /COLUMN 1 -->
+							
 							<!-- COLUMN 2 -->
 							<div class="col-md-6" style="visibility:hidden;">
 								<div class="box solid grey">
@@ -1180,12 +1279,11 @@
 							<!-- NEW ORDERS -->
 							
 							<!-- /NEW ORDERS -->
-							<!-- STATISTICS -->
-							
+						
+						</div>
 						<!-- /NEW ORDERS & STATISTICS -->
 						<!-- CALENDAR & CHAT -->
 						<div class="row">
-							
 						<div class="footer-tools">
 							<span class="go-top">
 								<i class="fa fa-chevron-up"></i> Top

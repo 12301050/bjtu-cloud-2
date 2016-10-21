@@ -35,11 +35,15 @@
     <!-- Placed at the end of the document so the pages load faster -->
 	<!-- JQUERY --> 
 	<script src="js/jquery/jquery-2.0.3.min.js"></script>
+    <script src="js/flot/jquery.min.js"></script>
 	<!-- JQUERY UI-->
 	<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
 	<!-- BOOTSTRAP -->
 	<script src="bootstrap-dist/js/bootstrap.min.js"></script>
 	
+	
+	<!-- JQUERY UI-->
+	<script src="js/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js"></script>
 		
 	<!-- DATE RANGE PICKER -->
 	<script src="js/bootstrap-daterangepicker/moment.min.js"></script>
@@ -81,9 +85,9 @@
 	<script type="text/javascript" src="js/fullcalendar/fullcalendar.min.js"></script>
 	<!-- COOKIE -->
 	<script type="text/javascript" src="js/jQuery-Cookie/jquery.cookie.min.js"></script>
-	
 	<!-- CUSTOM SCRIPT -->
 	<script src="js/script.js"></script>
+	<script src="js/charts.js"></script>
 </head>
     <!-- JAVASCRIPTS-->
 	<script>
@@ -93,7 +97,8 @@
             
             App.setPage("index");  //Set current page
 			App.init(); //Initialise plugins and elements 
-            
+            Charts.initCharts();
+			Charts.initPieCharts();
             /*更换语言包，后期需要捕获cookie中的语言标识，用if做判断*/
              $("#langli").click(function(){
 //                   var result = setEnglish($("body").html());
@@ -111,6 +116,15 @@
         function change(){
                 //alert("change");TODO修改图标属性
             }
+        function changeToTaskView(){
+            //alert("!!");
+            
+            $("#nodeView").css("display","none");
+            $("#taskView").css("display","block");
+        }
+        function showThreeChartsWhenViewTask(){
+            $("#threeCharts").css("display","block");
+        }
 //        function setEnglish(bodyString) {
 //            var result = bodyString;  
 //                                                   
@@ -344,85 +358,6 @@
 						<i class="fa fa-tasks"></i>
 						<span class="badge">3</span>
 						</a>
-						<ul class="dropdown-menu tasks">
-							<li class="dropdown-title">
-								<span><i class="fa fa-check"></i> 6 tasks in progress</span>
-							</li>
-							<li>
-								<a href="#">
-									<span class="header clearfix">
-										<span class="pull-left">Software Update</span>
-										<span class="pull-right">60%</span>
-									</span>
-									<div class="progress">
-									  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-										<span class="sr-only">60% Complete</span>
-									  </div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="header clearfix">
-										<span class="pull-left">Software Update</span>
-										<span class="pull-right">25%</span>
-									</span>
-									<div class="progress">
-									  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-										<span class="sr-only">25% Complete</span>
-									  </div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="header clearfix">
-										<span class="pull-left">Software Update</span>
-										<span class="pull-right">40%</span>
-									</span>
-									<div class="progress progress-striped">
-									  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-										<span class="sr-only">40% Complete</span>
-									  </div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="header clearfix">
-										<span class="pull-left">Software Update</span>
-										<span class="pull-right">70%</span>
-									</span>
-									<div class="progress progress-striped active">
-									  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-										<span class="sr-only">70% Complete</span>
-									  </div>
-									</div>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="header clearfix">
-										<span class="pull-left">Software Update</span>
-										<span class="pull-right">65%</span>
-									</span>
-									<div class="progress">
-									  <div class="progress-bar progress-bar-success" style="width: 35%">
-										<span class="sr-only">35% Complete (success)</span>
-									  </div>
-									  <div class="progress-bar progress-bar-warning" style="width: 20%">
-										<span class="sr-only">20% Complete (warning)</span>
-									  </div>
-									  <div class="progress-bar progress-bar-danger" style="width: 10%">
-										<span class="sr-only">10% Complete (danger)</span>
-									  </div>
-									</div>
-								</a>
-							</li>
-							<li class="footer">
-								<a href="#">See all tasks <i class="fa fa-arrow-circle-right"></i></a>
-							</li>
-						</ul>
 					</li>
 					<!-- END TODO DROPDOWN -->
 					<!-- BEGIN USER LOGIN DROPDOWN -->
@@ -465,24 +400,25 @@
 						
 						<!-- SIDEBAR MENU -->
 						<ul>
+                            <li class="">
+								<a href="user_mgt_admin.html" >
+								<i class="fa fa-users" style="margin-right:11px;"></i> <span class="menu-text"> USER Management</span>
+								<span class="selected"></span>
+								</a>					
+							</li>
 							<li class="active">
-								<a href="index.html">
+								<a href="task_mgt_admin.html">
 								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">Task Management</span>
 								<span class="selected"></span>
 								</a>					
 							</li>
                             <li class="">
-								<a href="log_mgt.html">
+								<a href="log_mgt_admin.html">
 								<i class="fa fa-book" style="margin-right:11px;"></i> <span class="menu-text"> LOG Management</span>
 								<span class="selected"></span>
 								</a>					
 							</li>
-                            <li class="">
-								<a href="user_mgt.html" >
-								<i class="fa fa-users" style="margin-right:11px;"></i> <span class="menu-text"> USER Management</span>
-								<span class="selected"></span>
-								</a>					
-							</li>
+                            
                             
 							<li class="has-sub">
 								<a href="javascript:;" class="">
@@ -681,13 +617,13 @@
 						<div class="row">
 							<!-- COLUMN 1 -->
                             
-                <!-- EXPORT TABLES -->
-						<div class="row">
+                        <!-- EXPORT TABLES-NodeView -->
+						<div id="nodeView" class="row">
 							<div class="col-md-12">
 								<!-- BOX -->
 								<div class="box border purple">
 									<div class="box-title">
-										<h4 id="CPCEP_id"><i class="fa fa-table"></i>Copy, CSV,  PDF</h4>
+										<h4 id="CPCEP_id"><i class="fa fa-table"></i>节点列表</h4>
 										<div class="tools hidden-xs">
 											<a href="#box-config" data-toggle="modal" class="config">
 												<i class="fa fa-cog"></i>
@@ -709,105 +645,114 @@
 												<tr>
                                                     <th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" onclick="change()"><i class="fa fa-square-o"></i></th>
                                                     <th>编号</th>
-													<th>节点编号</th>
+													<th>节点ID</th>
+													<th>节点类型</th>
+													<th>节点名称</th>
+													<th>用户名</th>
 													<th>节点状态</th>
 													<th class="hidden-xs">正在执行任务数</th>
 													<th>历史执行任务数</th>
 													<th>CPU占用率</th>
 													<th>内存使用率</th>
 													<th class="hidden-xs">带宽占用率</th>
+													<th class="hidden-xs">操作</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr class="gradeX">
-                                                    <td> <i class="fa fa-square-o"></td>
-													<td>Trident</td>
-													<td>
-														Internet
-														 Explorer 
-														4.0
-														</td>
-													<td class="hidden-xs">windows7</td>
-													<td class="center"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">4</a></td>
-													<td class="center hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-                                                    <td class="hidden-xs">Win 95+</td>
-													<td class="center">4</td>
-													<td class="center hidden-xs">X</td>
+                                                    <td > <i class="fa fa-square-o"></td>
+													<td>1</td>
+													<td>332</td>
+													<td class="hidden-xs">java</td>
+													<td class="hidden-xs">这是第一个节点名</td>
+													<td class="center">王阿星</td>
+													<td class="center hidden-xs">活跃</td>
+                                                    <td class="hidden-xs"><a onclick="changeToTaskView()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
+													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">38%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">56%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">28%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
 												</tr>
 												<tr class="gradeC">
-                                                     <td> <i class="fa fa-square-o"></td>
-													<td>Trident</td>
-													<td>Internet
-														 Explorer 5.0</td>
-													<td class="hidden-xs">Win 95+</td>
-													<td class="center"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
-													<td class="center hidden-xs"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-                                                    <td class="hidden-xs">Win 95+</td>
-													<td class="center">5</td>
-													<td class="center hidden-xs">C</td>
+                                                    <td > <i class="fa fa-square-o"></td>
+													<td>2</td>
+													<td>342</td>
+													<td class="hidden-xs">Python</td>
+													<td class="hidden-xs">这是第二个节点名</td>
+													<td class="center">王大星</td>
+													<td class="center hidden-xs">空闲</td>
+                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
+													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
+													<td class="center hidden-xs">18%</td>
+													<td class="center hidden-xs">66%</td>
+													<td class="center hidden-xs">48%</td>
+													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
                                                     
 												</tr>
 												<tr class="gradeA">
-                                                     <td> <i class="fa fa-square-o"></td>
-													<td>Trident</td>
-													<td>Internet
-														 Explorer 5.5</td>
-													<td class="hidden-xs">Win 95+</td>
-													<td class="center"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">4</a></td>
-													<td class="center hidden-xs"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">2</a></td>
-                                                    <td class="hidden-xs">Win 95+</td>
-													<td class="center">5.5</td>
-													<td class="center hidden-xs">A</td>
-												</tr>
-												
-												
-												<tr class="gradeA">
-                                                     <td> <i class="fa fa-square-o"></td>
-													<td>Gecko</td>
-													<td>Mozilla 1.3</td>
-													<td class="hidden-xs">Win 95+ / OSX.1+</td>
-													<td class="center"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">1</a></td>
-													<td class="center hidden-xs"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-                                                    <td class="hidden-xs">Win 95+ / OSX.1+</td>
-													<td class="center">1.3</td>
-													<td class="center hidden-xs">A</td>
+                                                    <td > <i class="fa fa-square-o"/></td>
+													<td>2</td>
+													<td>338</td>
+													<td class="hidden-xs">PHP</td>
+													<td class="hidden-xs">这是第三个节点名</td>
+													<td class="center">王二星</td>
+													<td class="center hidden-xs">关闭</td>
+                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
+													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">38</a></td>
+													<td class="center hidden-xs">0%</td>
+													<td class="center hidden-xs">0%</td>
+													<td class="center hidden-xs">0%</td>
+													<td class="center hidden-xs"><a class="btn btn-info" style="font-size:4px;padding:0px 8px;">开启</a></td>
 												</tr>
 												
 												<tr class="gradeA">
-                                                     <td> <i class="fa fa-square-o"></td>
-													<td>Presto</td>
-													<td>Opera 8.5</td>
-													<td class="hidden-xs">Win 95+ / OSX.2+</td>
-													<td class="center"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">4</a></td>
-													<td class="center hidden-xs"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-                                                    <td class="hidden-xs">Win 95+ / OSX.2+</td>
-													<td class="center">-</td>
-													<td class="center hidden-xs">A</td>
+                                                    <td > <i class="fa fa-square-o"></td>
+													<td>1</td>
+													<td>332</td>
+													<td class="hidden-xs">java</td>
+													<td class="hidden-xs">这是第一个节点名</td>
+													<td class="center">王三星</td>
+													<td class="center hidden-xs">活跃</td>
+                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
+													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
+													<td class="center hidden-xs">38%</td>
+													<td class="center hidden-xs">56%</td>
+													<td class="center hidden-xs">28%</td>
+													<td class="center hidden-xs"><a class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
 												</tr>
 												<tr class="gradeA">
-                                                     <td> <i class="fa fa-square-o"></td>
-													<td>Presto</td>
-													<td>Opera 9.0</td>
-													<td class="hidden-xs">Win 95+ / OSX.3+</td>
-													<td class="center"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">-</a></td>
-													<td class="center hidden-xs"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-                                                    <td class="hidden-xs">Win 95+ / OSX.3+</td>
-													<td class="center">-</td>
-													<td class="center hidden-xs">A</td>
+                                                    <td > <i class="fa fa-square-o"></td>
+													<td>1</td>
+													<td>332</td>
+													<td class="hidden-xs">java</td>
+													<td class="hidden-xs">这是第一个节点名</td>
+													<td class="center">王四星</td>
+													<td class="center hidden-xs">活跃</td>
+                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
+													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
+													<td class="center hidden-xs">38%</td>
+													<td class="center hidden-xs">56%</td>
+													<td class="center hidden-xs">28%</td>
+													<td class="center hidden-xs"><a class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
 												</tr>
 												
 											</tbody>
 											<tfoot>
 												<tr>
-													<th></th>
+                                                    <th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" onclick="change()"><i class="fa fa-square-o"></i></th>
                                                     <th>编号</th>
-													<th>节点编号</th>
+													<th>节点ID</th>
+													<th>节点类型</th>
+													<th>节点名称</th>
+													<th>用户名</th>
 													<th>节点状态</th>
 													<th class="hidden-xs">正在执行任务数</th>
 													<th>历史执行任务数</th>
 													<th>CPU占用率</th>
 													<th>内存使用率</th>
 													<th class="hidden-xs">带宽占用率</th>
+													<th class="hidden-xs">操作</th>
 												</tr>
 											</tfoot>
 										</table>
@@ -816,7 +761,151 @@
 								<!-- /BOX -->
 							</div>
 						</div>
-						<!-- /EXPORT TABLES -->
+						<!-- /EXPORT TABLES-NodeView -->
+                            <!-- EXPORT TABLES-TaskView -->
+						<div id="taskView" style="display:none;" class="row">
+							<div class="col-md-12">
+								<!-- BOX -->
+                                <a type="button" href="/task_mgt_admin.html" style="margin-left:0.5%;margin-bottom:0.2%;font-size: large;" class="btn btn-link" data-dismiss="modal"><i class="fa fa-angle-double-left"></i> 返回</a>
+								<div class="box border purple">
+									<div class="box-title">
+										<h4 id="CPCEP_id"><i class="fa fa-table"></i>某个节点（动态显示）任务列表</h4>
+										<div class="tools hidden-xs">
+											<a href="#box-config" data-toggle="modal" class="config">
+												<i class="fa fa-cog"></i>
+											</a>
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+											<a href="javascript:;" class="collapse">
+												<i class="fa fa-chevron-up"></i>
+											</a>
+											<a href="javascript:;" class="remove">
+												<i class="fa fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<table id="datatableTask" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+											<thead>
+												<tr>
+                                                    <th>编号</th>
+													<th>任务名称</th>
+													<th>任务模式</th>
+													<th>时间信息</th>
+													<th class="hidden-xs">资源信息</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr class="gradeX">
+													<td>1</td>
+													<td>跑个登录程序</td>
+													<td class="hidden-xs">即时任务</td>
+													<td class="center hidden-xs"><a href="#table-modal-showTaskSchedual" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+													<td class="center hidden-xs"><a onclick="showThreeChartsWhenViewTask()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+												</tr>
+												<tr class="gradeC">
+													<td>2</td>
+													<td>跑个支付程序</td>
+													<td class="hidden-xs">定时任务</td>
+                                                    <td class="center hidden-xs"><a href="#table-modal-showTaskSchedual" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+													<td class="center hidden-xs"><a onclick="showThreeChartsWhenViewTask()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+												</tr>
+												<tr class="gradeA">
+													<td>3</td>
+													<td>跑个数据库任务</td>
+													<td class="hidden-xs">定时任务</td>
+                                                    <td class="center hidden-xs"><a href="#table-modal-showTaskSchedual" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+													<td class="center hidden-xs"><a onclick="showThreeChartsWhenViewTask()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+												</tr>
+												
+											</tbody>
+											<tfoot>
+												<tr>
+                                                    <th>编号</th>
+													<th>任务名称</th>
+													<th>任务模式</th>
+													<th>时间信息</th>
+													<th class="hidden-xs">资源信息</th>
+												</tr>
+											</tfoot>
+										</table>
+									</div>
+								</div>
+								<!-- /BOX -->
+							</div>
+						</div>
+						<!-- /EXPORT TABLES-TaskView -->
+                    <!-- AUTO UPDATING CURVE-查看任务三种折线图 -->
+                    <div id="threeCharts" style="width:100%;display:none;">
+						<div class="box border orange">
+									<div class="box-title">
+										<h4><i class="fa fa-signal"></i>CPU曲线图</h4>
+										<div class="tools hidden-xs">
+											<a href="#box-config" data-toggle="modal" class="config">
+												<i class="fa fa-cog"></i>
+											</a>
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+											<a href="javascript:;" class="collapse">
+												<i class="fa fa-chevron-up"></i>
+											</a>
+											<a href="javascript:;" class="remove">
+												<i class="fa fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<div id="chart_4_1" class="chart" style="width: 100%;"></div>
+									</div>
+								</div>
+						<div class="box border orange">
+									<div class="box-title">
+									<h4><i class="fa fa-signal"></i>内存曲线图</h4>	
+										<div class="tools hidden-xs">
+											<a href="#box-config" data-toggle="modal" class="config">
+												<i class="fa fa-cog"></i>
+											</a>
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+											<a href="javascript:;" class="collapse">
+												<i class="fa fa-chevron-up"></i>
+											</a>
+											<a href="javascript:;" class="remove">
+												<i class="fa fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<div id="chart_4_2" class="chart" style="width: 100%;"></div>
+									</div>
+								</div>
+						<div class="box border orange">
+									<div class="box-title">
+										<h4><i class="fa fa-signal"></i>网络带宽曲线图</h4>
+										<div class="tools hidden-xs">
+											<a href="#box-config" data-toggle="modal" class="config">
+												<i class="fa fa-cog"></i>
+											</a>
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+											<a href="javascript:;" class="collapse">
+												<i class="fa fa-chevron-up"></i>
+											</a>
+											<a href="javascript:;" class="remove">
+												<i class="fa fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<div id="chart_4_3" class="chart" style="width: 100%;"></div>
+									</div>
+								</div>
+                    </div>
+					<!-- /AUTO UPDATING CURVE -->
 						<!-- SAMPLE BOX CONFIGURATION MODAL FORM-->
 						<div class="modal fade" id="table-modal-current" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
@@ -886,8 +975,146 @@
 							  </div>
 							</div>
 						  </div>
+						<div class="modal fade" id="table-modal-his" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content modal-table">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								  <h4 class="modal-title">历史任务</h4>
+								</div>
+								<div class="modal-body">
+								  
+										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+											<thead>
+												<tr>
+													<th>编号</th>
+													<th>任务名称</th>
+													<th>任务模式</th>
+													<th>时间信息</th>
+												</tr>
+											</thead>
+											<tbody>
+												
+												<tr class="gradeA">
+                                                    <td> 1</td>
+                                                    <td> 第一个历史任务</td>
+													<td>即时任务</td>
+													<td class="center hidden-xs"><a href="#table-modal-showtime" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+												</tr>
+												
+												<tr class="gradeA">
+                                                    <td> 2</td>
+													<td>第二个历史任务</td>
+													<td class="hidden-xs">定时任务</td>
+													<td class="center hidden-xs"><a href="#table-modal-showtime" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+												</tr>
+												<tr class="gradeA">
+                                                    <td> 3</td>
+													<td>第三个历史任务</td>
+													<td class="hidden-xs">定时任务</td>
+													<td class="center hidden-xs"><a href="#table-modal-showtime" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">查看</a></td>
+                                                    
+												</tr>
+												
+											</tbody>
+											<tfoot>
+												<tr>
+													<th>编号</th>
+													<th>任务名称</th>
+													<th>任务模式</th>
+													<th>时间信息</th>
+												</tr>
+											</tfoot>
+										</table>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						<div class="modal fade" id="table-modal-closeNode" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content modal-table">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								  <h4 class="modal-title">提示</h4>
+								</div>
+								<div class="modal-body" style="text-align: center;">
+								  
+										<p style="font-size: larger;">正在执行6个任务，确定关闭该节点？</p>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-danger" data-dismiss="modal">确定</button>
+                                  <button type="button" class="btn btn-inverse" data-dismiss="modal">取消</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+						<div class="modal fade" id="table-modal-showTaskSchedual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content modal-table">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								  <h4 class="modal-title">任务时间信息</h4>
+								</div>
+								<div class="modal-body">
+								  
+										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+											
+											<tbody>
+												
+												<tr class="gradeA">
+                                                    <td> 开始时间</td>
+													<td>2016-09-25 11:12</td>
+												</tr>
+												
+												<tr class="gradeA">
+                                                    <td> 执行时间</td>
+													<td>1d 2h 3m 44s</td>
+												</tr>
+											</tbody>
+										</table>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+                        <div class="modal fade" id="table-modal-showRecSchedual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content modal-table">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								  <h4 class="modal-title">任务资源信息</h4>
+								</div>
+								<div class="modal-body">
+								  
+										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+											
+											<tbody>
+												
+												<tr class="gradeA">
+                                                    <td> 开始时间</td>
+													<td>2016-09-25 11:12</td>
+												</tr>
+												
+												<tr class="gradeA">
+                                                    <td> 执行时间</td>
+													<td>1d 2h 3m 44s</td>
+												</tr>
+											</tbody>
+										</table>
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-danger" data-dismiss="modal">关闭</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
                           
-                            <div class="modal fade" id="table-modal-showtime" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="table-modal-showtime" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 							  <div class="modal-content modal-table">
 								<div class="modal-header">
@@ -934,7 +1161,49 @@
 							  </div>
 							</div>
 						  </div>
-                            <div class="modal fade" id="table-modal-showresource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="table-modal-showVelocity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+							  <div class="modal-content modal-table">
+								<div class="modal-header">
+								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								  <h4 class="modal-title">CPU动态信息(后期动态修改成内存和网络)</h4>
+								</div>
+								<div class="modal-body">
+                            
+								<!-- AUTO UPDATING CURVE -->
+								<div class="box border orange">
+									<div class="box-title">
+										<div class="tools hidden-xs">
+											<a href="#box-config" data-toggle="modal" class="config">
+												<i class="fa fa-cog"></i>
+											</a>
+											<a href="javascript:;" class="reload">
+												<i class="fa fa-refresh"></i>
+											</a>
+											<a href="javascript:;" class="collapse">
+												<i class="fa fa-chevron-up"></i>
+											</a>
+											<a href="javascript:;" class="remove">
+												<i class="fa fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<div class="box-body">
+										<div id="chart_4" class="chart" style="width: 100%;"></div>
+									</div>
+								</div>
+								<!-- /AUTO UPDATING CURVE -->
+							
+								</div>
+								<div class="modal-footer">
+								  <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
+								</div>
+							  </div>
+							</div>
+						  </div>
+							
+						 
+                        <div class="modal fade" id="table-modal-showresource" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
 							  <div class="modal-content modal-table">
 								<div class="modal-header">
@@ -987,7 +1256,7 @@
 								</div>
 							  </div>
 							</div>
-						  </div>
+						</div>
 						<!-- /SAMPLE BOX CONFIGURATION MODAL FORM-->	
 							<div class="col-md-6" style="visibility:hidden;">
 								<div class="box solid grey" style="visible:disabled;">
@@ -1093,7 +1362,9 @@
             $("#nosort").removeClass("sorting_asc");
             App.setPage("index");  //Set current page
 			App.init(); //Initialise plugins and elements 
-            
+            Charts.initCharts();
+			Charts.initPieCharts();
+        });
                  
 	</script>               
 </html>
