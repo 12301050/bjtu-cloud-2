@@ -1206,7 +1206,54 @@ var App = function () {
 		$('#datatable1').dataTable({
 				"sPaginationType": "bs_full"
 			});
-		$('#datatable2').dataTable({
+		var table=$('#datatable2').dataTable({
+				"sPaginationType": "bs_full",
+				sDom: "<'row'<'dataTables_header clearfix'<'col-md-4'l><'col-md-8'Tf>r>>t<'row'<'dataTables_footer clearfix'<'col-md-6'i><'col-md-6'p>>>",
+                select:true,
+                oTableTools: {
+                aButtons: [ "copy",  "csv", "pdf" ],
+                    sSwfPath: "js/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
+                }
+			});
+        var table=$('#datatableForNode').dataTable({
+				"sPaginationType": "bs_full",
+				sDom: "<'row'<'dataTables_header clearfix'<'col-md-4'l><'col-md-8'Tf>r>>t<'row'<'dataTables_footer clearfix'<'col-md-6'i><'col-md-6'p>>>",
+                select:true,
+                oTableTools: {
+                aButtons: [ { 
+                      "sExtends": "select", 
+                      "sButtonText": "删除" ,
+                       //"id":"deletebutton",
+                        },"copy",  "csv", "pdf" ],
+                    sSwfPath: "js/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
+                }
+			});
+        $("#checkAll").on("click", function () {//选中所有的行
+               if ($(this).prop("checked") === true) {
+                   $("input[name='checkList']").prop("checked", $(this).prop("checked"));
+                   $('#example tbody tr').addClass('selected');
+               } else {
+                   $("input[name='checkList']").prop("checked", false);
+                   $('#example tbody tr').removeClass('selected');
+               }
+           });
+        $("#ToolTables_datatableForNode_0").on("click", function () {//点击删除按钮时，删除选中的行
+               // table.row('.selected').remove().draw(false);
+            $("input[name='checkList']:checked").each(function() { // 遍历选中的checkbox
+            n = $(this).parents("tr").index();  // 获取checkbox所在行的顺序
+            
+            $("table#datatableForNode tbody").find("tr:eq("+n+")").remove();
+        });     
+           });
+        //删除选中行
+           $('#datatable2 tbody').on('click', 'tr input[name="checkList"]', function () {
+               var $tr = $(this).parents('tr');
+               $tr.toggleClass('selected');
+               var $tmp = $('[name=checkList]:checkbox');
+               $('#checkAll').prop('checked', $tmp.length == $tmp.filter(':checked').length);
+ 
+           });
+        $('#datatableForLog').dataTable({
 				"sPaginationType": "bs_full",
 				sDom: "<'row'<'dataTables_header clearfix'<'col-md-4'l><'col-md-8'Tf>r>>t<'row'<'dataTables_footer clearfix'<'col-md-6'i><'col-md-6'p>>>",
                 oTableTools: {

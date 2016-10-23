@@ -99,6 +99,7 @@
 			App.init(); //Initialise plugins and elements 
             Charts.initCharts();
 			Charts.initPieCharts();
+           
             /*更换语言包，后期需要捕获cookie中的语言标识，用if做判断*/
              $("#langli").click(function(){
 //                   var result = setEnglish($("body").html());
@@ -111,7 +112,8 @@
                  
                  App.setPage("index");  //Set current page
                  //App.init(); //Initialise plugins and elements 
-             }); 			
+             }); 	
+           
 		});  
         function change(){
                 //alert("change");TODO修改图标属性
@@ -640,10 +642,10 @@
 										</div>
 									</div>
 									<div class="box-body">
-										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+										<table id="datatableForNode" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
-                                                    <th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" onclick="change()"><i class="fa fa-square-o"></i></th>
+                                                    <th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" onclick="change()"><input type="checkbox" id="checkAll"></th>
                                                     <th>编号</th>
 													<th>节点ID</th>
 													<th>节点类型</th>
@@ -660,7 +662,7 @@
 											</thead>
 											<tbody>
 												<tr class="gradeX">
-                                                    <td > <i class="fa fa-square-o"></td>
+                                                    <td ><input type="checkbox" name="checkList"></td>
 													<td>1</td>
 													<td>332</td>
 													<td class="hidden-xs">java</td>
@@ -675,7 +677,7 @@
 													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
 												</tr>
 												<tr class="gradeC">
-                                                    <td > <i class="fa fa-square-o"></td>
+                                                    <td > <input type="checkbox" name="checkList"></td>
 													<td>2</td>
 													<td>342</td>
 													<td class="hidden-xs">Python</td>
@@ -691,7 +693,7 @@
                                                     
 												</tr>
 												<tr class="gradeA">
-                                                    <td > <i class="fa fa-square-o"/></td>
+                                                    <td ><input type="checkbox" name="checkList"></td>
 													<td>2</td>
 													<td>338</td>
 													<td class="hidden-xs">PHP</td>
@@ -707,7 +709,7 @@
 												</tr>
 												
 												<tr class="gradeA">
-                                                    <td > <i class="fa fa-square-o"></td>
+                                                    <td > <input type="checkbox" name="checkList"></td>
 													<td>1</td>
 													<td>332</td>
 													<td class="hidden-xs">java</td>
@@ -722,7 +724,7 @@
 													<td class="center hidden-xs"><a class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
 												</tr>
 												<tr class="gradeA">
-                                                    <td > <i class="fa fa-square-o"></td>
+                                                    <td > <input type="checkbox" name="checkList"></td>
 													<td>1</td>
 													<td>332</td>
 													<td class="hidden-xs">java</td>
@@ -740,7 +742,7 @@
 											</tbody>
 											<tfoot>
 												<tr>
-                                                    <th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" onclick="change()"><i class="fa fa-square-o"></i></th>
+                                                    <th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" onclick="change()"></th>
                                                     <th>编号</th>
 													<th>节点ID</th>
 													<th>节点类型</th>
@@ -1364,6 +1366,9 @@
 			App.init(); //Initialise plugins and elements 
             Charts.initCharts();
 			Charts.initPieCharts();
+             $('#datatable2 tbody').on( 'click', 'tr', function () {
+                $(this).toggleClass('selected');
+            } );
         });
                  
 	</script>               
