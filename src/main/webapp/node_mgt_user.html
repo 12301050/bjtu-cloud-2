@@ -76,6 +76,8 @@
 	<script type="text/javascript" src="js/jquery-todo/js/paddystodolist.js"></script>
 	<!-- TIMEAGO -->
 	<script type="text/javascript" src="js/timeago/jquery.timeago.min.js"></script>
+	<!-- FULL CALENDAR -->
+	<script type="text/javascript" src="js/fullcalendar/fullcalendar.min.js"></script>
 	<!-- COOKIE -->
 	<script type="text/javascript" src="js/jQuery-Cookie/jquery.cookie.min.js"></script>
 	<!-- CUSTOM SCRIPT -->
@@ -162,26 +164,15 @@
 					</div>
 					<!-- /SIDEBAR COLLAPSE -->
 				</div>
-            <!-- BEGIN TOP NAVIGATION MENU -->					
-				<ul class="nav navbar-nav pull-right" style="min-width:30px;">
-					<!-- BEGIN USER LOGIN DROPDOWN -->
-					<li class="dropdown user" id="header-user" style="background-color:#6f94b8;border-left:1px solid #507aa4;border-right:1px solid #507aa4;">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img alt="" src="img/avatars/avatar9.jpg" />
-							<span class="username">王阿星</span>
+				<!-- NAVBAR LEFT -->
+				<ul class="nav navbar-nav pull-left hidden-xs" id="navbar-left">
+					<li class="dropdown">
+						<a href="#" class="team-status-toggle dropdown-toggle tip-bottom" data-toggle="tooltip" title="Toggle Team View">
+							<i class="fa fa-users"></i>
+							<span class="name" id="TS_id">Team Status</span>
 							<i class="fa fa-angle-down"></i>
 						</a>
-						<ul class="dropdown-menu">
-							<!--<li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>-->
-							<li><a  id="langli" ><i class="fa fa-cog"></i> language</a></li>
-							<!--<li><a href=""><i class="fa fa-eye"></i> Privacy Settings</a></li>-->
-							<li><a href="login.html"><i class="fa fa-power-off"></i> Log Out</a></li>
-						</ul>
 					</li>
-					<!-- END USER LOGIN DROPDOWN -->
-				</ul>
-				<!-- NAVBAR LEFT -->
-				<ul class="nav navbar-nav pull-right hidden-xs" id="navbar-left" style="min-width: 0px;">
 					<li class="dropdown" >
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="fa fa-cog"></i>
@@ -203,11 +194,191 @@
                    
 				</ul>
 				<!-- /NAVBAR LEFT -->
+				<!-- BEGIN TOP NAVIGATION MENU -->					
+				<ul class="nav navbar-nav pull-right">
+					<!-- BEGIN NOTIFICATION DROPDOWN -->	
+					<li class="dropdown" id="header-notification">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="fa fa-bell"></i>
+							<span class="badge">7</span>						
+						</a>
+						<ul class="dropdown-menu notification">
+							<li class="dropdown-title">
+								<span><i class="fa fa-bell"></i> 7 Notifications</span>
+							</li>
+							<li>
+								<a href="#">
+									<span class="label label-success"><i class="fa fa-user"></i></span>
+									<span class="body">
+										<span class="message">5 users online. </span>
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>Just now</span>
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="label label-primary"><i class="fa fa-comment"></i></span>
+									<span class="body">
+										<span class="message">Martin commented.</span>
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>19 mins</span>
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="label label-warning" style="color:red;"><i class="fa fa-lock"></i></span>
+									<span class="body">
+										<span class="message">DW1 server locked.</span>
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>32 mins</span>
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="label label-info"><i class="fa fa-twitter"></i></span>
+									<span class="body">
+										<span class="message">Twitter connected.</span>
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>55 mins</span>
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="label label-danger"><i class="fa fa-heart"></i></span>
+									<span class="body">
+										<span class="message">Jane liked. </span>
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>2 hrs</span>
+										</span>
+									</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="label label-warning"><i class="fa fa-exclamation-triangle"></i></span>
+									<span class="body">
+										<span class="message">Database overload.</span>
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>6 hrs</span>
+										</span>
+									</span>
+								</a>
+							</li>
+							<li class="footer">
+								<a href="#">See all notifications <i class="fa fa-arrow-circle-right"></i></a>
+							</li>
+						</ul>
+					</li>
+					<!-- END NOTIFICATION DROPDOWN -->
+					<!-- BEGIN INBOX DROPDOWN -->
+					<li class="dropdown" id="header-message">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-envelope"></i>
+						<span class="badge">3</span>
+						</a>
+						<ul class="dropdown-menu inbox">
+							<li class="dropdown-title">
+								<span><i class="fa fa-envelope-o"></i> 3 Messages</span>
+								<span class="compose pull-right tip-right" title="Compose message"><i class="fa fa-pencil-square-o"></i></span>
+							</li>
+							<li>
+								<a href="#">
+									<img src="img/avatars/avatar2.jpg" alt="" />
+									<span class="body">
+										<span class="from">Jane Doe</span>
+										<span class="message">
+										Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse mole ...
+										</span> 
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>Just Now</span>
+										</span>
+									</span>
+									 
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="img/avatars/avatar1.jpg" alt="" />
+									<span class="body">
+										<span class="from">Vince Pelt</span>
+										<span class="message">
+										Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse mole ...
+										</span> 
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>15 min ago</span>
+										</span>
+									</span>
+									 
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="img/avatars/avatar8.jpg" alt="" />
+									<span class="body">
+										<span class="from">Debby Doe</span>
+										<span class="message">
+										Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse mole ...
+										</span> 
+										<span class="time">
+											<i class="fa fa-clock-o"></i>
+											<span>2 hours ago</span>
+										</span>
+									</span>
+									 
+								</a>
+							</li>
+							<li class="footer">
+								<a href="#">See all messages <i class="fa fa-arrow-circle-right"></i></a>
+							</li>
+						</ul>
+					</li>
+					<!-- END INBOX DROPDOWN -->
+					<!-- BEGIN TODO DROPDOWN -->
+					<li class="dropdown" id="header-tasks">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<i class="fa fa-tasks"></i>
+						<span class="badge">3</span>
+						</a>
+					</li>
+					<!-- END TODO DROPDOWN -->
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+					<li class="dropdown user" id="header-user">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img alt="" src="img/avatars/avatar9.jpg" />
+							<span class="username">王阿星</span>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>
+							<li><a  id="langli" ><i class="fa fa-cog"></i> Account Settings</a></li>
+							<li><a href=""><i class="fa fa-eye"></i> Privacy Settings</a></li>
+							<li><a href="login.html"><i class="fa fa-power-off"></i> Log Out</a></li>
+						</ul>
+					</li>
+					<!-- END USER LOGIN DROPDOWN -->
+				</ul>
 				<!-- END TOP NAVIGATION MENU -->
 		</div>
 		
 	</header>
 	<!--/HEADER -->
+	<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 	<!-- PAGE -->
 	<section id="page">
 				<!-- SIDEBAR -->
@@ -220,25 +391,157 @@
 						</div>
 						<!-- /SEARCH BAR -->
 						
+						<!-- SIDEBAR QUICK-LAUNCH -->
+						<!-- <div id="quicklaunch">
+						<!-- /SIDEBAR QUICK-LAUNCH -->
+						
 						<!-- SIDEBAR MENU -->
 						<ul>
-                            <li class="">
-								<a href="user_mgt_admin.html" >
-								<i class="fa fa-users" style="margin-right:11px;"></i> <span class="menu-text"> USER Management</span>
-								<span class="selected"></span>
-								</a>					
-							</li>
-							<li class="active">
-								<a href="task_mgt_admin.html">
-								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">Task Management</span>
+                            <li class="active">
+								<a href="node_mgt_user.html">
+								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">Node Management</span>
 								<span class="selected"></span>
 								</a>					
 							</li>
                             <li class="">
-								<a href="log_mgt_admin.html">
-								<i class="fa fa-book" style="margin-right:11px;"></i> <span class="menu-text"> LOG Management</span>
+								<a href="task_mgt_user.html" >
+								<i class="fa fa-users" style="margin-right:11px;"></i> <span class="menu-text"> Task Management</span>
 								<span class="selected"></span>
 								</a>					
+							</li>
+                            <li class="">
+								<a href="his_mgt_user.html">
+								<i class="fa fa-book" style="margin-right:11px;"></i> <span class="menu-text"> History Task</span>
+								<span class="selected"></span>
+								</a>					
+							</li>
+                            
+                            
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-bookmark-o fa-fw"></i> <span class="menu-text">UI Features</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="elements.html"><span class="sub-menu-text">Elements</span></a></li><li><a class="" href="notifications.html"><span class="sub-menu-text">Hubspot Notifications</span></a></li>
+									<li><a class="" href="buttons_icons.html"><span class="sub-menu-text">Buttons & Icons</span></a></li>
+									<li><a class="" href="sliders_progress.html"><span class="sub-menu-text">Sliders & Progress</span></a></li>
+									<li><a class="" href="typography.html"><span class="sub-menu-text">Typography</span></a></li>
+									<li><a class="" href="tabs_accordions.html"><span class="sub-menu-text">Tabs & Accordions</span></a></li>
+									<li><a class="" href="treeview.html"><span class="sub-menu-text">Treeview</span></a></li>
+									<li><a class="" href="nestable_lists.html"><span class="sub-menu-text">Nestable Lists</span></a></li>
+									<li class="has-sub-sub">
+										<a href="javascript:;" class=""><span class="sub-menu-text">Third Level Menu</span>
+										<span class="arrow"></span>
+										</a>
+										<ul class="sub-sub">
+											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 1</span></a></li>
+											<li><a class="" href="#"><span class="sub-sub-menu-text">Item 2</span></a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a class="" href="inbox.html"><i class="fa fa-envelope-o fa-fw"></i> <span class="menu-text">Inbox</span></a></li>
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-table fa-fw"></i> <span class="menu-text">Tables</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="simple_table.html"><span class="sub-menu-text">Simple Tables</span></a></li>
+									<li><a class="" href="dynamic_tables.html"><span class="sub-menu-text">Dynamic Tables</span></a></li>
+									<li><a class="" href="jqgrid_plugin.html"><span class="sub-menu-text">jqGrid Plugin</span></a></li>
+								</ul>
+							</li>
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-pencil-square-o fa-fw"></i> <span class="menu-text">Form Elements</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="forms.html"><span class="sub-menu-text">Forms</span></a></li>
+									<li><a class="" href="wizards_validations.html"><span class="sub-menu-text">Wizards & Validations</span></a></li>
+									<li><a class="" href="rich_text_editors.html"><span class="sub-menu-text">Rich Text Editors</span></a></li>
+									
+									<li><a class="" href="dropzone_file_upload.html"><span class="sub-menu-text">Dropzone File Upload</span></a></li>
+								</ul>
+							</li>
+							<li><a class="" href="widgets_box.html"><i class="fa fa-th-large fa-fw"></i> <span class="menu-text">Widgets & Box</span></a></li>
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-bar-chart-o fa-fw"></i> <span class="menu-text">Visual Charts</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="flot_charts.html"><span class="sub-menu-text">Flot Charts</span></a></li>
+									<li><a class="" href="xcharts.html"><span class="sub-menu-text">xCharts</span></a></li>
+									
+									<li><a class="" href="others.html"><span class="sub-menu-text">Others</span></a></li>
+								</ul>
+							</li>
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-columns fa-fw"></i> <span class="menu-text">Layouts</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="mini_sidebar.html"><span class="sub-menu-text">Mini Sidebar</span></a></li>
+									<li><a class="" href="fixed_header.html"><span class="sub-menu-text">Fixed Header</span></a></li>
+									
+									<li><a class="" href="fixed_header_sidebar.html"><span class="sub-menu-text">Fixed Header & Sidebar</span></a></li>
+								</ul>
+							</li>
+							<li><a class="" href="calendar.html"><i class="fa fa-calendar fa-fw"></i> 
+								<span class="menu-text">Calendar 
+									<span class="tooltip-error pull-right" title="" data-original-title="3 New Events">
+										<span class="label label-success">New</span>
+									</span>
+								</span>
+								</a>
+							</li>
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-map-marker fa-fw"></i> <span class="menu-text">Maps</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="google_maps.html"><span class="sub-menu-text">Google Maps</span></a></li>
+									<li><a class="" href="vector_maps.html"><span class="sub-menu-text">Vector Maps</span></a></li>
+								</ul>
+							</li>
+							<li><a class="" href="gallery.html"><i class="fa fa-picture-o fa-fw"></i> <span class="menu-text">Gallery</span></a></li>
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-file-text fa-fw"></i> <span class="menu-text">More Pages</span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="login.html"><span class="sub-menu-text">Login & Register Option 1</span></a></li><li><a class="" href="login_bg.html"><span class="sub-menu-text">Login & Register Option 2</span></a></li>
+									<li><a class="" href="user_profile.html"><span class="sub-menu-text">User profile</span></a></li>
+									
+									<li><a class="" href="chats.html"><span class="sub-menu-text">Chats</span></a></li>
+									<li><a class="" href="todo_timeline.html"><span class="sub-menu-text">Todo & Timeline</span></a></li>
+									<li><a class="" href="address_book.html"><span class="sub-menu-text">Address Book</span></a></li>
+									
+									<li><a class="" href="pricing.html"><span class="sub-menu-text">Pricing</span></a></li>
+									<li><a class="" href="invoice.html"><span class="sub-menu-text">Invoice</span></a></li>
+									<li><a class="" href="orders.html"><span class="sub-menu-text">Orders</span></a></li>
+								</ul>
+							</li>
+							<li class="has-sub">
+								<a href="javascript:;" class="">
+								<i class="fa fa-briefcase fa-fw"></i> <span class="menu-text">Other Pages <span class="badge pull-right">9</span></span>
+								<span class="arrow"></span>
+								</a>
+								<ul class="sub">
+									<li><a class="" href="search_results.html"><span class="sub-menu-text">Search Results</span></a></li>
+									<li><a class="" href="email_templates.html"><span class="sub-menu-text">Email Templates</span></a></li>
+									
+									<li><a class="" href="error_404.html"><span class="sub-menu-text">Error 404 Option 1</span></a></li><li><a class="" href="error_404_2.html"><span class="sub-menu-text">Error 404 Option 2</span></a></li><li><a class="" href="error_404_3.html"><span class="sub-menu-text">Error 404 Option 3</span></a></li>
+									<li><a class="" href="error_500.html"><span class="sub-menu-text">Error 500 Option 1</span></a></li><li><a class="" href="error_500_2.html"><span class="sub-menu-text">Error 500 Option 2</span></a></li>
+									<li><a class="" href="faq.html"><span class="sub-menu-text">FAQ</span></a></li>
+									<li><a class="" href="blank_page.html"><span class="sub-menu-text">Blank Page</span></a></li>
+								</ul>
 							</li>
 						</ul>
 						<!-- /SIDEBAR MENU -->
@@ -279,13 +582,30 @@
 									<ul class="breadcrumb">
 										<li>
 											<i class="fa fa-home"></i>
-											<a href="user_mgt_admin.html">Home</a>
+											<a href="index.html">Home</a>
 										</li>
+										<li>Dashboard - shared on weidea.net</li>
 									</ul>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left" id="Dashboard_h3">TASK MANAGEMENT</h3>
+										<h3 class="content-title pull-left" id="Dashboard_h3">NODE MANAGEMENT</h3>
+										<!-- DATE RANGE PICKER -->
+										<span class="date-range pull-right">
+											<div class="btn-group">
+												<a class="js_update btn btn-default" href="#">Today</a>
+												<a class="js_update btn btn-default" href="#">Last 7 Days</a>
+												<a class="js_update btn btn-default hidden-xs" href="#">Last month</a>
+												
+												<a id="reportrange" class="btn reportrange">
+													<i class="fa fa-calendar"></i>
+													<span></span>
+													<i class="fa fa-angle-down"></i>
+												</a>
+											</div>
+										</span>
+										<!-- /DATE RANGE PICKER -->
 									</div>
+									<div class="description" id="OSAM_id">Overview, Statistics and more</div>
 								</div>
 							</div>
 						</div>
@@ -317,254 +637,93 @@
 										</div>
 									</div>
 									<div class="box-body">
-										<table id="datatableForNode" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
+										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
-                                                    <th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" onclick="change()"><input type="checkbox" id="checkAll"></th>
                                                     <th>编号</th>
 													<th>节点ID</th>
-													<th>节点类型</th>
 													<th>节点名称</th>
-													<th>用户名</th>
+													<th>节点类型</th>
 													<th>节点状态</th>
-													<th class="hidden-xs">正在执行任务数</th>
-													<th>历史执行任务数</th>
+													<th class="hidden-xs">任务运行数</th>
 													<th>CPU占用率</th>
 													<th>内存使用率</th>
 													<th class="hidden-xs">带宽占用率</th>
-													<th class="hidden-xs">操作</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr class="gradeX">
-                                                    <td ><input type="checkbox" name="checkList"></td>
 													<td>1</td>
 													<td>332</td>
-													<td class="hidden-xs">java</td>
 													<td class="hidden-xs">这是第一个节点名</td>
-													<td class="center">王阿星</td>
-													<td class="center hidden-xs">活跃</td>
-                                                    <td class="hidden-xs"><a onclick="changeToTaskView()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
+                                                    <td class="hidden-xs">java</td>
+													<td class="center hidden-xs">关闭</td>
+                                                    <td class="hidden-xs"><a href="task_mgt_user.html" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
 													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">38%</a></td>
 													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">56%</a></td>
 													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">28%</a></td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
 												</tr>
 												<tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
+                                                    <td>2</td>
+													<td>432</td>
 													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
-                                                    
-												</tr><tr class="gradeC">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>342</td>
-													<td class="hidden-xs">Python</td>
-													<td class="hidden-xs">这是第二个节点名</td>
-													<td class="center">王大星</td>
-													<td class="center hidden-xs">空闲</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">42</a></td>
-													<td class="center hidden-xs">18%</td>
-													<td class="center hidden-xs">66%</td>
-													<td class="center hidden-xs">48%</td>
-													<td class="center hidden-xs"><a href="#table-modal-closeNode" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
+                                                    <td class="hidden-xs">Python</td>
+													<td class="center hidden-xs">关闭</td>
+                                                    <td class="hidden-xs"><a onclick="changeToTaskView()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">28%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">46%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">78%</a></td>
                                                     
 												</tr>
 												<tr class="gradeA">
-                                                    <td ><input type="checkbox" name="checkList"></td>
-													<td>2</td>
-													<td>338</td>
-													<td class="hidden-xs">PHP</td>
+                                                    <td>3</td>
+													<td>32</td>
 													<td class="hidden-xs">这是第三个节点名</td>
-													<td class="center">王二星</td>
+                                                    <td class="hidden-xs">PHP</td>
 													<td class="center hidden-xs">关闭</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">38</a></td>
-													<td class="center hidden-xs">0%</td>
-													<td class="center hidden-xs">0%</td>
-													<td class="center hidden-xs">0%</td>
-													<td class="center hidden-xs"><a class="btn btn-info" style="font-size:4px;padding:0px 8px;">开启</a></td>
+                                                    <td class="hidden-xs"><a onclick="changeToTaskView()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">8</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">48%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">26%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">38%</a></td>
 												</tr>
 												
 												<tr class="gradeA">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>1</td>
-													<td>332</td>
-													<td class="hidden-xs">java</td>
+                                                    <td>4</td>
+													<td>222</td>
 													<td class="hidden-xs">这是第一个节点名</td>
-													<td class="center">王三星</td>
-													<td class="center hidden-xs">活跃</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center hidden-xs">38%</td>
-													<td class="center hidden-xs">56%</td>
-													<td class="center hidden-xs">28%</td>
-													<td class="center hidden-xs"><a class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
+                                                    <td class="hidden-xs">java</td>
+													<td class="center hidden-xs">关闭</td>
+                                                    <td class="hidden-xs"><a onclick="changeToTaskView()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">38%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">56%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">28%</a></td>
 												</tr>
 												<tr class="gradeA">
-                                                    <td > <input type="checkbox" name="checkList"></td>
-													<td>1</td>
+                                                    <td>5</td>
 													<td>332</td>
-													<td class="hidden-xs">java</td>
-													<td class="hidden-xs">这是第一个节点名</td>
-													<td class="center">王四星</td>
-													<td class="center hidden-xs">活跃</td>
-                                                    <td class="hidden-xs"><a href="#table-modal-current" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
-													<td class="center"><a href="#table-modal-his" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">3</a></td>
-													<td class="center hidden-xs">38%</td>
-													<td class="center hidden-xs">56%</td>
-													<td class="center hidden-xs">28%</td>
-													<td class="center hidden-xs"><a class="btn btn-info" style="font-size:4px;padding:0px 8px;">关闭</a></td>
+													<td class="hidden-xs">这是第五个节点名</td>
+                                                    <td class="hidden-xs">java</td>
+													<td class="center hidden-xs">关闭</td>
+                                                    <td class="hidden-xs"><a onclick="changeToTaskView()" class="btn btn-info" style="font-size:4px;padding:0px 8px;">6</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">38%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">56%</a></td>
+													<td class="center hidden-xs"><a href="#table-modal-showVelocity" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">28%</a></td>
 												</tr>
 												
 											</tbody>
+											<tfoot>
+												<tr>
+                                                     <th>编号</th>
+													<th>节点ID</th>
+													<th>节点名称</th>
+													<th>节点类型</th>
+													<th>节点状态</th>
+													<th class="hidden-xs">任务运行数</th>
+													<th>CPU占用率</th>
+													<th>内存使用率</th>
+													<th class="hidden-xs">带宽占用率</th>
+												</tr>
+											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -630,6 +789,15 @@
 												</tr>
 												
 											</tbody>
+											<tfoot>
+												<tr>
+                                                    <th>编号</th>
+													<th>任务名称</th>
+													<th>任务模式</th>
+													<th>时间信息</th>
+													<th class="hidden-xs">资源信息</th>
+												</tr>
+											</tfoot>
 										</table>
 									</div>
 								</div>
@@ -818,6 +986,14 @@
 												</tr>
 												
 											</tbody>
+											<tfoot>
+												<tr>
+													<th>编号</th>
+													<th>任务名称</th>
+													<th>任务模式</th>
+													<th>时间信息</th>
+												</tr>
+											</tfoot>
 										</table>
 								</div>
 								<div class="modal-footer">
@@ -1085,7 +1261,6 @@
 						<div class="row" style="visibility:hidden;">
 							<div class="col-md-12">
 								<!-- BOX -->
-                                
 								<div class="box border green">
 									<div class="box-title">
 										<h4><i class="fa fa-bars"></i> <span class="hidden-inline-mobile">Traffic & Sales</span></h4>
@@ -1131,8 +1306,11 @@
 								</div>
 								<!-- /BOX -->
 							</div>
-						</div> 
+						</div>
 						<!-- /HERO GRAPH -->
+						<!-- NEW ORDERS & STATISTICS -->
+						
+						<!-- /NEW ORDERS & STATISTICS -->
 						<!-- CALENDAR & CHAT -->
 						
 						<div class="footer-tools">
