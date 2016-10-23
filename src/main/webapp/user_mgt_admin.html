@@ -21,8 +21,7 @@
 	<!-- FULL CALENDAR -->
 	<link rel="stylesheet" type="text/css" href="js/fullcalendar/fullcalendar.min.css" />
 	
-	<!-- FONTS -->
-	<link href='http://fonts.useso.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+	
 	
 	<!-- JQUERY UI-->
 	<link rel="stylesheet" type="text/css" href="js/jquery-ui-1.10.3.custom/css/custom-theme/jquery-ui-1.10.3.custom.min.css" />
@@ -125,7 +124,7 @@
 <body id="bodyid">
 	<!-- HEADER -->
 	<header class="navbar clearfix" id="header">
-		<div class="container" style="padding-right: 4px;">
+		<div class="container">
 				<div class="navbar-brand">
 					<!-- COMPANY LOGO -->
 					<a href="index.html">
@@ -147,16 +146,17 @@
 					</div>
 					<!-- /SIDEBAR COLLAPSE -->
 				</div>
-            <!-- BEGIN TOP NAVIGATION MENU -->					
-				<ul class="nav navbar-nav pull-right hidden-xs" style="min-width:30px;">
+				
+				<!-- BEGIN TOP NAVIGATION MENU -->					
+				<ul class="nav navbar-nav pull-right" style="min-width:30px;">
 					<!-- BEGIN USER LOGIN DROPDOWN -->
-					<li class="dropdown" id="header-user" style="background-color:#6f94b8;">
+					<li class="dropdown user" id="header-user" style="background-color:#6f94b8;border-left:1px solid #507aa4;border-right:1px solid #507aa4;">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<!--<img alt="" src="img/avatars/avatar3.jpg" />-->
+							<img alt="" src="img/avatars/avatar9.jpg" />
 							<span class="username">王阿星</span>
 							<i class="fa fa-angle-down"></i>
 						</a>
-						<ul class="dropdown-menu skins">
+						<ul class="dropdown-menu">
 							<!--<li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>-->
 							<li><a  id="langli" ><i class="fa fa-cog"></i> language</a></li>
 							<!--<li><a href=""><i class="fa fa-eye"></i> Privacy Settings</a></li>-->
@@ -165,8 +165,7 @@
 					</li>
 					<!-- END USER LOGIN DROPDOWN -->
 				</ul>
-				<!-- END TOP NAVIGATION MENU -->
-				<!-- NAVBAR LEFT -->
+            <!-- NAVBAR LEFT -->
 				<ul class="nav navbar-nav pull-right hidden-xs" id="navbar-left" style="min-width: 0px;">
 					<li class="dropdown" >
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -189,7 +188,7 @@
                    
 				</ul>
 				<!-- /NAVBAR LEFT -->
-				
+				<!-- END TOP NAVIGATION MENU -->
 		</div>
 		<!-- TEAM STATUS -->
 		<div class="container team-status" id="team-status"accou>
@@ -492,7 +491,6 @@
 				<div id="sidebar" class="sidebar">
 					<div class="sidebar-menu nav-collapse">
 						<div class="divide-20"></div>
-						
 						<!-- SIDEBAR QUICK-LAUNCH -->
 						<!-- <div id="quicklaunch">
 						<!-- /SIDEBAR QUICK-LAUNCH -->
@@ -542,7 +540,7 @@
 				</div>
 			  </div>
 			<!-- /SAMPLE BOX CONFIGURATION MODAL FORM-->
-			<div class="container" >
+			<div class="container">
 				<div class="row">
 					<div id="content" class="col-lg-12">
 						<!-- PAGE HEADER-->
