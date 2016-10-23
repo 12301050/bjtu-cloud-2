@@ -339,6 +339,117 @@ var Charts = function () {
                     setTimeout(update, updateInterval);
                 }
                 update();
+            } 
+            /* Auto updating Chart */
+            function chart4_1() {
+                var options = {
+                    series: {
+                        shadowSize: 1
+                    },
+                    lines: {
+                        show: true,
+                        lineWidth: 1.5,
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 100,
+                        tickFormatter: function (v) {
+                            return v + "%";
+                        }
+                    },
+                    xaxis: {
+                        show: false
+                    },
+                    colors: ["#D9534F"],
+                    grid: {
+                        tickColor: "#a8a3a3",
+                        borderWidth: 0
+                    }
+                };
+
+                var updateInterval = 30;
+                var plot = $.plot($("#chart_4_1"), [getRandomData()], options);
+
+                function update() {
+                    plot.setData([getRandomData()]);
+                    plot.draw();
+                    setTimeout(update, updateInterval);
+                }
+                update();
+            }
+            /* Auto updating Chart */
+            function chart4_2() {
+                var options = {
+                    series: {
+                        shadowSize: 1
+                    },
+                    lines: {
+                        show: true,
+                        lineWidth: 1.5,
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 100,
+                        tickFormatter: function (v) {
+                            return v + "%";
+                        }
+                    },
+                    xaxis: {
+                        show: false
+                    },
+                    colors: ["#D9534F"],
+                    grid: {
+                        tickColor: "#a8a3a3",
+                        borderWidth: 0
+                    }
+                };
+
+                var updateInterval = 30;
+                var plot = $.plot($("#chart_4_2"), [getRandomData()], options);
+
+                function update() {
+                    plot.setData([getRandomData()]);
+                    plot.draw();
+                    setTimeout(update, updateInterval);
+                }
+                update();
+            } 
+            /* Auto updating Chart */
+            function chart4_3() {
+                var options = {
+                    series: {
+                        shadowSize: 1
+                    },
+                    lines: {
+                        show: true,
+                        lineWidth: 1.5,
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 100,
+                        tickFormatter: function (v) {
+                            return v + "%";
+                        }
+                    },
+                    xaxis: {
+                        show: false
+                    },
+                    colors: ["#D9534F"],
+                    grid: {
+                        tickColor: "#a8a3a3",
+                        borderWidth: 0
+                    }
+                };
+
+                var updateInterval = 30;
+                var plot = $.plot($("#chart_4_3"), [getRandomData()], options);
+
+                function update() {
+                    plot.setData([getRandomData()]);
+                    plot.draw();
+                    setTimeout(update, updateInterval);
+                }
+                update();
             }
 
             /* Bars with controls */
@@ -550,13 +661,16 @@ var Charts = function () {
             }
 
             //graph
-            chart1();
-            chart2();
-			chart7();
-            chart3();
+//            chart1();
+//            chart2();
+//			chart7();
+//            chart3();
             chart4();
-            chart5();
-			chart6();
+            chart4_1();
+            chart4_2();
+            chart4_3();
+//            chart5();
+//			chart6();
         },
 
         initPieCharts: function () {
