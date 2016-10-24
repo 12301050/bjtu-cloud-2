@@ -48,14 +48,14 @@
 
     <!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.lvmeng.attendance.repository.mysql"/>
+        <property name="basePackage" value="com.bjtu.cloud.repository"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryGoodsCenter"/>
     </bean>
 
     <bean id="sqlSessionFactoryGoodsCenter" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="goodsCenterDataSource"/>
-        <property name="typeAliasesPackage" value="com.lvmeng.attendance.common.entity.mysql"/>
-        <!--<property name="mapperLocations" value="classpath*:mapper/*.xml"/>-->
+        <property name="typeAliasesPackage" value="com.bjtu.cloud.common.entity"/>
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
     </bean>
 
 
@@ -67,53 +67,53 @@
     <!-- enable transaction demarcation with annotations -->
     <tx:annotation-driven transaction-manager="transactionManagerGoodsCenter"/>
 
-    <!-- 数据源－opensystem -->
-    <bean id="dataSourceOpenSystem" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
-        <!-- Connection Info -->
-        <property name="driverClassName" value="${jdbc.sqlserver.driver}" />
-        <property name="url" value="${jdbc.sqlserver.url}" />
-        <property name="username" value="${jdbc.sqlserver.username}" />
-        <property name="password" value="${jdbc.sqlserver.password}" />
+    <!--&lt;!&ndash; 数据源－opensystem &ndash;&gt;-->
+    <!--<bean id="dataSourceOpenSystem" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">-->
+        <!--&lt;!&ndash; Connection Info &ndash;&gt;-->
+        <!--<property name="driverClassName" value="${jdbc.sqlserver.driver}" />-->
+        <!--<property name="url" value="${jdbc.sqlserver.url}" />-->
+        <!--<property name="username" value="${jdbc.sqlserver.username}" />-->
+        <!--<property name="password" value="${jdbc.sqlserver.password}" />-->
 
-        <!-- Connection Pooling Info -->
-        <property name="maxActive" value="20" />
-        <!-- 初始化连接大小 -->
-        <property name="initialSize" value="3"/>
-        <!-- 自动清除无用连接 -->
-        <property name="removeAbandoned" value="true"/>
-        <!-- 清除无用连接的等待时间 -->
-        <property name="removeAbandonedTimeout" value="180"/>
-        <!--<property name="maxIdle" value="${jdbc.pool.maxIdle}" />-->
-        <property name="minIdle" value="0" />
-        <property name="defaultAutoCommit" value="false" />
+        <!--&lt;!&ndash; Connection Pooling Info &ndash;&gt;-->
+        <!--<property name="maxActive" value="20" />-->
+        <!--&lt;!&ndash; 初始化连接大小 &ndash;&gt;-->
+        <!--<property name="initialSize" value="3"/>-->
+        <!--&lt;!&ndash; 自动清除无用连接 &ndash;&gt;-->
+        <!--<property name="removeAbandoned" value="true"/>-->
+        <!--&lt;!&ndash; 清除无用连接的等待时间 &ndash;&gt;-->
+        <!--<property name="removeAbandonedTimeout" value="180"/>-->
+        <!--&lt;!&ndash;<property name="maxIdle" value="${jdbc.pool.maxIdle}" />&ndash;&gt;-->
+        <!--<property name="minIdle" value="0" />-->
+        <!--<property name="defaultAutoCommit" value="false" />-->
 
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="60000" />
+        <!--&lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="60000" />-->
 
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="60000" />-->
 
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="300000" />-->
 
-        <property name="validationQuery" value="SELECT 'x'" />
-        <property name="testWhileIdle" value="true" />
-        <property name="testOnBorrow" value="false" />
-        <property name="testOnReturn" value="false" />
-        <!--<property name="filters" value="stat" />-->
-    </bean>
+        <!--<property name="validationQuery" value="SELECT 'x'" />-->
+        <!--<property name="testWhileIdle" value="true" />-->
+        <!--<property name="testOnBorrow" value="false" />-->
+        <!--<property name="testOnReturn" value="false" />-->
+        <!--&lt;!&ndash;<property name="filters" value="stat" />&ndash;&gt;-->
+    <!--</bean>-->
 
-    <!-- scan for mappers and let them be autowired -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.lvmeng.attendance.repository.oracle" />
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryOpenSystem"/>
-    </bean>
+    <!--&lt;!&ndash; scan for mappers and let them be autowired &ndash;&gt;-->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+        <!--<property name="basePackage" value="com.lvmeng.attendance.repository.oracle" />-->
+        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryOpenSystem"/>-->
+    <!--</bean>-->
 
-    <!-- define the SqlSessionFactory -->
-    <bean id="sqlSessionFactoryOpenSystem" class="org.mybatis.spring.SqlSessionFactoryBean" name="sqlSessionFactoryOpenSystem">
-        <property name="dataSource" ref="dataSourceOpenSystem" />
-        <property name="typeAliasesPackage" value="com.lvmeng.attendance.common.entity.oracle" />
-        <!--<property name="mapperLocations" value="classpath*:mapper/*.xml"/>-->
-    </bean>
+    <!--&lt;!&ndash; define the SqlSessionFactory &ndash;&gt;-->
+    <!--<bean id="sqlSessionFactoryOpenSystem" class="org.mybatis.spring.SqlSessionFactoryBean" name="sqlSessionFactoryOpenSystem">-->
+        <!--<property name="dataSource" ref="dataSourceOpenSystem" />-->
+        <!--<property name="typeAliasesPackage" value="com.lvmeng.attendance.common.entity.oracle" />-->
+        <!--&lt;!&ndash;<property name="mapperLocations" value="classpath*:mapper/*.xml"/>&ndash;&gt;-->
+    <!--</bean>-->
 
 </beans>

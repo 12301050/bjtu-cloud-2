@@ -18,12 +18,13 @@
     <property name="locations">
       <list>
         <value>classpath*:config.properties</value>
+        <value>classpath*:log4j.properties</value>
       </list>
     </property>
   </bean>
 
   <import resource="classpath*:/config-property.xml"/>
-  <!--<import resource="classpath*:/config-mysql.xml"/>-->
+  <import resource="classpath*:/config-mysql.xml"/>
   <!--<import resource="classpath*:/config-quartz.xml"/>-->
 
 </beans>

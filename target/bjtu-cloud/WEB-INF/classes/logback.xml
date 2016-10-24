@@ -11,9 +11,9 @@
 
 
   <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>/data/logs/snack/snack.log</file>
+    <file>/data/logs/cloud/cloud.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>/data/logs/snack/snack.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <fileNamePattern>/data/logs/cloud/cloud.%d{yyyy-MM-dd}.log</fileNamePattern>
     </rollingPolicy>
     <layout class="ch.qos.logback.classic.PatternLayout">
       <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -26,7 +26,7 @@
       <level>INFO</level>
     </filter>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>/data/logs/snack/snack_http.%d{yyyyMMdd}.log</fileNamePattern>
+      <fileNamePattern>/data/logs/cloud/cloud_http.%d{yyyyMMdd}.log</fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
@@ -39,14 +39,14 @@
       <level>INFO</level>
     </filter>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>/data/logs/snack/snack_bis.%d{yyyyMMdd}.log</fileNamePattern>
+      <fileNamePattern>/data/logs/cloud/cloud_bis.%d{yyyyMMdd}.log</fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <logger name="com.lvmeng.order" level="debug"/>
+  <logger name="com.bjtu.cloud" level="debug"/>
 
   <logger name="http" additivity="false">
     <appender-ref ref="http"/>

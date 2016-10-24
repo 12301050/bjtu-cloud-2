@@ -1,6 +1,6 @@
 package com.bjtu.cloud.gate;
 
-import com.bjtu.cloud.common.entity.User;
+import com.bjtu.cloud.common.entity.UserInfo;
 
 import java.util.List;
 
@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface UserService {
 
-  List<User> getAll();
+  //获取所有用户信息
+  List<UserInfo> getAll() throws Exception;
 }
