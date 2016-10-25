@@ -1207,7 +1207,7 @@ var App = function () {
 				"sPaginationType": "bs_full"
 			});
 		var table=$('#datatable2').dataTable({
-				//"sPaginationType": "bs_full",
+				"sPaginationType": "bs_full",
 				"sPaginate": false,
 				sDom: "<'row'<'dataTables_header clearfix'<'col-md-4'l><'col-md-8'Tf>r>>t<'row'<'dataTables_footer clearfix'<'col-md-6'i><'col-md-6'p>>>",
                 select:true,
