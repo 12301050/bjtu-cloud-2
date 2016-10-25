@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<title>Cloud Admin | Dashboard</title>
+	<title>云任务系统</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -85,8 +85,9 @@
 </head>
     <!-- JAVASCRIPTS-->
 	<script>
+        
 		jQuery(document).ready(function() {	
-            
+           
             App.setPage("index");  //Set current page
 			App.init(); //Initialise plugins and elements 
             
@@ -94,16 +95,59 @@
              $("#langli").click(function(){
 //                   var result = setEnglish($("body").html());
 //                 $("body").html(result);
-                 $("#Dashboard_h3").html("用户管理");
-                 $("#TS_id").html("团队状态");
-                 $("#Skins_id").html("皮肤");
-                 $("#langli").html("更换语言");
-                 $("#CPCEP_id").html("复制，CSV，PDF");
-                 
-                 App.setPage("index");  //Set current page
+                 if(localStorage.lang){
+                 if(localStorage.lang==1){
+                     localStorage.lang=2;
+                 $("#Dashboard_h3").html("USER MANAGEMENT");
+                 $("#Skins_id").html("skins");
+                 $("#langli").html("language");
+                 $("#logout_id").html("log out");
+                 $("#CPCEP_id").html("user list");
+                 $("#user_mangid").html("USER MANAGEMENT");
+                 $("#task_mangid").html("TASK MANAGEMENT");
+                 $("#log_mangid").html("LOG MANAGEMENT");
+                 $("#home_id").html("Home");
+                 $("#number_id").html("number");
+                 $("#user_id").html("user id");
+                 $("#user_nameid").html("user name");
+                 $("#nodes_id").html("number of node");
+                 $("#change_id").html("change the number of node");
+                 $("#delete_id").html("delete user");
+                 $("#del_butid").html("delete");
+                     
+                App.setPage("index");  //Set current page
                  //App.init(); //Initialise plugins and elements 
+             } 
+             else if(localStorage.lang==2){
+                 localStorage.lang=1;
+                 $("#Dashboard_h3").html("用户管理");
+               //  $("#TS_id").html("团队状态");
+                 $("#Skins_id").html("皮肤");
+                 $("#logout_id").html("注销");
+                 $("#langli").html("更换语言");
+                 $("#CPCEP_id").html("用户列表");
+                 $("#user_mangid").html("用户管理");
+                 $("#task_mangid").html("任务管理");
+                 $("#log_mangid").html("日志管理");
+                 $("#home_id").html("主页");
+                 $("#number_id").html("编号");
+                 $("#user_id").html("用户ID");
+                 $("#user_nameid").html("用户名");
+                 $("#nodes_id").html("拥有节点数");
+                 $("#change_id").html("更改节点数");
+                 $("#delete_id").html("删除用户");
+                 $("#del_butid").html("删除");
+                 App.setPage("index"); 
+             }
+             
+             }
+                 else
+                     {
+                         localStorage.lang=1;
+                     }
              }); 			
-		});                               
+		});   
+        
 //        function setEnglish(bodyString) {
 //            var result = bodyString;  
 //                                                   
@@ -158,9 +202,9 @@
 						</a>
 						<ul class="dropdown-menu">
 							<!--<li><a href="#"><i class="fa fa-user"></i> My Profile</a></li>-->
-							<li><a  id="langli" ><i class="fa fa-cog"></i> language</a></li>
+							<li><a  id="langli" ><i class="fa fa-cog"></i> 更换语言</a></li>
 							<!--<li><a href=""><i class="fa fa-eye"></i> Privacy Settings</a></li>-->
-							<li><a href="login.html"><i class="fa fa-power-off"></i> Log Out</a></li>
+							<li><a id="logout_id" href="login.html"><i class="fa fa-power-off"></i>注销</a></li>
 						</ul>
 					</li>
 					<!-- END USER LOGIN DROPDOWN -->
@@ -170,7 +214,7 @@
 					<li class="dropdown" >
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="fa fa-cog"></i>
-							<span class="name" id="Skins_id">Skins</span>
+							<span class="name" id="Skins_id">皮肤</span>
 							<i class="fa fa-angle-down"></i>
 						</a>
 						<ul class="dropdown-menu skins">
@@ -207,19 +251,20 @@
 						<ul>
                             <li class="active">
 								<a href="user_mgt_admin.html" >
-								<i class="fa fa-users" style="margin-right:11px;"></i> <span class="menu-text"> USER Management</span>
+								<i class="fa fa-users" style="margin-right:11px;"></i> 
+                                    <span class="menu-text" id="user_mangid"> 用户管理</span>
 								<span class="selected"></span>
 								</a>					
 							</li>
 							<li class="">
 								<a href="task_mgt_admin.html">
-								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text">Task Management</span>
+								<i class="fa fa-tachometer fa-fw"></i> <span class="menu-text" id="task_mangid">任务管理</span>
 								<span class="selected"></span>
 								</a>					
 							</li>
                             <li class="">
 								<a href="log_mgt_admin.html">
-								<i class="fa fa-book" style="margin-right:11px;"></i> <span class="menu-text"> LOG Management</span>
+								<i class="fa fa-book" style="margin-right:11px;"></i> <span class="menu-text" id="log_mangid"> 日志管理</span>
 								<span class="selected"></span>
 								</a>					
                             </li>
@@ -262,12 +307,12 @@
 									<ul class="breadcrumb">
 										<li>
 											<i class="fa fa-home"></i>
-											<a href="user_mgt_admin.html">Home</a>
+											<a href="user_mgt_admin.html" id="home_id">主页</a>
 										</li>
 									</ul>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left" id="Dashboard_h3">USER MANAGEMENT</h3>
+										<h3 class="content-title pull-left" id="Dashboard_h3">用户管理</h3>
 									</div>
 									
 								</div>
@@ -284,7 +329,8 @@
 								<!-- BOX -->
 								<div class="box border purple">
 									<div class="box-title">
-										<h4 id="CPCEP_id"><i class="fa fa-table"></i>用户列表</h4>
+                                        <i class="fa fa-table"></i>
+										<h4 id="CPCEP_id">用户列表</h4>
 										<div class="tools hidden-xs">
 											<a href="#box-config" data-toggle="modal" class="config">
 												<i class="fa fa-cog"></i>
@@ -304,12 +350,12 @@
 										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 											<thead>
 												<tr>
-													<th>编号</th>
-													<th>用户ID</th>
-													<th>用户名</th>
-													<th class="hidden-xs">拥有节点数</th>
-													<th>更改节点数</th>
-													<th class="hidden-xs">删除用户</th>
+													<th id="number_id">编号</th>
+													<th id="user_id">用户ID</th>
+													<th id="user_nameid">用户名</th>
+													<th class="hidden-xs" id="nodes_id">拥有节点数</th>
+													<th id="change_id">更改节点数</th>
+													<th class="hidden-xs" id="delete_id">删除用户</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -320,7 +366,7 @@
 														</td>
 													<td class="hidden-xs">2</td>
                                                     <td class="center"><a href="#table-modal-addOneNodeForUser" data-toggle="modal"><i class="fa fa-plus-square"></i></a></a>&nbsp&nbsp&nbsp<a href="#table-modal-deleteOneOrMoreNodeForUser" data-toggle="modal"></ahref><i  class="fa fa-minus-square"></i></a></td>
-													<td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
+													<td class="center"><a id="del_butid" ihref="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
 												</tr>
 												<tr class="gradeC">
 													<td>2</td><td>2</td>

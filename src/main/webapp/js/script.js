@@ -1220,7 +1220,15 @@ var App = function () {
                    "sZeroRecords": "对不起，查询不到任何相关数据",
                    "sEmptyTable": "未有相关数据",
                    "sLoadingRecords": "正在加载数据-请等待...",
-                   "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录。"}
+                   "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录。",
+                    "oPaginate": {
+                    "sFirst": "首页",
+                    "sPrevious": "上页",
+                    "sNext": "下页",
+                    "sLast": "末页"
+        }
+                    
+                }
                    
 			});
         var table=$('#datatableForNode').dataTable({
