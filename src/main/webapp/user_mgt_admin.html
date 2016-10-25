@@ -86,87 +86,112 @@
     <!-- JAVASCRIPTS-->
 	<script>
         
+        function change_en(){//变为英文
+             
+            $("#Dashboard_h3").html("USER MANAGEMENT");
+            $("#Skins_id").html("skins");
+            $("#langli").html("language");
+            $("#logout_id").html("log out");
+            $("#CPCEP_id").html("user list");
+            $("#user_mangid").html("USER MANAGEMENT");
+            $("#task_mangid").html("TASK MANAGEMENT");
+            $("#log_mangid").html("LOG MANAGEMENT");
+            $("#home_id").html("Home");
+            $("#number_id").html("number");
+            $("#user_id").html("user id");
+            $("#user_nameid").html("user name");
+            $("#nodes_id").html("number of node");
+            $("#change_id").html("change the number of node");
+            $("#delete_id").html("delete user");
+            $("#del_butid").html("delete");
+            $("#choose_id").html("Please select the type of node you need ");
+            $("#type_id").html("type of node");
+            $("#create_id").html("create and distribute");
+            $("#deleteTetx_id").html("Delete the node");
+            $("#delNumber_id").html("number");
+            $("#delNodeName_id").html("name of node");
+            $("#delNode_id").html("node ID");
+            $("#delNodeBut_id").html("Delete");
+            $("#delNodeState_id").html("state");
+            $("#delUserText_id").html("Delete the user");
+            $("#delSureText_id").html("The user has the task being performed, are you confirm the deletion of the user？");
+            $("#delSure_id").html("Sure");
+            $("#delCancel_id").html("Cancel");
+            App.setPage("index");  //Set current page
+        }
+        function change_ch(){//变为中文
+            $("#Dashboard_h3").html("用户管理");
+            $("#Skins_id").html("皮肤");
+            $("#logout_id").html("注销");
+            $("#langli").html("更换语言");
+            $("#CPCEP_id").html("用户列表");
+            $("#user_mangid").html("用户管理");
+            $("#task_mangid").html("任务管理");
+            $("#log_mangid").html("日志管理");
+            $("#home_id").html("主页");
+            $("#number_id").html("编号");
+            $("#user_id").html("用户ID");
+            $("#user_nameid").html("用户名");
+            $("#nodes_id").html("拥有节点数");
+            $("#change_id").html("更改节点数");
+            $("#delete_id").html("删除用户");
+            $("#del_butid").html("删除");
+            $("#choose_id").html("请选择您所需要的节点类型");
+            $("#type_id").html("节点类型");
+            $("#create_id").html("创建并分配");
+            $("#deleteTetx_id").html("删除节点");
+            $("#delNumber_id").html("编号");
+            $("#delNodeName_id").html("节点名称");
+            $("#delNode_id").html("节点 ID");
+            $("#delNodeBut_id").html("删除");
+            $("#delNodeState_id").html("状态");
+            $("#delUserText_id").html("删除用户");
+            $("#delSureText_id").html("该用户有正在执行的任务,你确认删除该用户？");
+            $("#delSure_id").html("确定");
+            $("#delCancel_id").html("取消");
+            App.setPage("index"); 
+        }
 		jQuery(document).ready(function() {	
-           
             App.setPage("index");  //Set current page
 			App.init(); //Initialise plugins and elements 
-            
-            /*更换语言包，后期需要捕获cookie中的语言标识，用if做判断*/
-             $("#langli").click(function(){
-//                   var result = setEnglish($("body").html());
-//                 $("body").html(result);
-                 if(localStorage.lang){
-                 if(localStorage.lang==1){
-                     localStorage.lang=2;
-                 $("#Dashboard_h3").html("USER MANAGEMENT");
-                 $("#Skins_id").html("skins");
-                 $("#langli").html("language");
-                 $("#logout_id").html("log out");
-                 $("#CPCEP_id").html("user list");
-                 $("#user_mangid").html("USER MANAGEMENT");
-                 $("#task_mangid").html("TASK MANAGEMENT");
-                 $("#log_mangid").html("LOG MANAGEMENT");
-                 $("#home_id").html("Home");
-                 $("#number_id").html("number");
-                 $("#user_id").html("user id");
-                 $("#user_nameid").html("user name");
-                 $("#nodes_id").html("number of node");
-                 $("#change_id").html("change the number of node");
-                 $("#delete_id").html("delete user");
-                 $("#del_butid").html("delete");
-                     
-                App.setPage("index");  //Set current page
-                 //App.init(); //Initialise plugins and elements 
-             } 
-             else if(localStorage.lang==2){
-                 localStorage.lang=1;
-                 $("#Dashboard_h3").html("用户管理");
-               //  $("#TS_id").html("团队状态");
-                 $("#Skins_id").html("皮肤");
-                 $("#logout_id").html("注销");
-                 $("#langli").html("更换语言");
-                 $("#CPCEP_id").html("用户列表");
-                 $("#user_mangid").html("用户管理");
-                 $("#task_mangid").html("任务管理");
-                 $("#log_mangid").html("日志管理");
-                 $("#home_id").html("主页");
-                 $("#number_id").html("编号");
-                 $("#user_id").html("用户ID");
-                 $("#user_nameid").html("用户名");
-                 $("#nodes_id").html("拥有节点数");
-                 $("#change_id").html("更改节点数");
-                 $("#delete_id").html("删除用户");
-                 $("#del_butid").html("删除");
-                 App.setPage("index"); 
+            $("#langli").click(function(){
+                if(localStorage.lang){ //缓存 1代表中文，2代表英文
+                    if(localStorage.lang==1){
+                        localStorage.lang=2;
+                        localStorage.langclose=2;
+                        change_en();
+                    } 
+                    else if(localStorage.lang==2){
+                        localStorage.lang=1;
+                        localStorage.langclose=1;
+                        change_ch();
+                    }
              }
-             
-             }
-                 else
-                     {
-                         localStorage.lang=1;
-                     }
+                else{
+                    localStorage.lang=1;
+                    localStorage.langclose=1;
+                 }
              }); 			
 		});   
         
-//        function setEnglish(bodyString) {
-//            var result = bodyString;  
-//                                                   
-//		    result = result.replaceAll('Dashboard','仪表板');
-//			result = result.replaceAll('INBOX','收件箱');
-//			result = result.replaceAll('Overview','预览');
-//			result = result.replaceAll('Statistics','数据');
-//			result = result.replaceAll('Home','主页');
-//                                          
-//            return result;
-//}
-//        String.prototype.replaceAll = function(oldStr, newStr) {
-//            return this.replace(new RegExp(oldStr,"gm"),newStr);    
-//                              
-// }                              
+        function AutoCheckLang(){ //检查缓存中之前所设置的语言
+            if(localStorage.langclose==1){
+                change_ch();
+            }
+            else if(localStorage.langclose==2){
+                change_en();
+            }
+            else{
+                localStorage.langclose=1;
+            }
+           
+        }
+         //window.onload = AutoCheckLang();                          
 	</script>                                  
 	<!-- /JAVASCRIPTS -->    
-<body id="bodyid">
+<body id="bodyid" onload="AutoCheckLang()">
 	<!-- HEADER -->
+    
 	<header class="navbar clearfix" id="header">
 		<div class="container">
 				<div class="navbar-brand">
@@ -366,15 +391,16 @@
 														</td>
 													<td class="hidden-xs">2</td>
                                                     <td class="center"><a href="#table-modal-addOneNodeForUser" data-toggle="modal"><i class="fa fa-plus-square"></i></a></a>&nbsp&nbsp&nbsp<a href="#table-modal-deleteOneOrMoreNodeForUser" data-toggle="modal"></ahref><i  class="fa fa-minus-square"></i></a></td>
-													<td class="center"><a id="del_butid" ihref="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
+													<td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;" id="del_butid">删除</a></td>
 												</tr>
+                                
 												<tr class="gradeC">
 													<td>2</td><td>2</td>
 													<td>王大星
 														 </td>
 													<td class="hidden-xs">4</td>
 													<td class="center"><i class="fa fa-plus-square"></i>&nbsp&nbsp&nbsp<i class="fa fa-minus-square"></i></td>
-													<td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;">删除</a></td>
+													<td class="center"><a href="#table-modal-deleteUser" data-toggle="modal" class="btn btn-info" style="font-size:4px;padding:0px 8px;" id="del_butid">删除</a></td>
 												</tr>
 												<tr class="gradeA">
 													<td>3</td><td>3</td>
@@ -424,13 +450,13 @@
 							  <div class="modal-content modal-table">
 								<div class="modal-header">
 								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								  <h4 class="modal-title">请选择您所需要的节点类型</h4>
+								  <h4 class="modal-title" id="choose_id">请选择您所需要的节点类型</h4>
 								</div>
 								<div class="modal-body"style="text-align: center;margin-top: 2%;">
 								  
 										<table id="datatable2" cellpadding="0" cellspacing="0" border="0" class="datatable table table-striped table-bordered table-hover">
 											<div class="btn-group dropdown">
-											<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+											<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" id="type_id">
 											节点类型
 											<span class="caret"></span>
 											</button>
@@ -451,7 +477,7 @@
 										</table>
 								</div>
 								<div class="modal-footer">
-								  <button type="button" class="btn btn-success" data-dismiss="modal">创建并分配</button>
+								  <button type="button" class="btn btn-success" data-dismiss="modal" id="create_id">创建并分配</button>
 								</div>
 							  </div>
 							</div>
@@ -461,7 +487,7 @@
 							  <div class="modal-content modal-table">
 								<div class="modal-header">
 								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								  <h4 class="modal-title">删除节点</h4>
+								  <h4 class="modal-title" id="deleteTetx_id">删除节点</h4>
 								</div>
 								<div class="modal-body">
 								  
@@ -469,10 +495,10 @@
 											<thead>
 												<tr>
 													<th id="nosort" style="text-align:center;padding:3px 3px 3px 3px;" class="" ><i class="fa fa-square-o"></i></th>
-													<th>编号</th>
-													<th>节点ID</th>
-													<th class="hidden-xs">节点名称</th>
-													<th>状态</th>
+													<th id="delNumber_id">编号</th>
+													<th id="delNode_id">节点ID</th>
+													<th id="delNodeName_id" class="hidden-xs">节点名称</th>
+													<th id="delNodeState_id" >状态</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -505,7 +531,7 @@
 										</table>
 								</div>
 								<div class="modal-footer">
-								  <button type="button" class="btn btn-danger" data-dismiss="modal">删除</button>
+								  <button type="button" class="btn btn-danger" data-dismiss="modal" id="delNodeBut_id">删除</button>
 								</div>
 							  </div>
 							</div>
@@ -515,15 +541,14 @@
 							  <div class="modal-content modal-table">
 								<div class="modal-header">
 								  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								  <h4 class="modal-title">删除节点</h4>
+								  <h4 class="modal-title" id="delUserText_id">删除用户</h4>
 								</div>
 								<div class="modal-body" style="text-align: center;">
-								  
-										<h4>当前该用户有正在执行的任务,确认删除该用户？</h4>
+                                    <h4 id="delSureText_id">该用户有正在执行的任务,你确认删除该用户？</h4>
 								</div>
 								<div class="modal-footer">
-								  <button type="button" class="btn btn-success" data-dismiss="modal">确定</button>
-                                  <button type="button" class="btn btn-inverse" data-dismiss="modal">取消</button>
+								  <button type="button" class="btn btn-success" data-dismiss="modal" id="delSure_id">确定</button>
+                                  <button type="button" class="btn btn-inverse" data-dismiss="modal" id ="delCancel_id">取消</button>
 								</div>
 							  </div>
 							</div>
