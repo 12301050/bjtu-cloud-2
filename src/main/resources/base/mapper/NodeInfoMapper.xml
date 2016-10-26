@@ -23,6 +23,13 @@
     from node_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="getAllNodeInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from node_info
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from node_info
     where id = #{id,jdbcType=INTEGER}
