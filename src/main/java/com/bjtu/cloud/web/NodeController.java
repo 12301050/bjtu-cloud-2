@@ -2,8 +2,12 @@ package com.bjtu.cloud.web;
 
 import com.bjtu.cloud.common.RestResult;
 import com.bjtu.cloud.common.entity.NodeInfo;
+import com.bjtu.cloud.common.entity.TaskInfo;
 import com.bjtu.cloud.gate.NodeService;
+import com.bjtu.cloud.gate.TaskService;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +22,9 @@ public class NodeController {
 
   @Autowired
   private NodeService nodeService;
+
+  @Autowired
+  private TaskService taskService;
 
   //获取所有用户信息
   @RequestMapping(value = "api/node/getAllNode", method = RequestMethod.GET)
@@ -36,6 +43,18 @@ public class NodeController {
     try{
       List<NodeInfo> nodeInfos = nodeService.getNodeByUser(userName);
       return  RestResult.succ().data(nodeInfos).build();
+    }catch (Exception e){
+      e.printStackTrace();
+      return RestResult.fail().msg(e.toString()).build();
+    }
+  }
+
+  //获取某节点下的某个状态的任务
+  @RequestMapping(value = "api/task/getTaskByNode", method = RequestMethod.GET)
+  public RestResult<List<TaskInfo>> getTaskByNode(String nodeId, Integer status) {
+    try{
+      List<TaskInfo> taskInfos = taskService.getTaskByNode(nodeId, status);
+      return  RestResult.succ().data(taskInfos).build();
     }catch (Exception e){
       e.printStackTrace();
       return RestResult.fail().msg(e.toString()).build();

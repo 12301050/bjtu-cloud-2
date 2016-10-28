@@ -7,7 +7,7 @@ public class TaskInfo {
 
     private String taskName;
 
-    private String nodeName;
+    private String nodeId;
 
     private String hostPath;
 
@@ -47,12 +47,12 @@ public class TaskInfo {
         this.taskName = taskName == null ? null : taskName.trim();
     }
 
-    public String getNodeName() {
-        return nodeName;
+    public String getNodeId() {
+        return nodeId;
     }
 
-    public void setNodeName(String nodeName) {
-        this.nodeName = nodeName == null ? null : nodeName.trim();
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId == null ? null : nodeId.trim();
     }
 
     public String getHostPath() {

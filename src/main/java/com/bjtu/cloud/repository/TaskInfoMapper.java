@@ -1,13 +1,21 @@
 package com.bjtu.cloud.repository;
 
 import com.bjtu.cloud.common.entity.TaskInfo;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 public interface TaskInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(TaskInfo record);
 
     int insertSelective(TaskInfo record);
+
+    //获取某个节点下某个状态的任务
+    List<TaskInfo> getTaskByNode(@Param("nodeId")String nodeId, @Param("status")Integer status);
 
     TaskInfo selectByPrimaryKey(Integer id);
 
