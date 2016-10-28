@@ -9,4 +9,7 @@ import java.util.List;
 public interface NodeService {
   //获取所有节点信息
   List<NodeInfo> getAll() throws Exception;
+
+  //获取某个用户下所有节点
+  List<NodeInfo> getNodeByUser(String userName) throws Exception;
 }

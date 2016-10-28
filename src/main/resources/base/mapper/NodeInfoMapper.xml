@@ -24,6 +24,13 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <select id="getNodeByNodeId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from node_info
+    where node_id = #{nodeId,jdbcType=VARCHAR}
+  </select>
+
   <select id="getAllNodeInfo" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

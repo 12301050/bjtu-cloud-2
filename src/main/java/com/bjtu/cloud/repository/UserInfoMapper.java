@@ -18,6 +18,9 @@ public interface UserInfoMapper {
     //获取所有用户信息
     List<UserInfo> getAllUserInfo();
 
+    //获取某个用户信息
+    UserInfo getUserInfoByUserName(String userName);
+
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);

@@ -17,6 +17,13 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+  <select id="getUserInfoByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user_info
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+
   <select id="getAllUserInfo" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

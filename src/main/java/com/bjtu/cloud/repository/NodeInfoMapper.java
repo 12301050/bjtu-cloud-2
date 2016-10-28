@@ -16,6 +16,9 @@ public interface NodeInfoMapper {
     //获取所有节点信息
     List<NodeInfo> getAllNodeInfo();
 
+    //获取某个节点信息
+    NodeInfo getNodeByNodeId(String nodeId);
+
     NodeInfo selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(NodeInfo record);

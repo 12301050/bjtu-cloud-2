@@ -21,11 +21,22 @@ public class NodeController {
 
   //获取所有用户信息
   @RequestMapping(value = "api/node/getAllNode", method = RequestMethod.GET)
-  public RestResult<List<NodeInfo>> modifyStatus() {
+  public RestResult<List<NodeInfo>> getAll() {
     try {
       List<NodeInfo> nodeInfos = nodeService.getAll();
+      return RestResult.succ().data(nodeInfos).build();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return RestResult.fail().msg(e.toString()).build();
+    }
+  }
+  //获取某个用户下所有节点
+  @RequestMapping(value = "api/node/getNodeByUser", method = RequestMethod.GET)
+  public RestResult<List<NodeInfo>> getAllNodeByUserName(String userName) {
+    try{
+      List<NodeInfo> nodeInfos = nodeService.getNodeByUser(userName);
       return  RestResult.succ().data(nodeInfos).build();
-    }catch (Exception e) {
+    }catch (Exception e){
       e.printStackTrace();
       return RestResult.fail().msg(e.toString()).build();
     }
