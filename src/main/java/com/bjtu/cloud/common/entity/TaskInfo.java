@@ -9,6 +9,8 @@ public class TaskInfo {
 
     private String nodeId;
 
+    private String taskId;
+
     private String hostPath;
 
     private String nodePath;
@@ -141,5 +143,13 @@ public class TaskInfo {
 
     public void setNetSpeed(Integer netSpeed) {
         this.netSpeed = netSpeed;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
     }
 }

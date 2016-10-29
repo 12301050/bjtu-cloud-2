@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="task_name" jdbcType="VARCHAR" property="taskName" />
     <result column="node_id" jdbcType="VARCHAR" property="nodeId" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
     <result column="host_path" jdbcType="VARCHAR" property="hostPath" />
     <result column="node_path" jdbcType="VARCHAR" property="nodePath" />
     <result column="type" jdbcType="INTEGER" property="type" />
@@ -18,7 +19,7 @@
     <result column="net_speed" jdbcType="INTEGER" property="netSpeed" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, task_name, node_id, host_path, node_path, type, status, mode, times, start_time, 
+    id, task_name, task_id, node_id, host_path, node_path, type, status, mode, times, start_time,
     end_time, cpu, memory, net_speed
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -40,12 +41,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.bjtu.cloud.common.entity.TaskInfo">
-    insert into task_info (id, task_name, node_id, 
+    insert into task_info (id, task_name, task_id, node_id,
       host_path, node_path, type, 
       status, mode, times, 
       start_time, end_time, cpu, 
       memory, net_speed)
-    values (#{id,jdbcType=INTEGER}, #{taskName,jdbcType=VARCHAR}, #{nodeId,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{taskName,jdbcType=VARCHAR}, #{taskId,jdbcType=VARCHAR}, #{nodeId,jdbcType=VARCHAR},
       #{hostPath,jdbcType=VARCHAR}, #{nodePath,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
       #{status,jdbcType=INTEGER}, #{mode,jdbcType=INTEGER}, #{times,jdbcType=INTEGER}, 
       #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{cpu,jdbcType=INTEGER}, 
@@ -59,6 +60,9 @@
       </if>
       <if test="taskName != null">
         task_name,
+      </if>
+      <if test="taskId != null">
+        task_id,
       </if>
       <if test="nodeId != null">
         node_id,
@@ -104,6 +108,9 @@
       <if test="taskName != null">
         #{taskName,jdbcType=VARCHAR},
       </if>
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
       <if test="nodeId != null">
         #{nodeId,jdbcType=VARCHAR},
       </if>
@@ -148,6 +155,9 @@
       <if test="taskName != null">
         task_name = #{taskName,jdbcType=VARCHAR},
       </if>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
       <if test="nodeId != null">
         node_id = #{nodeId,jdbcType=VARCHAR},
       </if>
@@ -190,6 +200,7 @@
   <update id="updateByPrimaryKey" parameterType="com.bjtu.cloud.common.entity.TaskInfo">
     update task_info
     set task_name = #{taskName,jdbcType=VARCHAR},
+      task_id = #{taskId,jdbcType=VARCHAR},
       node_id = #{nodeId,jdbcType=VARCHAR},
       host_path = #{hostPath,jdbcType=VARCHAR},
       node_path = #{nodePath,jdbcType=VARCHAR},
