@@ -50,11 +50,28 @@ public class NodeController {
   }
 
   //获取某节点下的某个状态的任务
-  @RequestMapping(value = "api/task/getTaskByNode", method = RequestMethod.GET)
+  @RequestMapping(value = "api/node/getTaskByNode", method = RequestMethod.GET)
   public RestResult<List<TaskInfo>> getTaskByNode(String nodeId, Integer status) {
     try{
       List<TaskInfo> taskInfos = taskService.getTaskByNode(nodeId, status);
       return  RestResult.succ().data(taskInfos).build();
+    }catch (Exception e){
+      e.printStackTrace();
+      return RestResult.fail().msg(e.toString()).build();
+    }
+  }
+
+  //关闭某个节点
+  @RequestMapping(value = "api/node/closeNode", method = RequestMethod.POST)
+  public RestResult<List<NodeInfo>> closeNode(String nodeId) {
+    try{
+      Integer flag = nodeService.closeNode(nodeId);
+      if (flag == 1){
+        List<NodeInfo> nodeInfos = nodeService.getAll();
+        return RestResult.succ().data(nodeInfos).build();
+      }else{
+        return RestResult.fail().build();
+      }
     }catch (Exception e){
       e.printStackTrace();
       return RestResult.fail().msg(e.toString()).build();

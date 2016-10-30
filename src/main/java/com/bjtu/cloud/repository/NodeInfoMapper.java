@@ -1,6 +1,7 @@
 package com.bjtu.cloud.repository;
 
 import com.bjtu.cloud.common.entity.NodeInfo;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public interface NodeInfoMapper {
 
     //获取某个节点信息
     NodeInfo getNodeByNodeId(String nodeId);
+
+    //关闭某个节点信息
+    Integer closeNode(String nodeId);
 
     NodeInfo selectByPrimaryKey(Integer id);
 
