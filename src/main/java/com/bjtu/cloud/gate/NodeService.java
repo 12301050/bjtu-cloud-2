@@ -13,6 +13,9 @@ public interface NodeService {
   //关闭某个节点
   Integer closeNode(String nodeId) throws Exception;
 
+  //开启某个节点
+  Integer startNode(String nodeId) throws Exception;
+
   //获取某个用户下所有节点
   List<NodeInfo> getNodeByUser(String userName) throws Exception;
 }

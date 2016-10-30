@@ -23,6 +23,9 @@ public interface NodeInfoMapper {
     //关闭某个节点信息
     Integer closeNode(String nodeId);
 
+    //开启某个节点信息
+    Integer startNode(String nodeId);
+
     NodeInfo selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(NodeInfo record);

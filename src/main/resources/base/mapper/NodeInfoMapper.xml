@@ -43,6 +43,12 @@
     where node_id = #{nodeId,jdbcType=INTEGER}
   </update>
 
+  <update id="startNode" parameterType="java.lang.String">
+    update node_info
+    set status = 1
+    where node_id = #{nodeId,jdbcType=INTEGER}
+  </update>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from node_info
     where id = #{id,jdbcType=INTEGER}

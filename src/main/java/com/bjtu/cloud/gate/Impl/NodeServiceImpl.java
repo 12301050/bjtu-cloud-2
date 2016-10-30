@@ -47,6 +47,18 @@ public class NodeServiceImpl implements NodeService {
   }
 
   @Override
+  public Integer startNode(String nodeId) throws Exception {
+    try {
+      //TODO 对docker上的节点进行关闭
+      Integer flag = nodeInfoMapper.startNode(nodeId);
+      return flag;
+    }catch (Exception e){
+      e.printStackTrace();
+      return 0;
+    }
+  }
+
+  @Override
   public List<NodeInfo> getNodeByUser(String userName) throws Exception {
     List<NodeInfo> nodeInfos = new ArrayList<NodeInfo>();
     try {

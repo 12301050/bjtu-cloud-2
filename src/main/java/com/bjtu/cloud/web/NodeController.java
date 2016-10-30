@@ -77,4 +77,21 @@ public class NodeController {
       return RestResult.fail().msg(e.toString()).build();
     }
   }
+
+  //开启某个节点
+  @RequestMapping(value = "api/node/startNode", method = RequestMethod.POST)
+  public RestResult<List<NodeInfo>> startNode(String nodeId) {
+    try{
+      Integer flag = nodeService.startNode(nodeId);
+      if (flag == 1){
+        List<NodeInfo> nodeInfos = nodeService.getAll();
+        return RestResult.succ().data(nodeInfos).build();
+      }else{
+        return RestResult.fail().build();
+      }
+    }catch (Exception e){
+      e.printStackTrace();
+      return RestResult.fail().msg(e.toString()).build();
+    }
+  }
 }
