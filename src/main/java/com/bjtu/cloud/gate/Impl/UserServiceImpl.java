@@ -19,12 +19,26 @@ public class UserServiceImpl implements UserService{
   @Autowired
   private UserInfoMapper userInfoMapper;
 
+  @Autowired
+  private UserMapper userMapper;
+
   //获取所有用户信息
   @Override
   public List<UserInfo> getAll() throws Exception{
     try {
       List<UserInfo> userInfos = userInfoMapper.getAllUserInfo();
       return userInfos;
+    }catch (Exception e){
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  @Override
+  public User login(String userName, String password) throws Exception {
+    try {
+      User user = userMapper.login(userName,password);
+      return user;
     }catch (Exception e){
       e.printStackTrace();
       return null;

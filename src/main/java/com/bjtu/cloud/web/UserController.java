@@ -1,13 +1,18 @@
 package com.bjtu.cloud.web;
 
 import com.bjtu.cloud.common.RestResult;
+import com.bjtu.cloud.common.entity.User;
 import com.bjtu.cloud.common.entity.UserInfo;
 import com.bjtu.cloud.gate.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -18,6 +23,28 @@ public class UserController {
 
   @Autowired
   private  UserService userService;
+
+  @RequestMapping(value = "api/user/login", method = RequestMethod.GET)//插入操作记录
+  public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+                                  String userName, String password) {
+    try {
+      ModelAndView mv = new ModelAndView();
+      User user = userService.login(userName, password);
+      if (user == null){
+        //跳转到错误页面
+        mv.setViewName("redirect:/index3.jsp");
+      }else if (user.getRole() == 0) {
+        //跳转到管理员页面
+        mv.setViewName("redirect:/index1.jsp");
+      }else if (user.getRole() == 1){
+        //跳转到普通用户页面
+        mv.setViewName("redirect:/index2.jsp");
+      }
+      return mv;
+    } catch (Exception e) {
+      return null;
+    }
+  }
 
   //获取所有用户信息
   @RequestMapping(value = "api/user/getAllUserInfo", method = RequestMethod.GET)
