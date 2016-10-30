@@ -25,7 +25,7 @@ public class UserController {
   private  UserService userService;
 
   @RequestMapping(value = "api/user/login", method = RequestMethod.GET)//插入操作记录
-  public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+  public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
                                   String userName, String password) {
     try {
       ModelAndView mv = new ModelAndView();
@@ -40,6 +40,18 @@ public class UserController {
         //跳转到普通用户页面
         mv.setViewName("redirect:/index2.jsp");
       }
+      return mv;
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)//插入操作记录
+  public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+                                  String userName) {
+    try {
+      ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:/index.jsp");
       return mv;
     } catch (Exception e) {
       return null;
