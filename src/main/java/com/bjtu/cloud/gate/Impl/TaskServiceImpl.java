@@ -39,4 +39,14 @@ public class TaskServiceImpl implements TaskService{
     }
   }
 
+  @Override
+  public List<TaskInfo> getPerformance(String nodeId, Integer taskId) throws Exception {
+    try {
+      List<TaskInfo> taskInfos = taskInfoMapper.getPerformance(nodeId, taskId);
+      return taskInfos;
+    }catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
 }

@@ -13,4 +13,6 @@ public interface TaskService {
   List<TaskInfo> getTaskByNode(String nodeId, Integer status) throws Exception;
   //查询某个节点的某个任务的时间信息
   TaskInfo queryTimeInfo(String nodeId, Integer taskId) throws Exception;
+  //查询某个任务的三个性能数值
+  List<TaskInfo> getPerformance(String nodeId, Integer taskId) throws Exception;
 }
