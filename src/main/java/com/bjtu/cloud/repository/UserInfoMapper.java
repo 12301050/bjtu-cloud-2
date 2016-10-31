@@ -1,6 +1,7 @@
 package com.bjtu.cloud.repository;
 
 import com.bjtu.cloud.common.entity.UserInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public interface UserInfoMapper {
 
     //获取某个用户信息
     UserInfo getUserInfoByUserName(String userName);
+
+    //增加节点
+    Integer addNode(@Param("userName")String userName, @Param("type")Integer type);
+
 
     int updateByPrimaryKeySelective(UserInfo record);
 

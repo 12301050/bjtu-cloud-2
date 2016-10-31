@@ -15,4 +15,7 @@ public interface UserService {
 
   //用户登录
   User login(String userName, String password) throws Exception;
+
+  //增加节点
+  Integer addNode(String userName, Integer type) throws Exception;
 }

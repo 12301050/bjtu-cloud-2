@@ -71,4 +71,21 @@ public class UserController {
       return RestResult.fail().msg(e.toString()).build();
     }
   }
+
+  //用户新增节点
+  @RequestMapping(value = "api/user/addNode", method = RequestMethod.POST)
+  public RestResult<List<UserInfo>> addNode(String userName, Integer type) {
+    try{
+      Integer flag = userService.addNode(userName, type);
+      if (flag == 1){
+        List<UserInfo> userInfos = userService.getAll();
+        return RestResult.succ().data(userInfos).build();
+      }else{
+        return RestResult.fail().build();
+      }
+    }catch (Exception e){
+      e.printStackTrace();
+      return RestResult.fail().msg(e.toString()).build();
+    }
+  }
 }
