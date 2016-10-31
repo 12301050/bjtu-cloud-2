@@ -24,7 +24,8 @@ public class UserController {
   @Autowired
   private  UserService userService;
 
-  @RequestMapping(value = "api/user/login", method = RequestMethod.GET)//插入操作记录
+  //用户登录
+  @RequestMapping(value = "api/user/login", method = RequestMethod.GET)
   public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
                                   String userName, String password) {
     try {
@@ -46,7 +47,8 @@ public class UserController {
     }
   }
 
-  @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)//插入操作记录
+  //用户登录
+  @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)
   public ModelAndView getUserInfo(HttpServletRequest request, HttpServletResponse response, HttpSession session,
                                   String userName) {
     try {
