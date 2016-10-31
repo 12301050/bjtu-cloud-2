@@ -17,6 +17,9 @@ public interface TaskInfoMapper {
     //获取某个节点下某个状态的任务
     List<TaskInfo> getTaskByNode(@Param("nodeId")String nodeId, @Param("status")Integer status);
 
+    //查询某个节点的某个任务的时间信息
+    TaskInfo queryTimeInfo(@Param("nodeId") String nodeId, @Param("taskId") Integer taskId) throws Exception;
+
     TaskInfo selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(TaskInfo record);
