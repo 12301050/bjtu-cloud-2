@@ -23,7 +23,7 @@ public interface UserInfoMapper {
     UserInfo getUserInfoByUserName(String userName);
 
     //增加节点
-    Integer addNode(@Param("userName")String userName, @Param("type")Integer type);
+    Integer addNode(@Param("userName")String userName, @Param("nodeId")String nodeId);
 
 
     int updateByPrimaryKeySelective(UserInfo record);

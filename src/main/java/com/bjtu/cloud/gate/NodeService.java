@@ -18,4 +18,7 @@ public interface NodeService {
 
   //获取某个用户下所有节点
   List<NodeInfo> getNodeByUser(String userName) throws Exception;
+
+  //新增节点
+  String addNodeInNodeInfo(Integer type) throws Exception;
 }

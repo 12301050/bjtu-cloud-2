@@ -57,7 +57,16 @@ public class NodeServiceImpl implements NodeService {
       return 0;
     }
   }
-
+  public String addNodeInNodeInfo(Integer type) throws Exception {
+    try {
+      //TODO docker上进行节点创建
+      String id = "005";
+      return id;
+    }catch (Exception e){
+      e.printStackTrace();
+      return null;
+    }
+  }
   @Override
   public List<NodeInfo> getNodeByUser(String userName) throws Exception {
     List<NodeInfo> nodeInfos = new ArrayList<NodeInfo>();

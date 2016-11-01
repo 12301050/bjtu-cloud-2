@@ -3,6 +3,7 @@ package com.bjtu.cloud.web;
 import com.bjtu.cloud.common.RestResult;
 import com.bjtu.cloud.common.entity.User;
 import com.bjtu.cloud.common.entity.UserInfo;
+import com.bjtu.cloud.gate.NodeService;
 import com.bjtu.cloud.gate.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,8 @@ public class UserController {
 
   @Autowired
   private  UserService userService;
+  @Autowired
+  private NodeService nodeService;
 
   //用户登录
   @RequestMapping(value = "api/user/login", method = RequestMethod.GET)
@@ -76,7 +79,8 @@ public class UserController {
   @RequestMapping(value = "api/user/addNode", method = RequestMethod.POST)
   public RestResult<List<UserInfo>> addNode(String userName, Integer type) {
     try{
-      Integer flag = userService.addNode(userName, type);
+      String nodeId = nodeService.addNodeInNodeInfo(type);
+      Integer flag = userService.addNodeInUserInfo(userName, nodeId);
       if (flag == 1){
         List<UserInfo> userInfos = userService.getAll();
         return RestResult.succ().data(userInfos).build();
