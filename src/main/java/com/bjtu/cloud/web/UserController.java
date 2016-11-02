@@ -80,11 +80,16 @@ public class UserController {
   public RestResult<List<UserInfo>> addNode(String userName, Integer type) {
     try{
       String nodeId = nodeService.addNodeInNodeInfo(type);
-      Integer flag = userService.addNodeInUserInfo(userName, nodeId);
-      if (flag == 1){
-        List<UserInfo> userInfos = userService.getAll();
-        return RestResult.succ().data(userInfos).build();
-      }else{
+      if(!nodeId.isEmpty()) {
+        nodeId = "," + nodeId;
+        Integer flag = userService.addNodeInUserInfo(userName, nodeId);
+        if (flag == 1) {
+          List<UserInfo> userInfos = userService.getAll();
+          return RestResult.succ().data(userInfos).build();
+        } else {
+          return RestResult.fail().build();
+        }
+      }else {
         return RestResult.fail().build();
       }
     }catch (Exception e){

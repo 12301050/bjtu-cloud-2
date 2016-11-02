@@ -48,7 +48,6 @@ public class UserServiceImpl implements UserService{
   @Override
   public Integer addNodeInUserInfo(String userName, String nodeId) throws Exception {
     try {
-      //TODO docker上的增加
       Integer flag = userInfoMapper.addNode(userName, nodeId);
       return flag;
     }catch (Exception e){

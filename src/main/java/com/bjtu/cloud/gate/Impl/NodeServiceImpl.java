@@ -57,14 +57,33 @@ public class NodeServiceImpl implements NodeService {
       return 0;
     }
   }
+
+  @Override
   public String addNodeInNodeInfo(Integer type) throws Exception {
+    String nodeId = "005";
     try {
       //TODO docker上进行节点创建
-      String id = "005";
-      return id;
+
+      NodeInfo nodeInfo = new NodeInfo();
+      if(!nodeId.isEmpty()){
+        nodeInfo.setNodeName(nodeId);
+        nodeInfo.setNodeId(nodeId);
+        nodeInfo.setStatus(0);
+        nodeInfo.setType(type);
+        nodeInfo.setTaskAmount(0);
+        nodeInfo.setHistoryTaskAmount(0);
+        Integer flag = nodeInfoMapper.addNodeInNodeInfo(nodeInfo);
+        if(flag != 0){
+          return nodeId;
+        }else {
+          return nodeId;
+        }
+      }else {
+        return nodeId;
+      }
     }catch (Exception e){
       e.printStackTrace();
-      return null;
+      return nodeId;
     }
   }
   @Override

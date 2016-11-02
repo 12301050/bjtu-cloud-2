@@ -93,4 +93,10 @@
       node_ids = #{nodeIds,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <update id="addNode" parameterType="java.lang.String">
+    update user_info
+    set node_amount = node_amount + 1,
+      node_ids = concat(node_ids,#{nodeId,jdbcType=VARCHAR})
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </update>
 </mapper>
