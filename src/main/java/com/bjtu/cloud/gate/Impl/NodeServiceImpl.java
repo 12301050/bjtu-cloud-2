@@ -60,10 +60,9 @@ public class NodeServiceImpl implements NodeService {
 
   @Override
   public String addNodeInNodeInfo(Integer type) throws Exception {
-    String nodeId = "005";
+    String nodeId = "010";
     try {
       //TODO docker上进行节点创建
-
       NodeInfo nodeInfo = new NodeInfo();
       if(!nodeId.isEmpty()){
         nodeInfo.setNodeName(nodeId);
@@ -83,7 +82,7 @@ public class NodeServiceImpl implements NodeService {
       }
     }catch (Exception e){
       e.printStackTrace();
-      return nodeId;
+      return null;
     }
   }
   @Override

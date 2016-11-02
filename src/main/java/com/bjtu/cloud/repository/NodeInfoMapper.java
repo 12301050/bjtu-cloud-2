@@ -27,7 +27,7 @@ public interface NodeInfoMapper {
     Integer startNode(String nodeId);
 
     //新增节点
-    Integer addNodeInNodeInfo(@Param("NodeInfo")NodeInfo nodeInfo);
+    Integer addNodeInNodeInfo(NodeInfo nodeInfo);
 
 
     NodeInfo selectByPrimaryKey(Integer id);
