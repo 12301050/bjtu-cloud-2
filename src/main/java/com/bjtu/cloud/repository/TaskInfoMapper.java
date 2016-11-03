@@ -24,7 +24,7 @@ public interface TaskInfoMapper {
     List<TaskInfo> getPerformance(@Param("nodeId")String nodeId, @Param("taskId")Integer taskId);
 
     //根据用户名查询任务
-    List<TaskInfo> getTaskByUserName(@Param("userName")String userName, @Param("status") Integer status);
+    List<TaskInfo> getTaskByUserName(@Param("nodeId")String nodeId, @Param("status") Integer status);
 
     TaskInfo selectByPrimaryKey(Integer id);
 

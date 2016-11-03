@@ -1,11 +1,14 @@
 package com.bjtu.cloud.gate.Impl;
 
 import com.bjtu.cloud.common.entity.TaskInfo;
+import com.bjtu.cloud.common.entity.UserInfo;
 import com.bjtu.cloud.gate.TaskService;
 import com.bjtu.cloud.repository.TaskInfoMapper;
+import com.bjtu.cloud.repository.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +19,8 @@ public class TaskServiceImpl implements TaskService{
 
   @Autowired
   private TaskInfoMapper taskInfoMapper;
+  @Autowired
+  private UserInfoMapper userInfoMapper;
 
   @Override
   public List<TaskInfo> getTaskByNode(String nodeId, Integer status) throws Exception {
@@ -29,8 +34,15 @@ public class TaskServiceImpl implements TaskService{
   }
 
   public List<TaskInfo> getTaskByUserName(String userName, Integer status) throws Exception {
+    List<TaskInfo> taskInfos = new ArrayList<TaskInfo>();
     try {
-      List<TaskInfo> taskInfos = taskInfoMapper.getTaskByUserName(userName, status);
+      UserInfo userInfo = userInfoMapper.getUserInfoByUserName(userName);
+      System.out.println(userInfo.getNodeIds());
+      String[] nodeIds = userInfo.getNodeIds().split(",");
+      for (int i = 0; i < nodeIds.length; i++) {
+        List<TaskInfo> taskInfo = taskInfoMapper.getTaskByUserName(nodeIds[i], status);
+        taskInfos.addAll(taskInfo);
+      }
       return taskInfos;
     } catch (Exception e) {
       e.printStackTrace();
