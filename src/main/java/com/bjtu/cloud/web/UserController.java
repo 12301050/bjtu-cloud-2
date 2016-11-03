@@ -1,6 +1,6 @@
 package com.bjtu.cloud.web;
 
-import com.bjtu.cloud.common.RestResult;
+import com.bjtu.cloud.common.webDao.RestResult;
 import com.bjtu.cloud.common.entity.User;
 import com.bjtu.cloud.common.entity.UserInfo;
 import com.bjtu.cloud.gate.NodeService;
