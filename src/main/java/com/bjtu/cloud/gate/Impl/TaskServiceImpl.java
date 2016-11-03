@@ -28,6 +28,16 @@ public class TaskServiceImpl implements TaskService{
     }
   }
 
+  public List<TaskInfo> getTaskByUserName(String userName, Integer status) throws Exception {
+    try {
+      List<TaskInfo> taskInfos = taskInfoMapper.getTaskByUserName(userName, status);
+      return taskInfos;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   @Override
   public TaskInfo queryTimeInfo(String nodeId, Integer taskId) throws Exception {
     try {
