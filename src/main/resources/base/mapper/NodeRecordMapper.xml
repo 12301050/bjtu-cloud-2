@@ -17,6 +17,12 @@
     from node_record
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getAllNodeRecord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from node_record
+    order by operate_time
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from node_record
     where id = #{id,jdbcType=INTEGER}
