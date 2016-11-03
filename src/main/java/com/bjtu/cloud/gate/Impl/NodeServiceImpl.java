@@ -1,9 +1,11 @@
 package com.bjtu.cloud.gate.Impl;
 
 import com.bjtu.cloud.common.entity.NodeInfo;
+import com.bjtu.cloud.common.entity.NodeRecord;
 import com.bjtu.cloud.common.entity.UserInfo;
 import com.bjtu.cloud.gate.NodeService;
 import com.bjtu.cloud.repository.NodeInfoMapper;
+import com.bjtu.cloud.repository.NodeRecordMapper;
 import com.bjtu.cloud.repository.UserInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ public class NodeServiceImpl implements NodeService {
 
   @Autowired
   private UserInfoMapper userInfoMapper;
+
+  @Autowired
+  private NodeRecordMapper nodeRecordMapper;
 
   @Override
   public List<NodeInfo> getAll() throws Exception {
@@ -85,6 +90,18 @@ public class NodeServiceImpl implements NodeService {
       return null;
     }
   }
+
+  @Override
+  public List<NodeRecord> getAllNodeRecord() throws Exception {
+    try {
+      List<NodeRecord> nodeRecords = nodeRecordMapper.getAllNodeRecord();
+      return nodeRecords;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
   @Override
   public List<NodeInfo> getNodeByUser(String userName) throws Exception {
     List<NodeInfo> nodeInfos = new ArrayList<NodeInfo>();

@@ -1,13 +1,12 @@
 package com.bjtu.cloud.web;
 
-import com.bjtu.cloud.common.RestResult;
+import com.bjtu.cloud.common.entity.NodeRecord;
+import com.bjtu.cloud.common.webDao.RestResult;
 import com.bjtu.cloud.common.entity.NodeInfo;
 import com.bjtu.cloud.common.entity.TaskInfo;
 import com.bjtu.cloud.gate.NodeService;
 import com.bjtu.cloud.gate.TaskService;
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -89,6 +88,18 @@ public class NodeController {
       }else{
         return RestResult.fail().build();
       }
+    }catch (Exception e){
+      e.printStackTrace();
+      return RestResult.fail().msg(e.toString()).build();
+    }
+  }
+
+  //按照日期查询所有节点日志
+  @RequestMapping(value = "api/log/getAllNodeRecord", method = RequestMethod.GET)
+  public RestResult<List<NodeRecord>> getAllRecords() {
+    try {
+      List<NodeRecord> nodeRecords = nodeService.getAllNodeRecord();
+      return RestResult.succ().data(nodeRecords).build();
     }catch (Exception e){
       e.printStackTrace();
       return RestResult.fail().msg(e.toString()).build();

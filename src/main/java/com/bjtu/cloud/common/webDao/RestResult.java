@@ -1,4 +1,4 @@
-package com.bjtu.cloud.common;
+package com.bjtu.cloud.common.webDao;
 
 import java.io.Serializable;
 

@@ -18,6 +18,12 @@
     from task_record
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getAllTaskRecord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from task_record
+    order by operate_time
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from task_record
     where id = #{id,jdbcType=INTEGER}

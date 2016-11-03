@@ -1,6 +1,8 @@
 package com.bjtu.cloud.gate;
 
 import com.bjtu.cloud.common.entity.NodeInfo;
+import com.bjtu.cloud.common.entity.NodeRecord;
+
 import java.util.List;
 
 /**
@@ -21,4 +23,7 @@ public interface NodeService {
 
   //新增节点
   String addNodeInNodeInfo(Integer type) throws Exception;
+
+  //查询所有节点日志
+  List<NodeRecord> getAllNodeRecord() throws Exception;
 }
