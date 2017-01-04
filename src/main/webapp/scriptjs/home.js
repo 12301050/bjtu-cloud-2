@@ -188,6 +188,20 @@ function show_my_favorite(){//获取我收藏的所有餐品数据
 jQuery(document).ready(function() {	//首先渲染
     var foodType=$("#tasktype").val();
     //alert(foodType);
+    $.ajax({//获取用户名，并判断当前用户是否有效用户
+        type: "POST",
+        url: "http://localhost:8080/api/user/session",//接口名字
+        dataType: "json",
+        //contentType: "application/json; charset=utf-8",
+        data:{foodType:foodType},
+        success: function (data) {
+            if(data !=null)
+                $("#showUserName").text("欢迎您！ "+data.data)
+            else
+                alert("并没有登录")
+
+        }
+    });
     $.ajax({//获取全品类热度排行
         type: "POST",
         url: "http://localhost:8080/api/food/getFood",//接口名字
@@ -233,9 +247,9 @@ jQuery(document).ready(function() {	//首先渲染
             {
                 var stringfortr = "<div class='blog-grids wow fadeInDown'  data-wow-duration='.8s' data-wow-delay='.2s'>"+
                     "  <div class='blog-grid-left'> <a><img src='images/"+data.data[i].imageName+"' class='img-responsive' alt=''></a> </div>"+
-            "<div class='blog-grid-right'>"+
-            "   <h5><a onclick='showtheHisTask(this)' id='"+data.data[i].id+"' name='"+data.data[i].notes+"'>"+data.data[i].foodName+"</a> </h5> </div>"+
-            "<div class='clearfix'> </div> </div>"
+                    "<div class='blog-grid-right'>"+
+                    "   <h5><a onclick='showtheHisTask(this)' id='"+data.data[i].id+"' name='"+data.data[i].notes+"'>"+data.data[i].foodName+"</a> </h5> </div>"+
+                    "<div class='clearfix'> </div> </div>"
 
                 stringfortrlist = stringfortrlist + stringfortr;
             }

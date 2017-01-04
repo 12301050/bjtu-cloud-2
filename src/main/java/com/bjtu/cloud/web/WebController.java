@@ -53,13 +53,13 @@ public class WebController {
     }
   }
   //返回用户session
-  @RequestMapping(value = "api/user/session", method = RequestMethod.GET)
-  public String judgeSession(HttpServletRequest request) {
+  @RequestMapping(value = "api/user/session", method = RequestMethod.POST)
+  public RestResult judgeSession(HttpServletRequest request) {
     HttpSession session=request.getSession();
     Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
     try {
       User user = userMapper.selectByPrimaryKey(userId);
-      return user.getUserName();
+      return RestResult.succ().data(user.getUserName()).build();
     }catch (Exception e){
       e.printStackTrace();
       return null;
