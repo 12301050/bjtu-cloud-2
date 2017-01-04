@@ -1,13 +1,13 @@
 package com.bjtu.cloud.common.entity;
 
-public class User {
+public class User1 {
     private Integer id;
 
     private String userName;
 
     private String password;
 
-    private Integer role;
+    private String foodType;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getRole() {
-        return role;
+    public String getFoodType() {
+        return foodType;
     }
 
-    public void setRole(Integer role) {
-        this.role = role;
+    public void setFoodType(String foodType) {
+        this.foodType = foodType == null ? null : foodType.trim();
     }
 }

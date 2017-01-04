@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bjtu.cloud.repository.web.FoodMapper">
-  <resultMap id="BaseResultMap" type="com.bjtu.cloud.common.entity.web.Food">
+<mapper namespace="com.bjtu.cloud.repository.FoodMapper">
+  <resultMap id="BaseResultMap" type="com.bjtu.cloud.common.entity.Food">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="food_name" jdbcType="VARCHAR" property="foodName" />
     <result column="address" jdbcType="VARCHAR" property="address" />
@@ -20,11 +20,27 @@
     from food
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from food
+    order by heat desc
+  </select>
+
+    <select id="getFood" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from food
+        where food_type = #{foodType,jdbcType=INTEGER}
+        order by heat desc
+    </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from food
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.bjtu.cloud.common.entity.web.Food">
+  <insert id="insert" parameterType="com.bjtu.cloud.common.entity.Food">
     insert into food (id, food_name, address, 
       average_money, image_name, food_type, 
       heat, notes)
@@ -32,7 +48,7 @@
       #{averageMoney,jdbcType=INTEGER}, #{imageName,jdbcType=VARCHAR}, #{foodType,jdbcType=INTEGER}, 
       #{heat,jdbcType=INTEGER}, #{notes,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.bjtu.cloud.common.entity.web.Food">
+  <insert id="insertSelective" parameterType="com.bjtu.cloud.common.entity.Food">
     insert into food
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -87,7 +103,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bjtu.cloud.common.entity.web.Food">
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjtu.cloud.common.entity.Food">
     update food
     <set>
       <if test="foodName != null">
@@ -114,7 +130,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.bjtu.cloud.common.entity.web.Food">
+  <update id="updateByPrimaryKey" parameterType="com.bjtu.cloud.common.entity.Food">
     update food
     set food_name = #{foodName,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},

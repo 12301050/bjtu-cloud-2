@@ -1,7 +1,10 @@
-package com.bjtu.cloud.repository.web;
+package com.bjtu.cloud.repository;
 
-import com.bjtu.cloud.common.entity.web.Collect;
+import com.bjtu.cloud.common.entity.Collect;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CollectMapper {
     int deleteByPrimaryKey(Integer id);
 

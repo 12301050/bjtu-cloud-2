@@ -1,4 +1,4 @@
-package com.bjtu.cloud.common.entity.web;
+package com.bjtu.cloud.common.entity;
 
 import java.util.Date;
 
