@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjtu.cloud.repository.web.FoodMapper">
+  <resultMap id="BaseResultMap" type="com.bjtu.cloud.common.entity.web.Food">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="food_name" jdbcType="VARCHAR" property="foodName" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="average_money" jdbcType="INTEGER" property="averageMoney" />
+    <result column="image_name" jdbcType="VARCHAR" property="imageName" />
+    <result column="food_type" jdbcType="INTEGER" property="foodType" />
+    <result column="heat" jdbcType="INTEGER" property="heat" />
+    <result column="notes" jdbcType="VARCHAR" property="notes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, food_name, address, average_money, image_name, food_type, heat, notes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from food
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from food
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bjtu.cloud.common.entity.web.Food">
+    insert into food (id, food_name, address, 
+      average_money, image_name, food_type, 
+      heat, notes)
+    values (#{id,jdbcType=INTEGER}, #{foodName,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{averageMoney,jdbcType=INTEGER}, #{imageName,jdbcType=VARCHAR}, #{foodType,jdbcType=INTEGER}, 
+      #{heat,jdbcType=INTEGER}, #{notes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bjtu.cloud.common.entity.web.Food">
+    insert into food
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="foodName != null">
+        food_name,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="averageMoney != null">
+        average_money,
+      </if>
+      <if test="imageName != null">
+        image_name,
+      </if>
+      <if test="foodType != null">
+        food_type,
+      </if>
+      <if test="heat != null">
+        heat,
+      </if>
+      <if test="notes != null">
+        notes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="foodName != null">
+        #{foodName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="averageMoney != null">
+        #{averageMoney,jdbcType=INTEGER},
+      </if>
+      <if test="imageName != null">
+        #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="foodType != null">
+        #{foodType,jdbcType=INTEGER},
+      </if>
+      <if test="heat != null">
+        #{heat,jdbcType=INTEGER},
+      </if>
+      <if test="notes != null">
+        #{notes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bjtu.cloud.common.entity.web.Food">
+    update food
+    <set>
+      <if test="foodName != null">
+        food_name = #{foodName,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="averageMoney != null">
+        average_money = #{averageMoney,jdbcType=INTEGER},
+      </if>
+      <if test="imageName != null">
+        image_name = #{imageName,jdbcType=VARCHAR},
+      </if>
+      <if test="foodType != null">
+        food_type = #{foodType,jdbcType=INTEGER},
+      </if>
+      <if test="heat != null">
+        heat = #{heat,jdbcType=INTEGER},
+      </if>
+      <if test="notes != null">
+        notes = #{notes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bjtu.cloud.common.entity.web.Food">
+    update food
+    set food_name = #{foodName,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      average_money = #{averageMoney,jdbcType=INTEGER},
+      image_name = #{imageName,jdbcType=VARCHAR},
+      food_type = #{foodType,jdbcType=INTEGER},
+      heat = #{heat,jdbcType=INTEGER},
+      notes = #{notes,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
