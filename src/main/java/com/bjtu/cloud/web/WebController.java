@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,18 +31,22 @@ public class WebController {
 
   //用户登录
   @RequestMapping(value = "api/user/login", method = RequestMethod.GET)
-  public RestResult<String> login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+  public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
                                          String userName, String password) {
+    ModelAndView mv = new ModelAndView();
     try {
       User user = webService.login(userName, password);
       if (user != null) {
         session.setAttribute("userId", user.getId());
         session.setMaxInactiveInterval(3600);//给session设置3600秒
-        return RestResult.succ().data("Login success!").build();
+
+        mv.setViewName("redirect:/node_mgt_user.html");
       }else {
-        return RestResult.fail().data("Login Failed!").build();
+        mv.setViewName("redirect:/login_bg.html?error=error");
       }
+      return  mv;
     }catch (Exception e){
+      System.out.println(e.getStackTrace());
       return null;
     }
   }
