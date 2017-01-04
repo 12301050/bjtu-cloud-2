@@ -1,11 +1,13 @@
 package com.bjtu.cloud.gate.Impl;
 
 
+import com.bjtu.cloud.common.entity.Collect;
 import com.bjtu.cloud.common.entity.Food;
-import com.bjtu.cloud.common.entity.User1;
+import com.bjtu.cloud.common.entity.User;
 import com.bjtu.cloud.gate.WebService;
+import com.bjtu.cloud.repository.CollectMapper;
 import com.bjtu.cloud.repository.FoodMapper;
-import com.bjtu.cloud.repository.UserMapper1;
+import com.bjtu.cloud.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +21,18 @@ import java.util.List;
 public class WebServiceImpl implements WebService {
 
   @Autowired
-  private UserMapper1 userMapper;
+  private UserMapper userMapper;
 
   @Autowired
   private FoodMapper foodMapper;
 
+  @Autowired
+  private CollectMapper collectMapper;
+
   @Override
-  public User1 login(String userName, String password) throws Exception {
+  public User login(String userName, String password) throws Exception {
     try {
-      User1 user = userMapper.login(userName,password);
+      User user = userMapper.login(userName,password);
       return user;
     }catch (Exception e){
       return null;
@@ -42,6 +47,23 @@ public class WebServiceImpl implements WebService {
         foods = foodMapper.getAll();
       }else {
         foods = foodMapper.getFood(foodType);
+      }
+      return foods;
+    }catch (Exception e){
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  @Override
+  public List<Food> getCollect(Integer userId) throws Exception {
+    try {
+      List<Collect> collects = collectMapper.getCollect(userId);
+      List<Food> foods = new ArrayList<Food>();
+      for (int i = 0; i < collects.size(); i++) {
+        Integer foodId = collects.get(i).getFoodId();
+        Food food = foodMapper.selectByPrimaryKey(foodId);
+        foods.add(food);
       }
       return foods;
     }catch (Exception e){

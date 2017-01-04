@@ -1,6 +1,6 @@
 package com.bjtu.cloud.common.entity;
 
-public class User1 {
+public class User {
     private Integer id;
 
     private String userName;

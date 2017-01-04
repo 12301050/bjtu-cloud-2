@@ -1,7 +1,7 @@
 package com.bjtu.cloud.web;
 
 import com.bjtu.cloud.common.entity.Food;
-import com.bjtu.cloud.common.entity.User1;
+import com.bjtu.cloud.common.entity.User;
 import com.bjtu.cloud.common.webDao.RestResult;
 import com.bjtu.cloud.gate.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class WebController {
   public RestResult<String> login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
                                          String userName, String password) {
     try {
-      User1 user = webService.login(userName, password);
+      User user = webService.login(userName, password);
       if (user != null) {
         session.setAttribute("userId", user.getId());
         session.setMaxInactiveInterval(3600);//给session设置3600秒
@@ -62,6 +62,18 @@ public class WebController {
   public RestResult<List<Food>> getFood(Integer foodType) {
     try {
       List<Food> foods = webService.getFood(foodType);
+      return RestResult.succ().data(foods).build();
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  //获取收藏
+  @RequestMapping(value = "api/collect/getCollect", method = RequestMethod.GET)
+  public RestResult<List<Food>> getCollect(Integer id) {
+    try {
+//      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+      List<Food> foods = webService.getCollect(id);
       return RestResult.succ().data(foods).build();
     } catch (Exception e) {
       return null;

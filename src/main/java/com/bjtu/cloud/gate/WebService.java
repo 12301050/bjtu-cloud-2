@@ -3,7 +3,7 @@ package com.bjtu.cloud.gate;
 
 
 import com.bjtu.cloud.common.entity.Food;
-import com.bjtu.cloud.common.entity.User1;
+import com.bjtu.cloud.common.entity.User;
 
 import java.util.List;
 
@@ -13,9 +13,12 @@ import java.util.List;
 public interface WebService {
 
   //用户登录
-  User1 login(String userName, String password) throws Exception;
+  User login(String userName, String password) throws Exception;
 
   //获取食物
   List<Food> getFood(Integer foodType) throws Exception;
+
+  //获取收藏
+  List<Food> getCollect(Integer userId) throws Exception;
 
 }
