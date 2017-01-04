@@ -22,6 +22,7 @@
     <include refid="Base_Column_List" />
     from collect
     where user_id = #{userId,jdbcType=INTEGER}
+    order by collect_time
   </select>
 
     <select id="isCollect" parameterType="java.lang.Integer" resultMap="BaseResultMap">

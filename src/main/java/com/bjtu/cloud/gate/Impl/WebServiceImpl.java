@@ -63,7 +63,7 @@ public class WebServiceImpl implements WebService {
     try {
       List<Collect> collects = collectMapper.getCollect(userId);
       List<Food> foods = new ArrayList<Food>();
-      for (int i = 0; i < collects.size(); i++) {
+      for (int i = collects.size() - 1 ; i >= 0 ; i--) {
         Integer foodId = collects.get(i).getFoodId();
         Food food = foodMapper.selectByPrimaryKey(foodId);
         foods.add(food);

@@ -113,11 +113,11 @@ public class WebController {
   }
 
   //用户进行收藏或取消收藏
-  @RequestMapping(value = "api/collect/doCollect", method = RequestMethod.GET)
+  @RequestMapping(value = "api/collect/doCollect", method = RequestMethod.POST)
   public RestResult<List<Food>> doCollect(HttpServletRequest request, HttpServletResponse response,
-                                          HttpSession session, Integer foodId, Integer userId, Integer type) {
+                                          HttpSession session, Integer foodId, Integer type) {
     try {
-//      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
       Integer flag = webService.doCollect(userId, foodId, type);
       return RestResult.succ().data(flag).build();
     } catch (Exception e) {
