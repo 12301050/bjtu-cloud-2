@@ -25,6 +25,13 @@
     order by collect_time
   </select>
 
+    <select id="getCollectByFood" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from collect
+    where food_id = #{foodId,jdbcType=INTEGER}
+  </select>
+
     <select id="isCollect" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />

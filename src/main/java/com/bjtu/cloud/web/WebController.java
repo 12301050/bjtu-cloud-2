@@ -134,6 +134,19 @@ public class WebController {
     }
   }
 
+  //获取个性化推荐
+  @RequestMapping(value = "api/food/getPersonal", method = RequestMethod.POST)
+  public RestResult<List<Food>> getPersonal(HttpServletRequest request, HttpServletResponse response,
+                                          HttpSession session, Integer userId) {
+    try {
+//      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+      List<Food> foods = webService.getPersonal(userId);
+      return RestResult.succ().data(foods).build();
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
 
 
 }

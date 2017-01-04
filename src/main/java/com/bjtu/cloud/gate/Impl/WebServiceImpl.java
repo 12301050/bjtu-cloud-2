@@ -76,6 +76,59 @@ public class WebServiceImpl implements WebService {
   }
 
   @Override
+  public List<Food> getPersonal(Integer userId) throws Exception {
+    try {
+      List<Collect> collects = collectMapper.getCollect(userId);
+      List<Food> foods = new ArrayList<Food>();
+      List<User> users = new ArrayList<User>();
+      List<Integer> foodIds = new ArrayList<Integer>();
+      // 初始化Map
+      Map<Integer , Integer> map = new HashMap<Integer, Integer>();
+      for (int i = 0; i < collects.size(); i++) {
+        Integer foodId = collects.get(i).getFoodId();
+        foodIds.add(foodId);
+        List<Collect> collectByFood = collectMapper.getCollectByFood(foodId);
+        for (int j = 0; j < collectByFood.size(); j++) {
+          User user = userMapper.selectByPrimaryKey(collectByFood.get(j).getUserId());
+          if (!users.contains(user)) {
+            users.add(user);
+          }
+        }
+      }
+
+      for (int i = 0; i < users.size(); i++) {
+        List<Collect> collectByUser = collectMapper.getCollect(users.get(i).getId());
+        for (int j = 0; j < collectByUser.size(); j++) {
+          Integer foodId1 = collectByUser.get(j).getFoodId();
+          if (!foodIds.contains(foodId1)) {
+            if (map.containsKey(foodId1)) {
+              map.put(foodId1, map.get(foodId1) + 1);
+            } else {
+              map.put(foodId1, 1);
+            }
+          }
+        }
+      }
+
+      map = sortMap(map);
+
+      int flag = 0;
+        Iterator it = map.entrySet().iterator();
+        while (it.hasNext() && flag < 10) {
+          Map.Entry entry = (Map.Entry) it.next();
+          System.out.println(entry.getKey() + ":" + entry.getValue());
+          foods.add(foodMapper.selectByPrimaryKey(Integer.valueOf(entry.getKey().toString())));
+          flag++;
+        }
+
+      return foods;
+    }catch (Exception e){
+      e.printStackTrace();
+      return  null;
+    }
+  }
+
+  @Override
   public Integer isCollect(Integer userId, Integer foodId) throws Exception {
     try {
       Collect collect = collectMapper.isCollect(userId, foodId);
@@ -135,4 +188,22 @@ public class WebServiceImpl implements WebService {
       return 0;
     }
   }
+
+  public Map sortMap(Map oldMap) {
+    ArrayList<Map.Entry<Integer, Integer>> list = new ArrayList<Map.Entry<Integer, Integer>>(oldMap.entrySet());
+    Collections.sort(list, new Comparator<Map.Entry<Integer, Integer>>() {
+      @Override
+      public int compare(Map.Entry<Integer, Integer> arg0,
+                         Map.Entry<Integer, Integer> arg1) {
+        return arg1.getValue() - arg0.getValue();
+      }
+    });
+    Map newMap = new LinkedHashMap();
+    for (int i = 0; i < list.size(); i++) {
+      newMap.put(list.get(i).getKey(), list.get(i).getValue());
+    }
+    return newMap;
+  }
+
 }
+

@@ -21,6 +21,9 @@ public interface WebService {
   //获取收藏
   List<Food> getCollect(Integer userId) throws Exception;
 
+  //获取个性化推荐
+  List<Food> getPersonal(Integer userId) throws Exception;
+
   //是否收藏
   Integer isCollect(Integer userId, Integer foodId) throws Exception;
 

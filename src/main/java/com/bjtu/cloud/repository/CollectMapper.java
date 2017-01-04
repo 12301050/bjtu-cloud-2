@@ -14,6 +14,9 @@ public interface CollectMapper {
     //获取收藏
     List<Collect> getCollect(Integer userId);
 
+    //根据foodId获取收藏
+    List<Collect> getCollectByFood(Integer foodId);
+
     //是否收藏
     Collect isCollect(@Param("userId")Integer userId, @Param("foodId")Integer foodId);
 
