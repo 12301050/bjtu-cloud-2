@@ -24,4 +24,7 @@ public interface WebService {
   //是否收藏
   Integer isCollect(Integer userId, Integer foodId) throws Exception;
 
+  //收藏/取消收藏
+  Integer doCollect(Integer userId, Integer foodId, Integer type) throws Exception;
+
 }

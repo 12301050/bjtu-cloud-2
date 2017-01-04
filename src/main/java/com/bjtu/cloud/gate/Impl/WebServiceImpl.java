@@ -11,8 +11,8 @@ import com.bjtu.cloud.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.zip.Inflater;
 
 /**
@@ -29,6 +29,8 @@ public class WebServiceImpl implements WebService {
 
   @Autowired
   private CollectMapper collectMapper;
+
+  SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
   @Override
   public User login(String userName, String password) throws Exception {
@@ -82,6 +84,52 @@ public class WebServiceImpl implements WebService {
       }else {
         return 0;
       }
+    }catch (Exception e){
+      e.printStackTrace();
+      return 0;
+    }
+  }
+
+  @Override
+  public Integer doCollect(Integer userId, Integer foodId, Integer type) throws Exception {
+    try {
+      Integer flag = 0;
+      if (type == 1){
+        Collect collect = new Collect();
+        collect.setUserId(userId);
+        collect.setFoodId(foodId);
+        collect.setCollectTime(df1.parse(df1.format(new Date())));
+        flag = collectMapper.insert(collect);
+
+        //更新food表heat
+        Food food = foodMapper.selectByPrimaryKey(foodId);
+        food.setHeat(food.getHeat()+1);
+        foodMapper.updateByPrimaryKeySelective(food);
+
+        /*//更新user表，用户喜欢的食物类型
+        List<Food> foods = getCollect(userId);
+        int[] foodTypes = new int[6];
+        Integer length = foodTypes.length;
+        for (int i = 0; i < length; i++) {
+          foodTypes[foods.get(i).getFoodType()]++;
+        }
+        Arrays.sort(foodTypes);
+        String foodType = foodTypes[length-1] + "," + foodTypes[length-2] + "," + foodTypes[length-3];
+
+        User user = userMapper.selectByPrimaryKey(userId);
+        user.setFoodType(foodType);
+        userMapper.updateByPrimaryKeySelective(user);*/
+
+      }else if (type == 0){
+        Collect collect = collectMapper.isCollect(userId, foodId);
+        flag = collectMapper.deleteByPrimaryKey(collect.getId());
+
+        //更新food表heat
+        Food food = foodMapper.selectByPrimaryKey(foodId);
+        food.setHeat(food.getHeat()-1);
+        foodMapper.updateByPrimaryKeySelective(food);
+      }
+      return  flag;
     }catch (Exception e){
       e.printStackTrace();
       return 0;

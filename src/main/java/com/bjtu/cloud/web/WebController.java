@@ -25,10 +25,6 @@ public class WebController {
   @Autowired
   private WebService webService;
 
-
-  SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-  SimpleDateFormat df2 = new SimpleDateFormat("HHmmss");
-
   //用户登录
   @RequestMapping(value = "api/user/login", method = RequestMethod.GET)
   public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
@@ -115,5 +111,20 @@ public class WebController {
       return null;
     }
   }
+
+  //用户进行收藏或取消收藏
+  @RequestMapping(value = "api/collect/doCollect", method = RequestMethod.GET)
+  public RestResult<List<Food>> doCollect(HttpServletRequest request, HttpServletResponse response,
+                                          HttpSession session, Integer foodId, Integer userId, Integer type) {
+    try {
+//      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+      Integer flag = webService.doCollect(userId, foodId, type);
+      return RestResult.succ().data(flag).build();
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+
 
 }
