@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 /**
  * Created by Kafukaaa on 17/1/4.
@@ -69,6 +70,21 @@ public class WebServiceImpl implements WebService {
     }catch (Exception e){
       e.printStackTrace();
       return null;
+    }
+  }
+
+  @Override
+  public Integer isCollect(Integer userId, Integer foodId) throws Exception {
+    try {
+      Collect collect = collectMapper.isCollect(userId, foodId);
+      if (collect != null) {
+        return 1;
+      }else {
+        return 0;
+      }
+    }catch (Exception e){
+      e.printStackTrace();
+      return 0;
     }
   }
 }

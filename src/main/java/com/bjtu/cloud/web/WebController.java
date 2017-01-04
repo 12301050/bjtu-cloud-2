@@ -80,4 +80,17 @@ public class WebController {
     }
   }
 
+  //判断是否已经被用户收藏
+  @RequestMapping(value = "api/collect/isCollect", method = RequestMethod.GET)
+  public RestResult<List<Food>> isCollect(HttpServletRequest request, HttpServletResponse response,
+                                          HttpSession session, Integer foodId) {
+    try {
+      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+      Integer flag = webService.isCollect(userId, foodId);
+      return RestResult.succ().data(flag).build();
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
 }
