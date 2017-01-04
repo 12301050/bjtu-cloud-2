@@ -15,7 +15,6 @@ logs/
 .DS_Store
 
 # Mac
-.DS_Store
 
 *.properties
 
