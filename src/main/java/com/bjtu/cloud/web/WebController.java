@@ -70,10 +70,10 @@ public class WebController {
 
   //获取收藏
   @RequestMapping(value = "api/collect/getCollect", method = RequestMethod.GET)
-  public RestResult<List<Food>> getCollect(Integer id) {
+  public RestResult<List<Food>> getCollect(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
     try {
-//      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
-      List<Food> foods = webService.getCollect(id);
+      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+      List<Food> foods = webService.getCollect(userId);
       return RestResult.succ().data(foods).build();
     } catch (Exception e) {
       return null;
