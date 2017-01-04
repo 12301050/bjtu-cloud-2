@@ -147,7 +147,7 @@ function changeTheFavoriteStatus(){//收藏和取消收藏
 
 }
 function show_my_favorite(){//获取我收藏的所有餐品数据
-    //alert("!!!");
+
     $("#tasktype").css("display","none")
     $("#favorite").addClass("active act")
     $("#home").removeClass("active act")
@@ -188,9 +188,41 @@ function show_my_favorite(){//获取我收藏的所有餐品数据
 jQuery(document).ready(function() {	//首先渲染
     var foodType=$("#tasktype").val();
     //alert(foodType);
-    $.ajax({
+    $.ajax({//获取全品类热度排行
         type: "POST",
         url: "http://localhost:8080/api/food/getFood",//接口名字
+        dataType: "json",
+        //contentType: "application/json; charset=utf-8",
+        data:{foodType:foodType},
+        success: function (data) {
+            var stringfortrlist = " <div class='clearfix'></div>";
+
+            for (var i = 0; i < data.data.length; i++)
+            {
+                var stringfortr = "<div class='wthree'>"+
+                    " <div class='col-md-6 wthree-left wow fadeInDown'  data-wow-duration='.8s' data-wow-delay='.2s'> <div class='tch-img'>"+
+                    " <a href='singlepage.html'><img src='images/"+data.data[i].imageName+"'class='img-responsive' alt=''></a> </div> </div>"+
+                    "<div class='col-md-6 wthree-right wow fadeInDown'  data-wow-duration='.8s' data-wow-delay='.2s'>"+
+                    "  <h3><a href='singlepage.html'>"+data.data[i].foodName+"</a></h3>"+
+                    " <h6><a href='singlepage.html'>"+data.data[i].address+"</a></h6> <p>人均"+data.data[i].averageMoney+"元</p>"+
+                    " <div class='bht1'>"+
+                    "  <a onclick='showtheHisTask(this)' name='"+data.data[i].notes+"' class='reload' id='"+data.data[i].id+"'>查看详情</a> </div>"+
+                    "  <div class='soci'> <ul>"+
+                    "  <li><a  style='border: none' href=''></a></li>"+
+                    "</ul> </div> <div class='clearfix'></div> </div> <div class='clearfix'></div> </div>"
+
+                stringfortrlist = stringfortrlist + stringfortr;
+            }
+
+            $('#showheatList').html(stringfortrlist);
+            //AutoCheckLang();
+            //$("#datatableForTask").css("width","100%");
+            //$("#CPCEP_id").text(userName+"的节点列表信息");
+        }
+    });
+    $.ajax({//获取个性推荐列表
+        type: "POST",
+        url: "http://localhost:8080/api/food/getPersonal",//接口名字
         dataType: "json",
         //contentType: "application/json; charset=utf-8",
         data:{foodType:foodType},
