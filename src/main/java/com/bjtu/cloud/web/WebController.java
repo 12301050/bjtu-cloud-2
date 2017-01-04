@@ -6,6 +6,7 @@ import com.bjtu.cloud.common.webDao.RestResult;
 import com.bjtu.cloud.gate.WebService;
 import com.bjtu.cloud.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Kafukaaa on 17/1/4.
@@ -124,24 +126,11 @@ public class WebController {
   //用户进行收藏或取消收藏
   @RequestMapping(value = "api/collect/doCollect", method = RequestMethod.POST)
   public RestResult<List<Food>> doCollect(HttpServletRequest request, HttpServletResponse response,
-                                          HttpSession session, Integer foodId, Integer type) {
+                                          HttpSession session, @RequestBody Map<String, String> map) {
     try {
       Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
-      Integer flag = webService.doCollect(userId, foodId, type);
+      Integer flag = webService.doCollect(userId, Integer.valueOf(map.get("foodId")), Integer.valueOf(map.get("type")));
       return RestResult.succ().data(flag).build();
-    } catch (Exception e) {
-      return null;
-    }
-  }
-
-  //获取个性化推荐
-  @RequestMapping(value = "api/food/getPersonal", method = RequestMethod.POST)
-  public RestResult<List<Food>> getPersonal(HttpServletRequest request, HttpServletResponse response,
-                                          HttpSession session) {
-    try {
-      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
-      List<Food> foods = webService.getPersonal(userId);
-      return RestResult.succ().data(foods).build();
     } catch (Exception e) {
       return null;
     }

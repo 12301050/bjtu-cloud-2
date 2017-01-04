@@ -17,12 +17,7 @@ function showTheInputForTimerTask(){//按照品类获取该品类的热度排行
         //contentType: "application/json; charset=utf-8",
         data:{foodType:foodType},
         success: function (data) {
-            var stringfortrlist = "<div class='tc-ch wow fadeInDown' data-wow-duration='.8s' data-wow-delay='.2s'> <div class='tch-img'>"+
-                "<a href='singlepage.html'><img src='images/t4.jpg' class='img-responsive' alt=''></a> </div>"+
-                "   <h3><a href='singlepage.html'>Lorem Ipsum is simply</a></h3>"+
-                "<h6>BY <a href='singlepage.html'>ADAM ROSE </a>JULY 10 2016.</h6> <p>Top1</p> <div class='bht1'>"+
-                "   <a href='#table-modal-new-task data-toggle='modal' class='reload' id='create_task_button'>查看详情</a> </div> <div class='soci'> </div>"+
-                "   <div class='clearfix'></div> </div> <div class='clearfix'></div>";
+            var stringfortrlist = " <div class='clearfix'></div>";
 
             for (var i = 0; i < data.data.length; i++)
             {
@@ -33,7 +28,7 @@ function showTheInputForTimerTask(){//按照品类获取该品类的热度排行
                     "  <h3><a href='singlepage.html'>"+data.data[i].foodName+"</a></h3>"+
                     " <h6><a href='singlepage.html'>"+data.data[i].address+"</a></h6> <p>人均"+data.data[i].averageMoney+"元</p>"+
                     " <div class='bht1'>"+
-                    "  <a href='table-modal-new-task' data-toggle='modal' class='reload' id='create_task_button'>查看详情</a> </div>"+
+                    "  <a onclick='showtheHisTask(this)' class='reload' id='"+data.data[i].id+"'>查看详情</a> </div>"+
                     "  <div class='soci'> <ul>"+
                     "  <li><a  style='border: none' href=''></a></li>"+
                     "</ul> </div> <div class='clearfix'></div> </div> <div class='clearfix'></div> </div>"
@@ -78,7 +73,9 @@ function checkTheInput(username,password){
 function showtheHisTask(obj) {//获取此餐品id，并据此请求此用户是否收藏
     var nodeidAndStatus = JSON.stringify({nodeId: obj.id, status: "2"});
     var id = obj.id;
+    var detail = obj.name;
     $('#table-modal-new-task').modal('show');
+    $('#showNotesInModal').text(detail);
 
     $.ajax({
         type: "POST",
@@ -87,18 +84,67 @@ function showtheHisTask(obj) {//获取此餐品id，并据此请求此用户是�
         //contentType: "application/json; charset=utf-8",
         data:{foodId:id},
         success: function (data) {
+            $("#favoriteheart").attr("name",id)
             var isCollect = data.data;//0是未收藏，1是已收藏
             if(isCollect == 1)
                 $("#favoriteheart").css("color","red")
             else if(isCollect == 0)
                 $("#favoriteheart").css("color","pink")
 
-            $('#showheatList').html(stringfortrlist);
+            //$('#showheatList').html(stringfortrlist);
             //AutoCheckLang();
             //$("#datatableForTask").css("width","100%");
             //$("#CPCEP_id").text(userName+"的节点列表信息");
         }
     });
+}
+function changeTheFavoriteStatus(){//收藏和取消收藏
+    var foodId = $("#favoriteheart").attr("name");
+
+    if($("#favoriteheart").css("color") == "rgb(255, 0, 0)")
+    {//执行取消收藏动作
+        var dataforUserAndNode= JSON.stringify({
+            foodId:foodId,
+            type:"0"});
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/api/collect/doCollect",//接口名字
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data:dataforUserAndNode,
+            success: function (data) {
+                if(data.data == 1){//操作成功，提示用户
+                    alert("您已取消收藏该餐品！");
+                    $('#table-modal-new-task').modal('hide');
+                    show_my_favorite();
+                }else{
+                    alert("服务器发生了不可言状的错误！");
+                }
+            }
+        });
+    }
+    else
+    {//执行收藏动作
+        var dataforUserAndNode= JSON.stringify({
+            foodId:foodId,
+            type:"1"});
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/api/collect/doCollect",//接口名字
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
+            data:dataforUserAndNode,
+            success: function (data) {
+                if(data.data == 1){//操作成功，提示用户
+                    alert("您已收藏该餐品！");
+                    $('#table-modal-new-task').modal('hide');
+                    show_my_favorite();
+                }else{
+                    alert("服务器发生了不可言状的错误！");
+                }
+            }
+        });}
+
 }
 function show_my_favorite(){//获取我收藏的所有餐品数据
     //alert("!!!");
@@ -113,10 +159,6 @@ function show_my_favorite(){//获取我收藏的所有餐品数据
         //data:{foodType:foodType},
         success: function (data) {
             var stringfortrlist = "<div class='tc-ch wow fadeInDown' data-wow-duration='.8s' data-wow-delay='.2s'> <div class='tch-img'>"+
-                "<a href='singlepage.html'><img src='images/t4.jpg' class='img-responsive' alt=''></a> </div>"+
-                "   <h3><a href='singlepage.html'>Lorem Ipsum is simply</a></h3>"+
-                "<h6>BY <a href='singlepage.html'>ADAM ROSE </a>JULY 10 2016.</h6> <p>Top1</p> <div class='bht1'>"+
-                "   <a  onclick='showtheHisTask(this)' href='#table-modal-new-task' data-toggle='modal' class='reload' id='create_task_button'>查看详情</a> </div> <div class='soci'> </div>"+
                 "   <div class='clearfix'></div> </div> <div class='clearfix'></div>";
 
             for (var i = 0; i < data.data.length; i++)
@@ -153,12 +195,7 @@ jQuery(document).ready(function() {	//首先渲染
         //contentType: "application/json; charset=utf-8",
         data:{foodType:foodType},
         success: function (data) {
-            var stringfortrlist = "<div class='tc-ch wow fadeInDown' data-wow-duration='.8s' data-wow-delay='.2s'> <div class='tch-img'>"+
-                "<a href='singlepage.html'><img src='images/t4.jpg' class='img-responsive' alt=''></a> </div>"+
-                "   <h3><a href='singlepage.html'>Lorem Ipsum is simply</a></h3>"+
-                "<h6>BY <a href='singlepage.html'>ADAM ROSE </a>JULY 10 2016.</h6> <p>Top1</p> <div class='bht1'>"+
-                "   <a  onclick='showtheHisTask(this)' href='#table-modal-new-task' data-toggle='modal' class='reload' id='create_task_button'>查看详情</a> </div> <div class='soci'> </div>"+
-                "   <div class='clearfix'></div> </div> <div class='clearfix'></div>";
+            var stringfortrlist = " <div class='clearfix'></div>";
 
             for (var i = 0; i < data.data.length; i++)
             {
@@ -169,7 +206,7 @@ jQuery(document).ready(function() {	//首先渲染
                     "  <h3><a href='singlepage.html'>"+data.data[i].foodName+"</a></h3>"+
                     " <h6><a href='singlepage.html'>"+data.data[i].address+"</a></h6> <p>人均"+data.data[i].averageMoney+"元</p>"+
                     " <div class='bht1'>"+
-                    "  <a onclick='showtheHisTask(this)'  class='reload' id='"+data.data[i].id+"'>查看详情</a> </div>"+
+                    "  <a onclick='showtheHisTask(this)' name='"+data.data[i].notes+"' class='reload' id='"+data.data[i].id+"'>查看详情</a> </div>"+
                     "  <div class='soci'> <ul>"+
                     "  <li><a  style='border: none' href=''></a></li>"+
                     "</ul> </div> <div class='clearfix'></div> </div> <div class='clearfix'></div> </div>"

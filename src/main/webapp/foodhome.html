@@ -164,23 +164,6 @@
 		<div class="col-md-9 technology-left">
 			<div class="tech-no" id="showheatList">
 				<!-- technology-top -->
-				<div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-
-					<div class="tch-img">
-						<a href="singlepage.html"><img src="images/t4.jpg" class="img-responsive" alt=""></a>
-					</div>
-
-					<h3><a href="singlepage.html">Lorem Ipsum is simply</a></h3>
-					<h6>BY <a href="singlepage.html">ADAM ROSE </a>JULY 10 2016.</h6>
-					<p>Top1</p>
-					<div class="bht1">
-						<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-					</div>
-					<div class="soci">
-
-					</div>
-					<div class="clearfix"></div>
-				</div>
 				<div class="clearfix"></div>
 				<div class="wthree">
 					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
@@ -541,11 +524,11 @@
 									<div class="box-body big">
 										<form class="form-horizontal" role="form" id="task_Form" action="/api/task/create" method="POST" onsubmit="return checkRequiredField()" enctype="multipart/form-data">
 											<div class="form-group">
-												<label for="inputTaskName" class="col-sm-3 control-label">店长推荐：</label>
+												<label for="inputTaskName" class="col-sm-3 control-label">店长寄语：</label>
 												<div class="col-sm-7" >
-													<label for="inputTaskName" class="col-sm-12 control-label">很好吃很好吃很好吃</label>
+													<label for="inputTaskName" id="showNotesInModal" class="col-sm-12 control-label">很好吃很好吃很好吃</label>
 												</div>
-												<a  class="col-sm-2" id="favoriteheart" style="padding-top: 7px;boder: none;" href="#"><i class="glyphicon glyphicon-heart"></i></a>
+												<a  onclick="changeTheFavoriteStatus()" class="col-sm-2" id="favoriteheart" style="padding-top: 7px;boder: none;" href="#"><i class="glyphicon glyphicon-heart"></i></a>
 											</div>
 											<div class="form-group">
 												<label for="inputTaskName" class="col-sm-3 control-label"></label>

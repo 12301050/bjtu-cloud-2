@@ -147,7 +147,7 @@ public class WebServiceImpl implements WebService {
   public Integer doCollect(Integer userId, Integer foodId, Integer type) throws Exception {
     try {
       Integer flag = 0;
-      if (type == 1){
+      if (type == 1){//type为1，是要添加收藏
         Collect collect = new Collect();
         collect.setUserId(userId);
         collect.setFoodId(foodId);
