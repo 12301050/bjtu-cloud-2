@@ -1,49 +1,49 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Home</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />	
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<!-- animation-effect -->
-<link href="css/animate.min.css" rel="stylesheet"> 
-<script src="js/wow.min.js"></script>
-<script type="text/javascript" src="scriptjs/home.js"></script>
-<script>
- new WOW().init();
-    function show_my_favorite(){
-        $("#tasktype").css("display","none")
-        $("#favorite").addClass("active act")
-        $("#home").removeClass("active act")
-    }
-</script>
-<!-- //animation-effect -->
+	<title>Home</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!-- animation-effect -->
+	<link href="css/animate.min.css" rel="stylesheet">
+	<script src="js/wow.min.js"></script>
+	<script type="text/javascript" src="scriptjs/home.js"></script>
+	<script>
+		new WOW().init();
+		function show_my_favorite(){
+			$("#tasktype").css("display","none")
+			$("#favorite").addClass("active act")
+			$("#home").removeClass("active act")
+		}
+	</script>
+	<!-- //animation-effect -->
 </head>
 <body>
 <div class="header" id="ban">
-		<div class="container">
-			<div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
-				<div class="header-search">
-						<div class="search">
-							<input class="search_box" type="checkbox" id="search_box">
-<!--
-							<div class="search_form">
-								<form action="#" method="post">
-									<input type="text" name="Search" placeholder="Search...">
-									<input type="submit" value="Send">
-								</form>
-							</div>
--->
-						</div>
+	<div class="container">
+		<div class="head-left wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+			<div class="header-search">
+				<div class="search">
+					<input class="search_box" type="checkbox" id="search_box">
+					<!--
+                                                <div class="search_form">
+                                                    <form action="#" method="post">
+                                                        <input type="text" name="Search" placeholder="Search...">
+                                                        <input type="submit" value="Send">
+                                                    </form>
+                                                </div>
+                    -->
 				</div>
 			</div>
-			<div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;width:82%">
+		</div>
+		<div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;width:82%">
 			<nav class="navbar navbar-default">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -62,538 +62,535 @@
 							<li id="home" class="active act"><a href="index.html">Home</a></li>
 							<li id="favorite"><a href="#" onclick="show_my_favorite()">我的收藏</a></li>
 						</ul>
-                        <ul class="nav navbar-nav">
-                            <li id="username" ><a href="index.html">欢迎您！</a></li>
+						<ul class="nav navbar-nav">
+							<li id="username" ><a href="index.html">欢迎您！</a></li>
 							<li id="logout"><a href="/api/user/logout">登出</a></li>
 						</ul>
 					</nav>
 				</div>
 				<!-- /.navbar-collapse -->
 			</nav>
-			</div>
-			<div class="clearfix"> </div>	
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<!--start-main-->
+<div class="header-bottom">
+	<div class="container">
+		<div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+			<h1><a href="index.html">餐品推荐</a></h1>
+			<p><label class="of"></label>Recommended meals<label class="on"></label></p>
 		</div>
 	</div>
-	<!--start-main-->
-	<div class="header-bottom">
-		<div class="container">
-			<div class="logo wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-				<h1><a href="index.html">餐品推荐</a></h1>
-				<p><label class="of"></label>Recommended meals<label class="on"></label></p>
-			</div>
-		</div>
-	</div>
+</div>
 <!-- banner -->
 
 <div class="banner">
-<div class="container">	
+	<div class="container">
 		<h2>不知道晚上吃什么？我们给你推荐！</h2>
-   
-<!--
-		<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-		 <a href="singlepage.html">READ MORE</a>
--->
+
+		<!--
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                 <a href="singlepage.html">READ MORE</a>
+        -->
 	</div>
 </div>
 <div class="services w3l wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-		<div class="container">
-			<div class="grid_3 grid_5">
-				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-					<div class="col-sm-2">
-																		<select style='margin-top: 10%' class='form-control' id='tasktype' name="" onchange='showTheInputForTimerTask()'>
-																			<option value='0'>所有类型</option>
-																			<option value='1'>火锅</option>
-																			<option value='2'>川菜</option>
-																			<option value='3'>烧烤</option>
-																			<option value='4'>湘菜</option>
-																			<option value='5'>自助餐</option>
-																			<option value='6'>北京菜</option>
-																		</select>
-																	</div>
-	<!--				<div id="myTabContent" class="tab-content">
-						<div role="tabpanel" class="tab-pane fade" id="expeditions" aria-labelledby="expeditions-tab">
-							
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/f2.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/f4.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/f3.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						
-						
-						<div role="tabpanel" class="tab-pane fade" id="safari" aria-labelledby="safari-tab">
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/t1.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/t2.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/t3.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="clearfix"></div>
-						</div>
-						<div role="tabpanel" class="tab-pane fade active in" id="trekking" aria-labelledby="trekking-tab">
-
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/m2.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/m1.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="col-md-4 col-sm-5 tab-image">
-								<img src="images/m3.jpg" class="img-responsive" alt="Wanderer">
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</div>
--->
+	<div class="container">
+		<div class="grid_3 grid_5">
+			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+				<div class="col-sm-2">
+					<select style='margin-top: 10%' class='form-control' id='tasktype' name="" onchange='showTheInputForTimerTask()'>
+						<option value='0'>所有类型</option>
+						<option value='1'>火锅</option>
+						<option value='2'>川菜</option>
+						<option value='3'>烧烤</option>
+						<option value='4'>湘菜</option>
+						<option value='5'>自助餐</option>
+						<option value='6'>北京菜</option>
+					</select>
 				</div>
+				<!--				<div id="myTabContent" class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade" id="expeditions" aria-labelledby="expeditions-tab">
+
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/f2.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/f4.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/f3.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+
+                                    <div role="tabpanel" class="tab-pane fade" id="safari" aria-labelledby="safari-tab">
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/t1.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/t2.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/t3.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade active in" id="trekking" aria-labelledby="trekking-tab">
+
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/m2.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/m1.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="col-md-4 col-sm-5 tab-image">
+                                            <img src="images/m3.jpg" class="img-responsive" alt="Wanderer">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+            -->
 			</div>
 		</div>
 	</div>
-	<!-- technology-left -->
-	<div class="technology">
+</div>
+<!-- technology-left -->
+<div class="technology">
 	<div class="container">
-        
+
 		<div class="col-md-9 technology-left">
-		<div class="tech-no">
-			<!-- technology-top -->
-			 <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-				
+			<div class="tech-no" id="showheatList">
+				<!-- technology-top -->
+				<div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+
 					<div class="tch-img">
 						<a href="singlepage.html"><img src="images/t4.jpg" class="img-responsive" alt=""></a>
 					</div>
-					
+
 					<h3><a href="singlepage.html">Lorem Ipsum is simply</a></h3>
 					<h6>BY <a href="singlepage.html">ADAM ROSE </a>JULY 10 2016.</h6>
-						<p>Top1</p>
+					<p>Top1</p>
+					<div class="bht1">
+						<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+					</div>
+					<div class="soci">
+
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
+							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
+						</div>
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<h3><a href="singlepage.html">潮汕牛肉火锅</a></h3>
+						<h6><a href="singlepage.html">中关村南大街11号光大国信大厦二层</a></h6>
+						<p>人均49元</p>
 						<div class="bht1">
 							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
 						</div>
 						<div class="soci">
-							
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
 						</div>
 						<div class="clearfix"></div>
-			</div>
-			<div class="clearfix"></div>
-			<!-- technology-top -->
-			<!-- technology-top -->
-			<!-- technology-top -->
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
-							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
-						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-						<h3><a href="singlepage.html">潮汕牛肉火锅</a></h3>
-						<h6><a href="singlepage.html">中关村南大街11号光大国信大厦二层</a></h6>
-							<p>人均49元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">海底捞</a></h3>
 						<h6><a href="singlepage.html">西单北大街109号西西友谊商场七层 </a></h6>
-							<p>人均87元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均87元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
-			<div class="wthree">
-				 <div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-					<div class="tch-img">
+				</div>
+				<div class="wthree">
+					<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
 							<a href="singlepage.html"><img src="images/f3.png" class="img-responsive" alt=""></a>
 						</div>
-				 </div>
-				 <div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+					</div>
+					<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 						<h3><a href="singlepage.html">井格老灶火锅</a></h3>
 						<h6><a href="singlepage.html">西单北大街131号西单大悦城7楼</a></h6>
-							<p>人均90元</p>
-							<div class="bht1">
-								<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
-							</div>
-							<div class="soci">
-								<ul>
-									<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-					
-				 </div>
+						<p>人均90元</p>
+						<div class="bht1">
+							<a href="#table-modal-new-task" data-toggle="modal" class="reload" id="create_task_button">查看详情</a>
+						</div>
+						<div class="soci">
+							<ul>
+								<li><a  style='border: none' href="#"><i class="glyphicon glyphicon-heart"></i></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+
+					</div>
 					<div class="clearfix"></div>
-			</div>
+				</div>
 			</div>
 		</div>
 		<!-- technology-right -->
 		<div class="col-md-3 technology-right">
-				
-				<div class="blo-top1">
-							
-					<div class="tech-btm">
-<!--
-					<div class="search-1 wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<form action="#" method="post">
-								<input type="search" name="Search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
-								<input type="submit" value=" ">
-							</form>
-						</div>
--->
+
+			<div class="blo-top1">
+
+				<div class="tech-btm">
+					<!--
+                                        <div class="search-1 wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+                                                <form action="#" method="post">
+                                                    <input type="search" name="Search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+                                                    <input type="submit" value=" ">
+                                                </form>
+                                            </div>
+                    -->
 					<h4>个性推荐</h4>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/t2.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/t2.jpg" class="img-responsive" alt=""></a>
 						</div>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/m2.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
 						</div>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/f2.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/m2.jpg" class="img-responsive" alt=""></a>
 						</div>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/t3.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
 						</div>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/f2.jpg" class="img-responsive" alt=""></a>
 						</div>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
 						</div>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/t3.jpg" class="img-responsive" alt=""></a>
 						</div>
-						<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
 						</div>
-						<div class="insta wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="clearfix"> </div>
+					</div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
+						</div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
+						</div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
+						</div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="blog-grids wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="blog-grid-left">
+							<a href="singlepage.html"><img src="images/m3.jpg" class="img-responsive" alt=""></a>
+						</div>
+						<div class="blog-grid-right">
+
+							<h5><a href="singlepage.html">Pellentesque dui Maecenas male</a> </h5>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="insta wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
 
 					</div>
-					</div>
 				</div>
-				
-			
+			</div>
+
+
 		</div>
 		<div class="clearfix"></div>
 		<!-- technology-right   http://sc.chinaz.com/moban/ -->
 	</div>
 </div>
-    
-						<div class="modal fade" id="table-modal-new-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-							<div class="modal-dialog">
-								<div class="modal-content modal-table">
-									<div class="modal-header">
-										<button type="button" class="close" onclick="clearModel()" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="create_text">团单详情</h4>
-									</div>
-									<div class="modal-body">
-										<div class="row" style="margin-top: 2%;">
-											<!--<div class="col-md-1"></div>-->
-											<div class="col-md-12">
-												<div class="row">
-													<div class="col-md-12">
-														<!-- BASIC -->
-														<div class="box border no-opaque" style="margin-bottom: 0px;border: 0px;">
-															<div class="box-body big">
-																<form class="form-horizontal" role="form" id="task_Form" action="/api/task/create" method="POST" onsubmit="return checkRequiredField()" enctype="multipart/form-data">
-																	<div class="form-group">
-																		<label for="inputTaskName" class="col-sm-3 control-label">店长推荐：</label>
-																		<div class="col-sm-7" >
-																			<label for="inputTaskName" class="col-sm-12 control-label">很好吃很好吃很好吃</label>
-																		</div>
-                                                                        <a  class="col-sm-2" style="padding-top: 7px;boder: none" href="#"><i class="glyphicon glyphicon-heart"></i></a>
-																	</div>
-																	<div class="form-group">
-																		<label for="inputTaskName" class="col-sm-3 control-label"></label>
-                                                                        
-																	</div>
-																	
-																	<!-- The table listing the files available for upload/download -->
-																	<!--<table role="presentation" class="table table-striped">-->
-																		<!--<tbody class="files"></tbody></table>-->
-																</form>
-															</div>
-														</div>
-														<!-- /BASIC -->
-													</div>
+<div class="modal fade" id="table-modal-new-task" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+	<div class="modal-dialog">
+		<div class="modal-content modal-table">
+			<div class="modal-header">
+				<button type="button" class="close" onclick="clearModel()" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="create_text">团单详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row" style="margin-top: 2%;">
+					<!--<div class="col-md-1"></div>-->
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								<!-- BASIC -->
+								<div class="box border no-opaque" style="margin-bottom: 0px;border: 0px;">
+									<div class="box-body big">
+										<form class="form-horizontal" role="form" id="task_Form" action="/api/task/create" method="POST" onsubmit="return checkRequiredField()" enctype="multipart/form-data">
+											<div class="form-group">
+												<label for="inputTaskName" class="col-sm-3 control-label">店长推荐：</label>
+												<div class="col-sm-7" >
+													<label for="inputTaskName" class="col-sm-12 control-label">很好吃很好吃很好吃</label>
 												</div>
-												<div class="col-md-2"></div>
+												<a  class="col-sm-2" style="padding-top: 7px;boder: none" href="#"><i class="glyphicon glyphicon-heart"></i></a>
 											</div>
-										</div><!-- /CONTENT-->
-									</div>
+											<div class="form-group">
+												<label for="inputTaskName" class="col-sm-3 control-label"></label>
 
+											</div>
+
+											<!-- The table listing the files available for upload/download -->
+											<!--<table role="presentation" class="table table-striped">-->
+											<!--<tbody class="files"></tbody></table>-->
+										</form>
+									</div>
 								</div>
+								<!-- /BASIC -->
 							</div>
 						</div>
-<div class="footer">
-		<div class="container">
-			<div class="col-md-4 footer-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-				<h4>About Me</h4>
-				
+						<div class="col-md-2"></div>
+					</div>
+				</div><!-- /CONTENT-->
 			</div>
-			<div class="col-md-4 footer-middle wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-			<h4>Latest Tweet</h4>
-			
-			</div>
-			<div class="col-md-4 footer-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-				<h4>Newsletter</h4>
-							<div class="clearfix"> </div>
-					
-			</div>
-			<div class="clearfix"></div>
+
 		</div>
 	</div>
-	<div class="copyright wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-				<div class="container">
-					<p>Copyright &copy; 2017.1.1 All rights reserved.<a target="_blank" href="#">餐品推荐</a></p>
-				</div>
-			</div>
+</div>
+<div class="footer">
+	<div class="container">
+		<div class="col-md-4 footer-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+			<h4>About Me</h4>
+
+		</div>
+		<div class="col-md-4 footer-middle wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+			<h4>Latest Tweet</h4>
+
+		</div>
+		<div class="col-md-4 footer-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+			<h4>Newsletter</h4>
+			<div class="clearfix"> </div>
+
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="copyright wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+	<div class="container">
+		<p>Copyright &copy; 2017.1.1 All rights reserved.<a target="_blank" href="#">餐品推荐</a></p>
+	</div>
+</div>
 </body>
 </html>
