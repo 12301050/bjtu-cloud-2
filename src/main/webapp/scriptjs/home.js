@@ -35,3 +35,6 @@ function checkTheInput(username,password){
   }
   return true;
 }
+jQuery(document).ready(function() {	//首先渲染
+
+})

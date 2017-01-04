@@ -50,7 +50,14 @@ public class WebController {
       return null;
     }
   }
+  //返回用户session
+  @RequestMapping(value = "api/user/session", method = RequestMethod.GET)
+  public String judgeSession(HttpServletRequest request) {
+    HttpSession session=request.getSession();
+    String userId=(String) session.getAttribute("userId");
 
+    return userId;
+  }
 //  //用户登出
 //  @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)
 //  public RestResult<String> logout(HttpSession session) {
