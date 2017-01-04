@@ -16,3 +16,7 @@ logs/
 
 # Mac
 .DS_Store
+
+*.properties
+
+target/bjtu-cloud/WEB-INF/classes/config-generator.xml
