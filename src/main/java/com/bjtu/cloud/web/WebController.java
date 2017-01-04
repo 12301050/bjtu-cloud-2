@@ -34,7 +34,7 @@ public class WebController {
   //用户登录
   @RequestMapping(value = "api/user/login", method = RequestMethod.GET)
   public ModelAndView login(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-                                         String userName, String password) {
+                            String userName, String password) {
     ModelAndView mv = new ModelAndView();
     try {
       User user = webService.login(userName, password);
@@ -56,16 +56,17 @@ public class WebController {
   @RequestMapping(value = "api/user/session", method = RequestMethod.POST)
   public RestResult judgeSession(HttpServletRequest request) {
     HttpSession session=request.getSession();
-    Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
     try {
+      Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+
       User user = userMapper.selectByPrimaryKey(userId);
       return RestResult.succ().data(user.getUserName()).build();
-    }catch (Exception e){
+    }catch (Exception e){//处理session为空的情况
       e.printStackTrace();
-      return null;
+      return RestResult.succ().data(null).build();
     }
   }
-//  //用户登出
+  //  //用户登出
 //  @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)
 //  public RestResult<String> logout(HttpSession session) {
 //    try {

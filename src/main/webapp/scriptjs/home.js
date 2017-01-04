@@ -195,11 +195,15 @@ jQuery(document).ready(function() {	//首先渲染
         //contentType: "application/json; charset=utf-8",
         data:{foodType:foodType},
         success: function (data) {
-            if(data !=null)
+            if(data.data != null)
                 $("#showUserName").text("欢迎您！ "+data.data)
-            else
-                alert("并没有登录")
-
+            else{
+                alert("您并没有登录，仅为您提供餐品热度排行，如需查看个人收藏和个性化推荐内容，请先登录您的账号！")
+                $("#changeToLogin").text("登录")
+                $('#showRecommened').html("");//置空个性化推荐列表
+                $('#favorite').css("display","none");//置空个性化推荐列表
+                return;
+            }
         }
     });
     $.ajax({//获取全品类热度排行
