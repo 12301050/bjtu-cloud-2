@@ -97,7 +97,7 @@ public class WebController {
   }
 
   //获取收藏
-  @RequestMapping(value = "api/collect/getCollect", method = RequestMethod.GET)
+  @RequestMapping(value = "api/collect/getCollect", method = RequestMethod.POST)
   public RestResult<List<Food>> getCollect(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
     try {
       Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
@@ -109,7 +109,7 @@ public class WebController {
   }
 
   //判断是否已经被用户收藏
-  @RequestMapping(value = "api/collect/isCollect", method = RequestMethod.GET)
+  @RequestMapping(value = "api/collect/isCollect", method = RequestMethod.POST)
   public RestResult<List<Food>> isCollect(HttpServletRequest request, HttpServletResponse response,
                                           HttpSession session, Integer foodId) {
     try {
