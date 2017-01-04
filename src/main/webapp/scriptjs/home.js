@@ -227,29 +227,19 @@ jQuery(document).ready(function() {	//首先渲染
         //contentType: "application/json; charset=utf-8",
         data:{foodType:foodType},
         success: function (data) {
-            var stringfortrlist = " <div class='clearfix'></div>";
+            var stringfortrlist = " <h4>个性推荐</h4>";
 
             for (var i = 0; i < data.data.length; i++)
             {
-                var stringfortr = "<div class='wthree'>"+
-                    " <div class='col-md-6 wthree-left wow fadeInDown'  data-wow-duration='.8s' data-wow-delay='.2s'> <div class='tch-img'>"+
-                    " <a href='singlepage.html'><img src='images/"+data.data[i].imageName+"'class='img-responsive' alt=''></a> </div> </div>"+
-                    "<div class='col-md-6 wthree-right wow fadeInDown'  data-wow-duration='.8s' data-wow-delay='.2s'>"+
-                    "  <h3><a href='singlepage.html'>"+data.data[i].foodName+"</a></h3>"+
-                    " <h6><a href='singlepage.html'>"+data.data[i].address+"</a></h6> <p>人均"+data.data[i].averageMoney+"元</p>"+
-                    " <div class='bht1'>"+
-                    "  <a onclick='showtheHisTask(this)' name='"+data.data[i].notes+"' class='reload' id='"+data.data[i].id+"'>查看详情</a> </div>"+
-                    "  <div class='soci'> <ul>"+
-                    "  <li><a  style='border: none' href=''></a></li>"+
-                    "</ul> </div> <div class='clearfix'></div> </div> <div class='clearfix'></div> </div>"
+                var stringfortr = "<div class='blog-grids wow fadeInDown'  data-wow-duration='.8s' data-wow-delay='.2s'>"+
+                    "  <div class='blog-grid-left'> <a><img src='images/"+data.data[i].imageName+"' class='img-responsive' alt=''></a> </div>"+
+            "<div class='blog-grid-right'>"+
+            "   <h5><a onclick='showtheHisTask(this)' id='"+data.data[i].id+"' name='"+data.data[i].notes+"'>"+data.data[i].foodName+"</a> </h5> </div>"+
+            "<div class='clearfix'> </div> </div>"
 
                 stringfortrlist = stringfortrlist + stringfortr;
             }
-
-            $('#showheatList').html(stringfortrlist);
-            //AutoCheckLang();
-            //$("#datatableForTask").css("width","100%");
-            //$("#CPCEP_id").text(userName+"的节点列表信息");
+            $('#showRecommened').html(stringfortrlist);
         }
     });
 })
