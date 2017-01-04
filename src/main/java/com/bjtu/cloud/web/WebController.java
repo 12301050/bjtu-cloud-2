@@ -36,12 +36,12 @@ public class WebController {
     ModelAndView mv = new ModelAndView();
     try {
       User user = webService.login(userName, password);
-      if (user != null) {
+      if (user != null) {//登录成功
         session.setAttribute("userId", user.getId());
         session.setMaxInactiveInterval(3600);//给session设置3600秒
 
-        mv.setViewName("redirect:/node_mgt_user.html");
-      }else {
+        mv.setViewName("redirect:/foodhome.html");
+      }else {//登录失败
         mv.setViewName("redirect:/login_bg.html?error=error");
       }
       return  mv;
@@ -51,17 +51,28 @@ public class WebController {
     }
   }
 
+//  //用户登出
+//  @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)
+//  public RestResult<String> logout(HttpSession session) {
+//    try {
+//      session.invalidate();//让session失效，做访问控制
+//      return RestResult.succ().data("Logout success!").build();
+//    } catch (Exception e) {
+//      return null;
+//    }
+//  }
   //用户登出
   @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)
-  public RestResult<String> logout(HttpSession session) {
+  public ModelAndView getUserInfo(HttpSession session) {
     try {
+      ModelAndView mv = new ModelAndView();
       session.invalidate();//让session失效，做访问控制
-      return RestResult.succ().data("Logout success!").build();
+      mv.setViewName("redirect:/login_bg.html");
+      return mv;
     } catch (Exception e) {
       return null;
     }
   }
-
   //获取各个种类的食物,0:所有种类；1:火锅;2:川菜;3:烧烤;4:湘菜;5:自助餐;6:北京菜(按照该种食物的热度排序)
   @RequestMapping(value = "api/food/getFood", method = RequestMethod.GET)
   public RestResult<List<Food>> getFood(Integer foodType) {
