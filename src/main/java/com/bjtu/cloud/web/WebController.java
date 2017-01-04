@@ -4,6 +4,7 @@ import com.bjtu.cloud.common.entity.Food;
 import com.bjtu.cloud.common.entity.User;
 import com.bjtu.cloud.common.webDao.RestResult;
 import com.bjtu.cloud.gate.WebService;
+import com.bjtu.cloud.repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,9 @@ public class WebController {
 
   @Autowired
   private WebService webService;
+
+  @Autowired
+  private UserMapper userMapper;
 
   //用户登录
   @RequestMapping(value = "api/user/login", method = RequestMethod.GET)
@@ -50,9 +54,14 @@ public class WebController {
   @RequestMapping(value = "api/user/session", method = RequestMethod.GET)
   public String judgeSession(HttpServletRequest request) {
     HttpSession session=request.getSession();
-    String userId=(String) session.getAttribute("userId");
-   //判断userId是否为空，如果不为空，返回username
-    return userId;
+    Integer userId = Integer.valueOf(session.getAttribute("userId").toString());
+    try {
+      User user = userMapper.selectByPrimaryKey(userId);
+      return user.getUserName();
+    }catch (Exception e){
+      e.printStackTrace();
+      return null;
+    }
   }
 //  //用户登出
 //  @RequestMapping(value = "api/user/logout", method = RequestMethod.GET)
