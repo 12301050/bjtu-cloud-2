@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bjtu.cloud.repository.CityMapper">
+  <resultMap id="BaseResultMap" type="com.bjtu.cloud.common.entity.City">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="notes" jdbcType="VARCHAR" property="notes" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, state, notes, path, time
+  </sql>
+
+  <select id="getNotesByState" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from city ORDER BY TIME
+  </select>
+
+  <insert id="insert" parameterType="com.bjtu.cloud.common.entity.City">
+    insert into city (id, state, notes, path, time)
+    values (#{id,jdbcType=INTEGER}, #{state,jdbcType=VARCHAR}, #{notes,jdbcType=VARCHAR},
+      #{path,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP})
+  </insert>
+</mapper>
