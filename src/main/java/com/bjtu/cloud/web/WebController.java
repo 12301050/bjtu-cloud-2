@@ -55,7 +55,7 @@ public class WebController {
   public String judgeSession(HttpServletRequest request) {
     HttpSession session=request.getSession();
     String userId=(String) session.getAttribute("userId");
-
+   //判断userId是否为空，如果不为空，返回username
     return userId;
   }
 //  //用户登出
@@ -81,7 +81,7 @@ public class WebController {
     }
   }
   //获取各个种类的食物,0:所有种类；1:火锅;2:川菜;3:烧烤;4:湘菜;5:自助餐;6:北京菜(按照该种食物的热度排序)
-  @RequestMapping(value = "api/food/getFood", method = RequestMethod.GET)
+  @RequestMapping(value = "api/food/getFood", method = RequestMethod.POST)
   public RestResult<List<Food>> getFood(Integer foodType) {
     try {
       List<Food> foods = webService.getFood(foodType);
